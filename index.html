@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hero Shot Our Team</title>
+<title>Hero Shot Photography</title>
+<meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto+Condensed:wght@300;700&display=swap" rel="stylesheet">
@@ -387,6 +388,36 @@ html,body{margin:0;background:#091113}
   background:rgba(10,119,145,.1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23025263' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 8.4l2.2 2.2 4.8-5'/%3E%3C/svg%3E") center/11px no-repeat}
 .hsw-pts a{color:var(--teal-dk);text-decoration:underline;text-decoration-color:rgba(2,82,99,.35);text-underline-offset:3px;transition:text-decoration-color .3s}
 .hsw-pts a:hover{text-decoration-color:currentColor}
+/* where we work map (Two Ways) */
+.hsw-where{position:relative;z-index:1;margin-top:clamp(24px,3vw,40px);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;gap:clamp(20px,3vw,48px);padding:clamp(18px,2.4vw,30px);border-radius:28px;background:radial-gradient(80% 70% at 40% 55%,#0e3a4e,#0a2532 70%,#081b24);color:#fff;overflow:hidden}
+.hsw-mapbox{position:relative;max-width:520px;width:100%;margin:0 auto}
+.hsw-geo{position:relative;aspect-ratio:1100/985}
+.hsw-geo img{position:absolute;inset:0;width:100%;height:100%;display:block;-webkit-mask-image:radial-gradient(closest-side,#000 80%,transparent);mask-image:radial-gradient(closest-side,#000 80%,transparent);opacity:.9}
+.hsw-pin{position:absolute;z-index:2;width:0;height:0}
+.hsw-pin i{position:absolute;left:-8px;top:-8px;width:16px;height:16px;border-radius:50%;box-sizing:border-box}
+.hsw-pin.s i{background:var(--teal-lt);border:3px solid #fff;box-shadow:0 0 0 6px rgba(143,214,230,.25),0 6px 14px rgba(0,0,0,.5)}
+.hsw-pin.o i{background:rgba(8,27,36,.6);border:2.5px solid var(--teal-lt);box-shadow:0 6px 14px rgba(0,0,0,.45)}
+.hsw-pin.s.o i,.hsw-pin.s i{z-index:2}
+.hsw-pin em{position:absolute;top:-10px;white-space:nowrap;padding:4px 8px;border-radius:6px;font:600 11px/1 Montserrat,sans-serif;font-style:normal;letter-spacing:.04em;background:rgba(5,15,19,.78);color:#fff}
+.hsw-pin.s em{background:#fff;color:#0b1416}
+.hsw-pin.r em{left:14px}.hsw-pin.l em{right:14px}
+.hsw-wtx{min-width:0}
+.hsw-wk{font:700 12px/1.6 Montserrat,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-lt)}
+.hsw-wtx h3{margin-top:10px;font:300 clamp(24px,2.6vw,34px)/1.08 "Roboto Condensed",sans-serif;text-transform:uppercase;color:#fff}
+.hsw-wtx h3 strong{font-weight:700}
+.hsw-key{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.14)}
+.hsw-kh{display:flex;align-items:center;gap:10px;font:700 13px/1.4 Montserrat,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#fff}
+.hsw-kh i{flex:none;width:14px;height:14px;border-radius:50%;box-sizing:border-box}
+.hsw-kh i.s{background:var(--teal-lt);border:3px solid #fff}
+.hsw-kh i.o{border:2.5px solid var(--teal-lt)}
+.hsw-key p{margin-top:6px;padding-left:24px;font:400 15px/1.55 Montserrat,sans-serif;color:rgba(255,255,255,.84)}
+.hsw-where .hsw-link{margin-top:20px;color:var(--teal-lt) !important}
+.hsw-ben li b{display:block;margin-bottom:2px;font-weight:700;color:#0b1416}
+.hsw-ben li.hsw-loc{font-weight:600;color:#1f2e33}
+@media (max-width:900px){.hsw-where{grid-template-columns:1fr}.hsw-mapbox{max-width:440px}}
+@media (max-width:767px){.hsw-pin em{top:-9px}.hsw-pin[data-c="sydney"] em{left:auto;right:auto;top:-30px;left:50%;transform:translateX(-70%)}.hsw-pin[data-c="canberra"] em{right:auto;left:50%;top:10px;transform:translateX(-50%)}.hsw-pin[data-c="adelaide"] em{right:auto;left:50%;top:-30px;transform:translateX(-60%)}}
+@media (max-width:767px){.hsw-where{border-radius:20px;padding:16px}.hsw-pin em{font-size:10px;padding:3px 6px}.hsw-pin i{left:-6px;top:-6px;width:12px;height:12px}.hsw-key p{font-size:14px}}
+
 .hsw-chips{margin-top:22px;padding-top:20px;border-top:1px dashed var(--line);display:flex;flex-wrap:wrap;gap:8px}
 .hsw-chips span{display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:99px;background:rgba(10,119,145,.08);
   font:700 12px/1.65 Montserrat,sans-serif;letter-spacing:.02em;color:var(--teal-dk)}
@@ -699,6 +730,14 @@ html,body{margin:0;background:#091113}
 .hsc-cta:hover i{transform:rotate(-45deg)}
 .hsc-cta svg{width:16px;height:16px}
 .hsc .hsc-enote{margin-top:16px;font:400 12px/1.55 Montserrat,sans-serif;color:rgba(255,255,255,.6)}
+.hsc-alt{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:12px;min-height:48px;padding:6px 18px;border-radius:99px;border:1.5px solid rgba(255,255,255,.4);color:#fff !important;font:600 14.5px/1.4 Montserrat,sans-serif;text-align:center;transition:background .35s,border-color .35s}
+.hsc-alt b{color:var(--teal-lt);font-weight:700}
+.hsc-alt:hover{background:rgba(255,255,255,.08);border-color:var(--teal-lt)}
+.hsc-alt:focus-visible{outline:2px solid var(--teal-lt);outline-offset:3px}
+.hsc-budget{position:relative;z-index:1;max-width:900px;margin:clamp(28px,3.4vw,44px) auto 0;padding:clamp(20px,2.4vw,28px) clamp(20px,2.8vw,36px);border-radius:20px;background:#fff;border:1px solid var(--line);text-align:center}
+.hsc-budget p{font:400 15px/1.65 Montserrat,sans-serif;color:rgba(31,46,51,.9)}
+.hsc-budget p+p{margin-top:10px}
+.hsc-budget b{color:var(--teal-dk);font-weight:700}
 
 .hsc-js .hsc-rv{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1.2s cubic-bezier(.16,1,.3,1)}
 .hsc-js .hsc-rv.in{opacity:1;transform:none}
@@ -740,6 +779,10 @@ html,body{margin:0;background:#091113}
 .hsr-ey::before,.hsr-ey::after{content:"";width:34px;height:1px;background:currentColor;opacity:.45}
 .hsr .hsr-h2{margin-top:16px;font:300 clamp(32px,4.6vw,58px)/1.04 "Roboto Condensed",sans-serif;letter-spacing:-.008em;text-transform:uppercase;color:var(--text)}
 .hsr .hsr-h2 strong{font-weight:700}
+.hsr .hsr-lede+.hsr-lede{margin-top:8px}
+.hsr-turn{position:relative;z-index:1;margin-top:18px;padding:16px 20px;border-left:3px solid var(--teal);border-radius:0 12px 12px 0;background:rgba(10,119,145,.06)}
+.hsr .hsr-turn p{font:400 14.5px/1.6 Montserrat,sans-serif;color:rgba(31,46,51,.9)}
+.hsr .hsr-turn p+p{margin-top:6px}
 .hsr .hsr-lede{margin-top:16px;font:400 17.5px/1.65 Montserrat,sans-serif;color:rgba(31,46,51,.9)}
 .hsr-lede a{color:var(--teal-dk);text-decoration:underline;text-decoration-color:rgba(2,82,99,.35);text-underline-offset:3px}
 .hsr-lede a:hover{text-decoration-color:currentColor}
@@ -798,6 +841,8 @@ html,body{margin:0;background:#091113}
 .hsr .hsr-gtx h3 strong{font-weight:700}
 .hsr .hsr-gtx p{margin-top:10px;font:400 15px/1.65 Montserrat,sans-serif;color:rgba(255,255,255,.84)}
 .hsr .hsr-gtx p b{font-weight:700;color:#fff}
+.hsr .hsr-gtx .hsr-tc{color:#fff;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(255,255,255,.5)}
+.hsr .hsr-gtx .hsr-tc:hover{text-decoration-color:#fff}
 .hsr-stub{position:relative;align-self:stretch;display:flex;align-items:center;padding:clamp(24px,3vw,36px) clamp(24px,3vw,40px);
   border-left:2px dashed rgba(255,255,255,.22)}
 .hsr-stub::before,.hsr-stub::after{content:"";position:absolute;left:-14px;width:26px;height:26px;border-radius:50%;background:var(--paper)}
@@ -988,6 +1033,7 @@ html,body{margin:0;background:#091113}
 .hsm-ey::after{content:"";width:46px;height:1px;background:currentColor;opacity:.45}
 .hsm .hsm-h2{margin-top:16px;font:300 clamp(32px,4.6vw,58px)/1.04 "Roboto Condensed",sans-serif;letter-spacing:-.008em;text-transform:uppercase;color:var(--text)}
 .hsm .hsm-h2 strong{font-weight:700}
+.hsm .hsm-lede+.hsm-lede{margin-top:8px}
 .hsm .hsm-lede{margin-top:16px;font:400 17.5px/1.65 Montserrat,sans-serif;color:rgba(31,46,51,.9)}
 .hsm a.il{color:var(--teal-dk);text-decoration:underline;text-decoration-color:rgba(2,82,99,.35);text-underline-offset:3px;transition:text-decoration-color .3s}
 .hsm a.il:hover{text-decoration-color:currentColor}
@@ -1736,7 +1782,19 @@ html,body{margin:0;background:#091113}
 .hsf-lb.on{opacity:1;visibility:visible}
 .hsf-lb-box{position:relative;width:min(1100px,100%);aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000;box-shadow:0 60px 120px -40px rgba(0,0,0,.9);transform:scale(.96);transition:transform .5s cubic-bezier(.16,1,.3,1)}
 .hsf-lb.on .hsf-lb-box{transform:none}
-.hsf-lb iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.hsf-lb iframe,.hsf-lb video{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+.hsf-films.hsf-4{grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.6vw,22px)}
+.hsf-4 .hsf-cap{left:16px;right:16px;bottom:14px}
+.hsf-4 .hsf-cap b{font-size:17px}
+.hsf-4 .hsf-cap small{font-size:11px;letter-spacing:.14em}
+.hsf-4 .hsf-rec{display:none}
+.hsf-4 .hsf-pl{width:56px;height:56px;margin:-28px 0 0 -28px}
+.hsf-soon{cursor:default}
+.hsf-soon-tag{position:absolute;z-index:3;top:12px;left:12px;padding:5px 10px;border-radius:99px;background:rgba(255,255,255,.92);color:#0b1416;font:700 10.5px/1 Montserrat,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.hsf-soon:hover{transform:none;box-shadow:none}
+.hsf-soon .hsf-scr img{filter:saturate(.45) brightness(.6)}
+@media (max-width:1100px){.hsf-films.hsf-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:767px){.hsf-4 .hsf-cap{left:10px;right:10px;bottom:10px}.hsf-4 .hsf-cap b{font-size:14px;line-height:1.15}.hsf-4 .hsf-cap small{font-size:9.5px;letter-spacing:.1em}.hsf-4 .hsf-pl{width:34px;height:34px;margin:0;top:10px;left:auto;right:10px}.hsf-soon-tag{top:8px;left:8px;font-size:8.5px;padding:4px 7px}.hsf-films.hsf-4 .hsf-film{border-radius:14px;padding:10px 0}}
 .hsf-lb-x{position:absolute;top:18px;right:18px;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:300 26px/1 Montserrat,sans-serif;cursor:pointer}
 .hsf-lb-x:hover{background:#fff;color:#000}
 
@@ -2270,7 +2328,7 @@ html,body{margin:0;background:#091113}
       <span class="hsx-line"><span><strong>Photography</strong></span></span>
     </h1>
 
-    <p class="hsx-sub hsx-fade d2">Senior photographers in Sydney, Melbourne, Brisbane and Perth, and on location Australia-wide.</p>
+    <p class="hsx-sub hsx-fade d2">Highly experienced photographers across Sydney, Melbourne, Brisbane and Perth, with studio sessions and on location photography available Australia wide.</p>
 
     <ul class="hsx-svc hsx-fade d3" aria-label="Our services">
       <li><a href="https://heroshotphotography.com/corporate-headshots-for-companies/">Headshots</a></li>
@@ -2407,11 +2465,6 @@ html,body{margin:0;background:#091113}
         <h2 class="hsw-h2" id="hsw-title">Two ways to work with us <strong>for headshots</strong></h2>
         <p class="hsw-sub">Headshots for a team, or just for you.</p>
       </div>
-      <a class="hsw-ns" href="#hs-estimator">
-        <span class="hsw-ns-ic" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 1.8 3.5 9h4L7 14.2 12.5 7h-4z"/></svg></span>
-        <span class="hsw-ns-t"><b>Not sure which?</b><span>Use the headshot price calculator</span></span>
-        <span class="go" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-      </a>
     </div>
     <div class="hsw-grid">
       <article class="hsw-card hsw-rv" data-hsw-card>
@@ -2423,8 +2476,8 @@ html,body{margin:0;background:#091113}
         </a>
         <div class="hsw-sheet" role="group" aria-label="Photos"><button class="hsw-th on" type="button" aria-label="Show photo 1 of 5"><img src="https://heroshotphotography.com/wp-content/uploads/2025/04/Hero-Shot-team-portrait-on-sofa-Ray-White-Economics-1782-v3-copy-768x512.jpg" alt="" loading="lazy" decoding="async"></button><button class="hsw-th" type="button" aria-label="Show photo 2 of 5"><img src="https://heroshotphotography.com/wp-content/uploads/2021/09/professional-corporate-headshot-sydney-google-location-Hero-Shot-Everett-google-portrait-corporate-1D6A3520-Edit-1200x800-2.jpeg" alt="" loading="lazy" decoding="async"></button><button class="hsw-th" type="button" aria-label="Show photo 3 of 5"><img src="https://heroshotphotography.com/wp-content/uploads/2023/01/Relaxed-Team-Portrait-Rumble-Melbourne.jpg" alt="" loading="lazy" decoding="async"></button><button class="hsw-th" type="button" aria-label="Show photo 4 of 5"><img src="https://heroshotphotography.com/wp-content/uploads/2021/09/Group-Team-Portraits-Hero-Shot-30.jpg" alt="" loading="lazy" decoding="async"></button><button class="hsw-th" type="button" aria-label="Show photo 5 of 5"><img src="https://heroshotphotography.com/wp-content/uploads/2021/09/Hero-Shot-LinkedIn-Headshots-Microsoft-Innovate-Sydney-0G9A7458-1024x683.jpg" alt="" loading="lazy" decoding="async"></button></div>
         <div class="hsw-body">
-          <ul class="hsw-pts"><li>On-location anywhere in Sydney, <a href="https://heroshotphotography.com/corporate-headshots-melbourne/">Melbourne</a> or <a href="https://heroshotphotography.com/corporate-headshots-brisbane/">Brisbane</a>, Perth, or at <a href="https://heroshotphotography.com/photo-studio-sydney/">our studios</a></li><li>Time-slotted sessions so nobody loses half a day</li><li>A senior photographer and one-to-one coaching</li><li>Option to review images during the shoot</li><li>The same look across people, offices and cities</li></ul>
-          <div class="hsw-chips"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 14.5s-4.5-3.9-4.5-7.6a4.5 4.5 0 0 1 9 0c0 3.7-4.5 7.6-4.5 7.6z"/><circle cx="8" cy="6.8" r="1.6"/></svg>On-location or studio</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="3.5" width="11" height="10" rx="1.5"/><path d="M2.5 6.5h11M5.5 2v3M10.5 2v3"/></svg>Selections in 5 days</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 1.8 3.5 9h4L7 14.2 12.5 7h-4z"/></svg>3–7 days</span></div>
+          <ul class="hsw-pts hsw-ben"><li class="hsw-loc">We come to you, across Greater Sydney, Melbourne, Brisbane, Canberra, Perth and Adelaide, or welcome your team at our <a href="https://heroshotphotography.com/photo-studio-sydney/">studios</a> in Sydney, Melbourne and Perth.</li><li><b>Highly Experienced Photographers</b>Professional photographers who know how to make people comfortable and get the best from every session.</li><li><b>Done for You Scheduling</b>We take care of individual staff bookings, reminders and session coordination, reducing the administrative workload for your team.</li><li><b>Live Image Reviews</b>Review images during the session so your staff can see the results and make sure they're happy.</li><li><b>Personalised Coaching</b>Every person receives individual direction on expression, posture and positioning, helping them look natural and confident.</li><li><b>Consistency Across Locations</b>Maintain a cohesive visual style across teams, offices and cities, even when shoots take place at different times.</li></ul>
+          <div class="hsw-chips"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 14.5s-4.5-3.9-4.5-7.6a4.5 4.5 0 0 1 9 0c0 3.7-4.5 7.6-4.5 7.6z"/><circle cx="8" cy="6.8" r="1.6"/></svg>On-location or studio</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="3.5" width="11" height="10" rx="1.5"/><path d="M2.5 6.5h11M5.5 2v3M10.5 2v3"/></svg>Proofs in 24 hours</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 1.8 3.5 9h4L7 14.2 12.5 7h-4z"/></svg>Retouched in 3–7 days</span></div>
           <div class="hsw-cta">
             <a class="hsw-btn" href="#hs-quote">Enquire about team headshots<i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></i></a>
             <a class="hsw-link" href="https://heroshotphotography.com/corporate-headshots-for-companies/">See what’s included<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
@@ -2440,14 +2493,24 @@ html,body{margin:0;background:#091113}
         </a>
         <div class="hsw-sheet" role="group" aria-label="Photos"><button class="hsw-th on" type="button" aria-label="Show photo 1 of 5"><img src="https://heroshotphotography.com/wp-content/uploads/2021/09/0G9A6338-Edit-683x1024.jpg" alt="" loading="lazy" decoding="async"></button><button class="hsw-th" type="button" aria-label="Show photo 2 of 5"><img src="https://heroshotphotography.com/wp-content/uploads/2021/09/corporate-headshot-photography-studio-blackwhite-female-1200x800-1.jpg" alt="" loading="lazy" decoding="async"></button><button class="hsw-th" type="button" aria-label="Show photo 3 of 5"><img src="https://heroshotphotography.com/wp-content/uploads/2023/08/Doctor_Portrait_BB3513.jpeg" alt="" loading="lazy" decoding="async"></button><button class="hsw-th" type="button" aria-label="Show photo 4 of 5"><img src="https://heroshotphotography.com/wp-content/uploads/2021/09/Individual-Headshots-Hero-Shot-16.jpg" alt="" loading="lazy" decoding="async"></button><button class="hsw-th" type="button" aria-label="Show photo 5 of 5"><img src="https://heroshotphotography.com/wp-content/uploads/2021/09/Corporate-headshot-portrait-finance-Barangaroo-1200x800-1.jpeg" alt="" loading="lazy" decoding="async"></button></div>
         <div class="hsw-body">
-          <ul class="hsw-pts"><li><a href="https://heroshotphotography.com/photo-studio-sydney/">Studios in Petersham, Sydney</a>, ten minutes from the CBD, and Ivanhoe, Melbourne</li><li>Backdrops from clean white to bold colour</li><li>Coaching throughout the session</li><li>One, three or more retouched images</li><li>Retouched images back in 3–5 days</li></ul>
-          <div class="hsw-chips"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 4.8V8l2.2 1.4"/></svg>20 min – 2 hrs</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 5.5h2l1.1-1.7h4.8l1.1 1.7h2a.9.9 0 0 1 .9.9v6.2a.9.9 0 0 1-.9.9h-11a.9.9 0 0 1-.9-.9V6.4a.9.9 0 0 1 .9-.9z"/><circle cx="8" cy="9" r="2.3"/></svg>Studio based</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 1.8 3.5 9h4L7 14.2 12.5 7h-4z"/></svg>3–5 days</span></div>
+          <ul class="hsw-pts"><li>Fully equipped <a href="https://heroshotphotography.com/photo-studio-sydney/">photography studios</a> in Sydney, Melbourne and Perth.</li><li>Backdrops from clean white to bold colour</li><li>Coaching throughout the session</li><li>One, three or more retouched images</li><li>Proof gallery within 24 hours, retouched images 3 to 7 days after your selections</li></ul>
+          <div class="hsw-chips"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 4.8V8l2.2 1.4"/></svg>20 min – 2 hrs</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 5.5h2l1.1-1.7h4.8l1.1 1.7h2a.9.9 0 0 1 .9.9v6.2a.9.9 0 0 1-.9.9h-11a.9.9 0 0 1-.9-.9V6.4a.9.9 0 0 1 .9-.9z"/><circle cx="8" cy="9" r="2.3"/></svg>Studio based</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 1.8 3.5 9h4L7 14.2 12.5 7h-4z"/></svg>Retouched in 3–7 days</span></div>
           <div class="hsw-cta">
             <a class="hsw-btn" href="#hs-quote">Enquire about a session<i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></i></a>
             <a class="hsw-link" href="https://heroshotphotography.com/headshots-for-individuals/">Compare the sessions<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
           </div>
         </div>
       </article>
+    </div>
+    <div class="hsw-where hsw-rv">
+      <div class="hsw-mapbox"><div class="hsw-geo" data-hsw-geo role="img" aria-label="Map of Australia showing Hero Shot studios in Sydney, Melbourne and Perth, and on-site photography in Greater Sydney, Melbourne, Brisbane, Canberra, Perth and Adelaide"><img alt="" decoding="async" hidden><span class="hsw-pin s r" style="left:83.72%;top:64.15%" data-c="sydney"><i></i><em>Sydney</em></span><span class="hsw-pin s l" style="left:72.15%;top:74.2%" data-c="melbourne"><i></i><em>Melbourne</em></span><span class="hsw-pin s r" style="left:18.26%;top:59.42%" data-c="perth"><i></i><em>Perth</em></span><span class="hsw-pin o l" style="left:87.09%;top:48.75%" data-c="brisbane"><i></i><em>Brisbane</em></span><span class="hsw-pin o l" style="left:79.87%;top:67.69%" data-c="canberra"><i></i><em>Canberra</em></span><span class="hsw-pin o l" style="left:60.37%;top:66.8%" data-c="adelaide"><i></i><em>Adelaide</em></span></div></div>
+      <div class="hsw-wtx">
+        <p class="hsw-wk">Where we work</p>
+        <h3>Studios in three cities, <strong>on-site Australia wide</strong></h3>
+        <div class="hsw-key"><span class="hsw-kh"><i class="s"></i>Our studios</span><p>Sydney, Melbourne and Perth</p></div>
+        <div class="hsw-key"><span class="hsw-kh"><i class="o"></i>We come to you</span><p>Greater Sydney, Melbourne, Brisbane, Canberra, Perth and Adelaide</p></div>
+        <a class="hsw-link" href="#hs-locations">Studio addresses<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
     </div>
   </div>
 </section>
@@ -2491,19 +2554,18 @@ html,body{margin:0;background:#091113}
 <section class="hsb" id="hs-brand">
 
   <div class="hsb-ch" aria-labelledby="hsb-t4">
-    <span class="hsb-ghost r" aria-hidden="true">04</span>
+    <span class="hsb-ghost r" aria-hidden="true">02</span>
     <div class="hsb-in">
       <div class="hsb-media hsb-rv">
         <div class="hsb-duo">
-          <figure class="hsb-print a"><span class="hsb-tape" aria-hidden="true"></span><span class="ph"><img src="https://heroshotphotography.com/wp-content/uploads/2022/08/Corporate-Photography-Boardroom-Fortius-768x512.jpg" alt="Team meeting around a boardroom table, workplace brand photography by Hero Shot" loading="lazy" decoding="async"></span><figcaption aria-hidden="true"><span><b>04</b> / A</span><span>Workplace</span></figcaption></figure>
-          <figure class="hsb-print b"><span class="hsb-tape" aria-hidden="true"></span><span class="ph"><img src="https://heroshotphotography.com/wp-content/uploads/2021/09/Prefessional-Stock-Photograpy-Hero-Shot-20-768x512.jpg" alt="Construction professional photographed on site by Hero Shot" loading="lazy" decoding="async"></span><figcaption aria-hidden="true"><span><b>04</b> / B</span><span>On site</span></figcaption></figure>
+          <figure class="hsb-print a"><span class="ph"><img src="https://heroshotphotography.com/wp-content/uploads/2022/08/Corporate-Photography-Boardroom-Fortius-768x512.jpg" alt="Team meeting around a boardroom table, workplace brand photography by Hero Shot" loading="lazy" decoding="async"></span><figcaption aria-hidden="true"><span><b>02</b> / A</span><span>Workplace</span></figcaption></figure>
+          <figure class="hsb-print b"><span class="ph"><img src="https://heroshotphotography.com/wp-content/uploads/2021/09/Prefessional-Stock-Photograpy-Hero-Shot-20-768x512.jpg" alt="Construction professional photographed on site by Hero Shot" loading="lazy" decoding="async"></span><figcaption aria-hidden="true"><span><b>02</b> / B</span><span>On site</span></figcaption></figure>
         </div>
       </div>
       <div class="hsb-copy hsb-rv">
-        <p class="hsb-ey"><b>04</b> Brand photography</p>
-        <h2 class="hsb-h2" id="hsb-t4">Brand photography <strong>for businesses</strong></h2>
-        <p class="hsb-p">Business and workplace imagery shows people not only what you do but also how you do it.</p>
-        <p class="hsb-p">Our <a href="https://heroshotphotography.com/workplace-photography/">corporate brand photography</a> can be used on websites, annual reports, brochures, eDMs and social media, and helps create feelings of familiarity and trust.</p>
+        <p class="hsb-ey"><b>02</b> Brand photography</p>
+        <h2 class="hsb-h2" id="hsb-t4">Business Photography That <strong>Builds Your Brand</strong></h2>
+        <p class="hsb-p">Show people what your business does, who makes it happen and what it's like to work with you. We create authentic <a href="https://heroshotphotography.com/workplace-photography/">workplace and brand photography</a> for websites, marketing, recruitment, annual reports and more.</p>
         <div class="hsb-cta">
           <a class="hsb-btn" href="https://heroshotphotography.com/workplace-photography/">Photography for business <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
           <a class="hsb-btn o" href="#hs-quote">Make an enquiry</a>
@@ -2513,10 +2575,10 @@ html,body{margin:0;background:#091113}
   </div>
 
   <div class="hsb-ch hsb-dark hsb-flip" aria-labelledby="hsb-t5">
-    <span class="hsb-ghost l" aria-hidden="true">05</span>
+    <span class="hsb-ghost l" aria-hidden="true">03</span>
     <div class="hsb-in">
       <div class="hsb-copy hsb-rv">
-        <p class="hsb-ey"><b>05</b> Events, video &amp; activations</p>
+        <p class="hsb-ey"><b>03</b> Events, video &amp; activations</p>
         <h2 class="hsb-h2" id="hsb-t5">On-brand event <strong>and video coverage</strong></h2>
         <p class="hsb-p">Across Sydney, Melbourne, Brisbane and Perth our event photographers and videographers support clients with brand activations, gala dinners and corporate events of every size.</p>
         <p class="hsb-p">We create brand videos, corporate explainers, event highlight reels and testimonials, all designed to connect with your audience. Whether it is coverage for social media, polished images for press releases, or long-term brand storytelling through video, we have the experience to capture key moments and produce share-worthy content. <strong>From $650 + GST.</strong></p>
@@ -2540,11 +2602,11 @@ html,body{margin:0;background:#091113}
   </div>
 
   <div class="hsb-ch" aria-labelledby="hsb-t6">
-    <span class="hsb-ghost r" aria-hidden="true">06</span>
+    <span class="hsb-ghost r" aria-hidden="true">04</span>
     <div class="hsb-in">
       <div class="hsb-media hsb-rv">
         <div class="hsb-solo">
-          <figure class="hsb-print"><span class="ph"><img src="https://heroshotphotography.com/wp-content/uploads/2023/01/Hero-Shot-Photography-8335-588-1024x683.jpeg" alt="Personal branding portrait by Hero Shot Photography" loading="lazy" decoding="async"></span><figcaption aria-hidden="true"><span><b>06</b> / A</span><span>Personal branding</span></figcaption></figure>
+          <figure class="hsb-print"><span class="ph"><img src="https://heroshotphotography.com/wp-content/uploads/2023/01/Hero-Shot-Photography-8335-588-1024x683.jpeg" alt="Personal branding portrait by Hero Shot Photography" loading="lazy" decoding="async"></span><figcaption aria-hidden="true"><span><b>04</b> / A</span><span>Personal branding</span></figcaption></figure>
           <div class="hsb-badge" aria-hidden="true">
             <svg viewBox="0 0 118 118"><defs><path id="hsbRing" d="M59,59 m-47,0 a47,47 0 1,1 94,0 a47,47 0 1,1 -94,0"/></defs><text><textPath href="#hsbRing">Editorial · Executive · Portraits ·</textPath></text></svg>
             <span>From<b>$1,250</b></span>
@@ -2552,7 +2614,7 @@ html,body{margin:0;background:#091113}
         </div>
       </div>
       <div class="hsb-copy hsb-rv">
-        <p class="hsb-ey"><b>06</b> Personal branding</p>
+        <p class="hsb-ey"><b>04</b> Personal branding</p>
         <h2 class="hsb-h2" id="hsb-t6"><strong>Personal branding:</strong> be seen as the go-to in your field</h2>
         <p class="hsb-p">Show up with purpose. Connect with your audience. Attract your ideal clients through editorial-quality executive portraits that tell your story, powerfully and professionally. <strong>From $1,250 incl GST.</strong></p>
         <div class="hsb-cta">
@@ -2591,8 +2653,8 @@ html,body{margin:0;background:#091113}
     <span class="hsc-ghost" aria-hidden="true">05</span>
     <div class="hsc-head hsc-rv">
       <p class="hsc-ey"><b>05</b> Headshot pricing</p>
-      <h2 class="hsc-h2" id="hsc-title">Headshot price <strong>calculator</strong></h2>
-      <p class="hsc-lede">Company headshots are $175 per person for the first ten people, then $75 for each person after that, plus GST.</p>
+      <h2 class="hsc-h2" id="hsc-title">A Guide to <strong>Our Pricing</strong></h2>
+      <p class="hsc-lede">Our calculator gives you a good indication of what it costs to work with Hero Shot, including planning, preparation, lighting design and setup, photography and professional retouching. It's an all inclusive estimate based on our standard full service approach and the quality you see throughout our website.</p>
     </div>
 
     <div class="hsc-box hsc-rv">
@@ -2638,9 +2700,14 @@ html,body{margin:0;background:#091113}
           <div class="est-row"><span>GST (10%)</span><b>$175</b></div>
           <div class="est-row"><span><b>Total incl GST</b></span><b>$1,925</b></div>
         </div>
-        <a class="hsc-cta" href="#hs-quote" id="hs-estCta" data-hsv24pop="1">Send an enquiry with this estimate <i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#hs-i-arw"/><path d="M3 8h10M9 4l4 4-4 4"/></svg></i></a>
-        <p class="hsc-enote" id="hs-estNote">Company pricing, plus GST. This is an estimate; we confirm the exact figure when we reply to your enquiry.</p>
+        <a class="hsc-cta" href="#hs-quote" id="hs-estCta" data-hsv24pop="1">Get your estimate <i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#hs-i-arw"/><path d="M3 8h10M9 4l4 4-4 4"/></svg></i></a>
+        <a class="hsc-alt" href="#hs-quote" data-hs-budget="1">Have a budget in mind? <b>Let's talk.</b></a>
+        <p class="hsc-enote" id="hs-estNote">This is an estimate, not a confirmed quote. Company pricing excludes GST, which is shown separately.</p>
       </div>
+    </div>
+    <div class="hsc-budget hsc-rv">
+      <p><b>Working with a particular budget?</b> We're always happy to explore more streamlined approaches that reduce the time and resources involved. Our standard process is designed to get the best possible results, but we understand that not every project requires the same level of service. We'll help you understand where we can make savings and what that might mean for the final result.</p>
+      <p>We can usually tell you pretty quickly what's possible, and if we're not the right fit, we're happy to point you towards someone who might be.</p>
     </div>
   </div>
 </section>
@@ -2667,15 +2734,54 @@ html,body{margin:0;background:#091113}
 <!-- PREVIEW ONLY (do NOT paste): a copy of the live page's calculator logic so this file works on its own.
      On the real page the existing page script already does this. -->
 <script>
+/* ===== HERO SHOT PRICING: edit these numbers when prices change ===== */
+window.HS_PRICING = window.HS_PRICING || {
+  team: {
+    perPerson: 175,        /* rate per person, plus GST */
+    firstPeople: 10,       /* how many people are charged at perPerson */
+    afterRate: 75,         /* rate for each person after firstPeople, plus GST */
+    onLocationSetup: 295,  /* setup fee when we come to you, plus GST */
+    onLocationMin: 4,      /* minimum people for an on-location shoot */
+    enquireFrom: 20        /* at this many people, ask them to enquire instead */
+  },
+  solo: {                  /* individual sessions, including GST */
+    sessions: { "Express Hero": 325, "Elite Hero": 550, "Elite Plus": 825 },
+    extraShot: 150,        /* extra retouched image */
+    extraShotElitePlus: 250, /* extra retouched image on Elite Plus */
+    hairMakeup: 275
+  },
+  gst: 0.10
+};
 (function(){
+  var P=window.HS_PRICING;
   function t(s){return document.querySelector(s)}function n(s){return [].slice.call(document.querySelectorAll(s))}
-  var d="team",u=t("#hs-pplRange"),f=t("#hs-ppl"),h=t("#hs-onloc"),v=t("#hs-estTotal"),p=t("#hs-estSub"),b=t("#hs-estRows"),m=t("#hs-estNote"),g=t("#hs-estEyebrow"),y=t("#hs-paneTeam"),L=t("#hs-paneSolo"),w=325,x="Express Hero",T=function(e){return"$"+e.toLocaleString("en-AU")};
+  var d="team",u=t("#hs-pplRange"),f=t("#hs-ppl"),h=t("#hs-onloc"),v=t("#hs-estTotal"),p=t("#hs-estSub"),b=t("#hs-estRows"),m=t("#hs-estNote"),g=t("#hs-estEyebrow"),y=t("#hs-paneTeam"),L=t("#hs-paneSolo"),x="Express Hero",T=function(e){return"$"+e.toLocaleString("en-AU")};
+  if(!u)return;
+  /* keep the session buttons in step with the pricing table above */
+  n("#hs-pkg button").forEach(function(e){var pr=P.solo.sessions[e.dataset.n];if(pr!=null){e.dataset.p=pr;e.textContent=e.textContent.split("·")[0].trim()+" · "+T(pr)}});
+  var xl=t('label[for="hs-extra"]')||(t("#hs-extra")&&t("#hs-extra").parentNode);
+  function xp(){return x==="Elite Plus"?P.solo.extraShotElitePlus:P.solo.extraShot}
+  function xlab(){if(xl&&xl.lastChild&&xl.lastChild.nodeType===3)xl.lastChild.textContent=" Add an extra retouched hero shot ("+T(xp())+")"}
+  xlab();
+  var w=P.solo.sessions[x];
+  u.max=P.team.enquireFrom;
+  window.HS_ESTIMATE="";
   n("#hs-estMode button").forEach(function(e){e.addEventListener("click",function(){n("#hs-estMode button").forEach(function(e){e.classList.remove("on");e.setAttribute("aria-selected","false")});e.classList.add("on");e.setAttribute("aria-selected","true");d=e.dataset.mode;y.hidden="team"!==d;L.hidden="solo"!==d;A()})});
   n("#hs-pkg button").forEach(function(e){e.addEventListener("click",function(){n("#hs-pkg button").forEach(function(e){e.classList.remove("on")});e.classList.add("on");w=parseInt(e.dataset.p,10);x=e.dataset.n;A()})});
   u.addEventListener("input",A);h.addEventListener("change",A);t("#hs-hmu").addEventListener("change",A);t("#hs-extra").addEventListener("change",A);
-  function A(){var e="";if("team"===d){var k=parseInt(u.value,10);f.textContent=k>=20?"20+":k;g.textContent="Estimated investment";if(k>=20){g.textContent="20 or more people";v.textContent="Let’s talk";p.textContent="For 20 or more people we plan the day around your headcount, locations and schedule.";b.innerHTML='<div class="est-row"><span>How we run larger team days</span><b><a href="#hs-process">See how it works</a></b></div><div class="est-row"><span>Prefer to talk it through</span><b><a href="tel:+61421048722">0421 048 722</a></b></div><div class="est-row"><span>Want an exact figure</span><b><a href="#hs-quote">Send your details</a></b></div>';m.textContent="Tell us the headcount and the locations and we will come back with an exact figure.";return}
-    var a=175*Math.min(k,10)+75*Math.max(k-10,0),r=h.checked?295:0,o=a+r,i=Math.round(o/k);v.textContent=T(o);p.textContent="≈ "+T(i)+" per person + GST · "+k+" people";e='<div class="est-row"><span>Photography ('+(k>10?"first 10 at $175, then $75 each":"$175 per person")+')</span><b>'+T(a)+"</b></div>";r&&(e+='<div class="est-row"><span>On location setup</span><b>'+T(r)+"</b></div>");e+='<div class="est-row"><span>GST (10%)</span><b>'+T(Math.round(.1*o))+'</b></div><div class="est-row"><span><b>Total incl GST</b></span><b>'+T(Math.round(1.1*o))+"</b></div>";b.innerHTML=e;m.textContent="Company pricing, plus GST. This is an estimate; we confirm the exact figure when we reply to your enquiry."}
-    else{g.textContent="Your session";var l=w;e='<div class="est-row"><span>'+x+" session</span><b>"+T(w)+"</b></div>";t("#hs-hmu").checked&&(l+=275,e+='<div class="est-row"><span>Hair &amp; make-up</span><b>$275</b></div>');t("#hs-extra").checked&&(l+=150,e+='<div class="est-row"><span>Extra retouched hero shot</span><b>$150</b></div>');e+='<div class="est-row"><span><b>Total incl GST</b></span><b>'+T(l)+"</b></div>";v.textContent=T(l);p.textContent=x+" · including GST · one person";b.innerHTML=e;m.textContent="Individual session prices include GST. Online bookings are available for Sydney."}}
+  function A(){var e="",tm=P.team;
+    if("team"===d){var k=parseInt(u.value,10);f.textContent=k>=tm.enquireFrom?tm.enquireFrom+"+":k;g.textContent="Your estimate";
+      if(k>=tm.enquireFrom){g.textContent=tm.enquireFrom+" or more people";v.textContent="Let’s talk";p.textContent="For larger teams there are often ways to improve efficiencies, streamline the schedule and make better use of your budget.";b.innerHTML='<div class="est-row"><span>How we run larger team days</span><b><a href="#hs-process">See how it works</a></b></div><div class="est-row"><span>Prefer to talk it through</span><b><a href="tel:+61421048722">0421 048 722</a></b></div><div class="est-row"><span>Get a recommendation</span><b><a href="#hs-quote">Send your details</a></b></div>';m.textContent="Tell us the headcount and locations and we will recommend the most cost effective approach.";window.HS_ESTIMATE="Team of "+tm.enquireFrom+" or more people";return}
+      var a=tm.perPerson*Math.min(k,tm.firstPeople)+tm.afterRate*Math.max(k-tm.firstPeople,0),r=h.checked?tm.onLocationSetup:0,o=a+r,i=Math.round(o/k),gst=Math.round(P.gst*o);
+      v.textContent=T(o);p.textContent="≈ "+T(i)+" per person + GST · "+k+" people";
+      e='<div class="est-row"><span>Photography ('+(k>tm.firstPeople?"first "+tm.firstPeople+" at "+T(tm.perPerson)+", then "+T(tm.afterRate)+" each":T(tm.perPerson)+" per person")+')</span><b>'+T(a)+"</b></div>";
+      r&&(e+='<div class="est-row"><span>On location setup</span><b>'+T(r)+"</b></div>");
+      e+='<div class="est-row"><span>GST ('+Math.round(P.gst*100)+'%)</span><b>'+T(gst)+'</b></div><div class="est-row"><span><b>Total incl GST</b></span><b>'+T(o+gst)+"</b></div>";
+      b.innerHTML=e;
+      m.textContent="This is an estimate, not a confirmed quote. Company pricing excludes GST, which is shown separately."+(h.checked&&k<tm.onLocationMin?" On-location shoots have a minimum of "+tm.onLocationMin+" people.":"");
+      window.HS_ESTIMATE="Team headshots: "+k+" people"+(r?", on location":"")+". Estimate "+T(o)+" + GST ("+T(o+gst)+" incl GST).";}
+    else{g.textContent="Your estimate";var l=w;e='<div class="est-row"><span>'+x+" session</span><b>"+T(w)+"</b></div>";t("#hs-hmu").checked&&(l+=P.solo.hairMakeup,e+='<div class="est-row"><span>Hair &amp; make-up</span><b>'+T(P.solo.hairMakeup)+'</b></div>');xlab();t("#hs-extra").checked&&(l+=xp(),e+='<div class="est-row"><span>Extra retouched hero shot</span><b>'+T(xp())+'</b></div>');e+='<div class="est-row"><span><b>Total incl GST</b></span><b>'+T(l)+"</b></div>";v.textContent=T(l);p.textContent=x+" · including GST · one person";b.innerHTML=e;m.textContent="This is an estimate, not a confirmed quote. Individual session prices include GST.";
+      window.HS_ESTIMATE="Individual session: "+x+(t("#hs-extra").checked?" + extra retouched image":"")+". Estimate "+T(l)+" incl GST.";}}
   A();
 })();
 </script>
@@ -2687,8 +2793,10 @@ html,body{margin:0;background:#091113}
     <span class="hsr-ghost" aria-hidden="true">06</span>
     <div class="hsr-head hsr-rv">
       <p class="hsr-ey"><b>06</b> Published pricing</p>
-      <h2 class="hsr-h2" id="hsr-title">What it <strong>actually costs</strong></h2>
-      <p class="hsr-lede">No “price on application”. These are the same rates published across our <a href="https://heroshotphotography.com/photography-services-sydney/">service pages</a>, so you can budget before you speak to anyone.</p>
+      <h2 class="hsr-h2" id="hsr-title">Clear, <strong>Transparent Pricing</strong></h2>
+      <p class="hsr-lede">We believe in being transparent about pricing, so you can understand your investment before getting in touch.</p>
+      <p class="hsr-lede">For teams of fewer than 20 people, our <a href="#hs-estimator">pricing calculator</a> makes it easy to work out an estimate.</p>
+      <p class="hsr-lede">For larger teams, there are often ways we can improve efficiencies, streamline the schedule and make better use of your budget. We'll review your requirements and recommend the most cost effective approach.</p>
     </div>
 
     <div class="hsr-tabs hsr-rv" role="tablist" aria-label="Price lists">
@@ -2699,16 +2807,19 @@ html,body{margin:0;background:#091113}
     </div>
 
     <div class="hsr-card hsr-rv">
-      <div class="hsr-panel" id="hs-p1" role="tabpanel" aria-labelledby="hsr-t1"><table class="hsr-table"><thead><tr><th scope="col" style="width:30%">Team size</th><th scope="col" style="width:20%">Rate per person</th><th scope="col">What is included</th></tr></thead><tbody><tr><td class="hsr-name" data-n="01">1 to 10 people</td><td class="hsr-price"><span>$175</span></td><td class="hsr-meta">Per person, plus GST. One look each, coached session, retouched final image. For example, 10 people is $1,750.</td></tr><tr><td class="hsr-name" data-n="02">Each person after 10</td><td class="hsr-price"><span>$75</span></td><td class="hsr-meta">Per additional person, plus GST. For example, 11 people is $1,825.</td></tr><tr><td class="hsr-name" data-n="03">20 or more people</td><td class="hsr-price"><span>Let’s talk</span></td><td class="hsr-meta">We plan larger team days around your headcount, locations and schedule, across several days where needed.</td></tr><tr><td class="hsr-name" data-n="04">On location setup</td><td class="hsr-price"><span>+$295</span></td><td class="hsr-meta">Lighting and backdrop setup when we come to you. Not charged for studio sessions.</td></tr></tbody></table><div class="hsr-foot"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Prices exclude GST</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>One look per person</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Company pricing only. Individual sessions are priced separately</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Minimum 4 people on location</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Selections within 5 days</span></div></div>
-      <div class="hsr-panel" id="hs-p3" role="tabpanel" aria-labelledby="hsr-t3" hidden><table class="hsr-table"><thead><tr><th scope="col" style="width:30%">Session</th><th scope="col" style="width:20%">Price</th><th scope="col">What you get</th></tr></thead><tbody><tr><td class="hsr-name" data-n="01">Express Hero</td><td class="hsr-price"><span>$325</span></td><td class="hsr-meta">Including GST. 20 minutes, one look, one retouched hero image.</td></tr><tr><td class="hsr-name" data-n="02">Elite Hero</td><td class="hsr-price"><span>$550</span></td><td class="hsr-meta">Including GST. 45 minutes, up to three looks, three retouched images.</td></tr><tr><td class="hsr-name" data-n="03">Elite Plus</td><td class="hsr-price"><span>$825</span></td><td class="hsr-meta">Including GST. 75 minutes, studio and outdoor, media release included.</td></tr><tr><td class="hsr-name" data-n="04">Extra hero shot</td><td class="hsr-price"><span>$150</span></td><td class="hsr-meta">Per additional retouched image. $250 on Elite Plus.</td></tr></tbody></table><div class="hsr-foot"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Prices include GST</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Coaching included in every session</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Retouched images in 3–5 days</span></div></div>
+      <div class="hsr-panel" id="hs-p1" role="tabpanel" aria-labelledby="hsr-t1"><table class="hsr-table"><thead><tr><th scope="col" style="width:30%">Team size</th><th scope="col" style="width:20%">Rate per person</th><th scope="col">What is included</th></tr></thead><tbody><tr><td class="hsr-name" data-n="01">1 to 10 people</td><td class="hsr-price"><span>$175</span></td><td class="hsr-meta">Per person, plus GST. One look each, coached session, retouched final image. For example, 10 people is $1,750.</td></tr><tr><td class="hsr-name" data-n="02">Each person after 10</td><td class="hsr-price"><span>$75</span></td><td class="hsr-meta">Per additional person, plus GST. For example, 11 people is $1,825.</td></tr><tr><td class="hsr-name" data-n="03">20 or more people</td><td class="hsr-price"><span>Let’s talk</span></td><td class="hsr-meta">We plan larger team days around your headcount, locations and schedule, across several days where needed.</td></tr><tr><td class="hsr-name" data-n="04">On location setup</td><td class="hsr-price"><span>+$295</span></td><td class="hsr-meta">Lighting and backdrop setup when we come to you. Not charged for studio sessions.</td></tr></tbody></table><div class="hsr-foot"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Prices exclude GST</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>One look per person</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Company pricing only. Individual sessions are priced separately</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Minimum 4 people on location</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Proof gallery within 24 hours</span></div></div>
+      <div class="hsr-panel" id="hs-p3" role="tabpanel" aria-labelledby="hsr-t3" hidden><table class="hsr-table"><thead><tr><th scope="col" style="width:30%">Session</th><th scope="col" style="width:20%">Price</th><th scope="col">What you get</th></tr></thead><tbody><tr><td class="hsr-name" data-n="01">Express Hero</td><td class="hsr-price"><span>$325</span></td><td class="hsr-meta">Including GST. 20 minutes, one look, one retouched hero image.</td></tr><tr><td class="hsr-name" data-n="02">Elite Hero</td><td class="hsr-price"><span>$550</span></td><td class="hsr-meta">Including GST. 45 minutes, up to three looks, three retouched images.</td></tr><tr><td class="hsr-name" data-n="03">Elite Plus</td><td class="hsr-price"><span>$825</span></td><td class="hsr-meta">Including GST. 75 minutes, studio and outdoor, media release included.</td></tr><tr><td class="hsr-name" data-n="04">Extra hero shot</td><td class="hsr-price"><span>$150</span></td><td class="hsr-meta">Per additional retouched image. $250 on Elite Plus.</td></tr></tbody></table><div class="hsr-foot"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Prices include GST</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Coaching included in every session</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Retouched 3–7 days after selection</span></div></div>
       <div class="hsr-panel" id="hs-p4" role="tabpanel" aria-labelledby="hsr-t4" hidden><table class="hsr-table"><thead><tr><th scope="col" style="width:30%">Service</th><th scope="col" style="width:20%">From</th><th scope="col">Notes</th></tr></thead><tbody><tr><td class="hsr-name" data-n="01"><a href="https://heroshotphotography.com/personal-brand-packages/">Personal branding</a></td><td class="hsr-price"><span>$1,250</span></td><td class="hsr-meta">Including GST. Editorial-quality sessions for founders, consultants and public-facing professionals.</td></tr><tr><td class="hsr-name" data-n="02"><a href="https://heroshotphotography.com/corporate-events/">Events</a> &amp; <a href="https://heroshotphotography.com/video/">video</a></td><td class="hsr-price"><span>$650</span></td><td class="hsr-meta">Plus GST. Event coverage, brand video, explainers, highlight reels and testimonials.</td></tr><tr><td class="hsr-name" data-n="03"><a href="https://heroshotphotography.com/studio-hire/">Studio hire (Sydney)</a></td><td class="hsr-price"><span>from $90/hr</span></td><td class="hsr-meta">Six hire zones at our Petersham studio. The photo studio zone itself starts at $160/hr on weekdays.</td></tr><tr><td class="hsr-name" data-n="04"><a href="https://heroshotphotography.com/gift-card/">Gift cards</a></td><td class="hsr-price"><span>Online</span></td><td class="hsr-meta">Buy a gift card towards any session. Amounts and delivery are handled on the gift card page.</td></tr></tbody></table></div>
     </div>
+
+    <div class="hsr-turn hsr-rv"><p>Your proof gallery is normally ready within 24 hours of your shoot. Once you've made your selections, professionally retouched images are typically delivered within 3 to 7 days, depending on the project size.</p><p>Need them sooner? Express retouching within 24 hours is often available. Additional fees may apply.</p></div>
 
     <div class="hsr-guar hsr-rv">
       <span class="hsr-seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 4.5 5.6v5.7c0 4.6 3.1 8.6 7.5 9.9 4.4-1.3 7.5-5.3 7.5-9.9V5.6z"/><path d="m8.7 12.1 2.3 2.3 4.4-4.7"/></svg></span>
       <div class="hsr-gtx">
-        <h3>Our <strong>happiness</strong> guarantee</h3>
-        <p>We can never guarantee that everyone will love their headshot, and no honest photographer can, but we have a very strong track record. On our <b>Elite and Branding sessions</b> we go further with a complete happiness guarantee: if you are unhappy with your images, we will either reshoot the session or refund your investment.</p>
+        <h3>Our Complete <strong>Happiness Guarantee</strong></h3>
+        <p>We do everything we can to make sure our clients have a great experience and love their photos. Judging by the feedback we receive, we're doing a pretty good job.</p>
+        <p>For our <b>Elite Plus and Branding sessions</b>, we back that commitment with our Complete Happiness Guarantee. If you're unhappy with your images before they've been delivered, we'll arrange a reshoot, subject to our <a class="hsr-tc" href="#hs-guarantee-terms" data-tc-pending="1">terms and conditions</a>.</p>
       </div>
       <div class="hsr-stub"><a class="hsr-gbtn" href="#hs-quote" data-hsv24pop="1">Make an enquiry <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
     </div>
@@ -2753,7 +2864,7 @@ html,body{margin:0;background:#091113}
     <div class="hsq-left hsq-rv">
       <p class="hsq-ey"><b>07</b> What clients say</p>
       <h2 class="hsq-h2" id="hsq-title"><strong>1,000+</strong> five-star Google reviews</h2>
-      <p class="hsq-lede">What matters more than the number is what people actually write, and the pattern is consistent: they name the photographer who looked after them.</p>
+      <p class="hsq-lede">What matters more than the number is what people write, and the pattern is consistent: they name the photographer who looked after them.</p>
 
       <div class="hsq-plate" aria-label="Google rating">
         <div class="hsq-sc">
@@ -2810,12 +2921,13 @@ html,body{margin:0;background:#091113}
     <span class="hsm-ghost" aria-hidden="true">08</span>
     <div class="hsm-head hsm-rv">
       <p class="hsm-ey"><b>08</b> The Zero to Hero Method</p>
-      <h2 class="hsm-h2" id="hsm-title">How a shoot <strong>actually runs</strong></h2>
-      <p class="hsm-lede">Almost everybody says they <a class="il" href="https://heroshotphotography.com/why-dont-we-like-having-our-photos-taken/">hate having their photo taken</a>. The coaching is why our clients end up liking the result. It is a five-step method we run in every session, whether it is one person or two hundred.</p>
+      <h2 class="hsm-h2" id="hsm-title">How Does <strong>My Shoot Run?</strong></h2>
+      <p class="hsm-lede">Whether you're coming into our studio or we're photographing your entire team, our process is designed to make things easy, comfortable and enjoyable.</p>
+      <p class="hsm-lede">We'll guide you through each stage, from understanding what you need to reviewing your images and making sure we've captured the right result.</p>
     </div>
 
     <div class="hsm-scale hsm-rv" aria-hidden="true"><b>Zero</b><i></i><b>Hero</b></div>
-    <ol class="hsm-steps hsm-rv"><li class="hsm-step"><span class="hsm-num" aria-hidden="true">01</span><span class="hsm-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.6"/></svg></span><span class="hsm-sn">STEP 01</span><h3>Your goals</h3><p>Where the image will be used, what it needs to say, and who needs to believe it.</p></li><li class="hsm-step"><span class="hsm-num" aria-hidden="true">02</span><span class="hsm-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.1A8 8 0 1 1 20 12z"/></svg></span><span class="hsm-sn">STEP 02</span><h3>Coach &amp; connect</h3><p>A few minutes of conversation before the camera comes up. This is what stops the rabbit-in-headlights look.</p></li><li class="hsm-step"><span class="hsm-num" aria-hidden="true">03</span><span class="hsm-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l1.9 5.1 5.1 1.9-5.1 1.9L12 17.5l-1.9-5.1L5 10.5l5.1-1.9z"/><path d="M18.5 16l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg></span><span class="hsm-sn">STEP 03</span><h3>Build confidence</h3><p>We show you the first frames on screen so you can see it is going well, rather than hoping.</p></li><li class="hsm-step"><span class="hsm-num" aria-hidden="true">04</span><span class="hsm-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c.8-3.9 3.8-6.3 7.5-6.3s6.7 2.4 7.5 6.3"/></svg></span><span class="hsm-sn">STEP 04</span><h3>Find your pose</h3><p>A <a class="il" href="https://heroshotphotography.com/natural-headshot-poses/">position that is natural for you specifically</a>, not a template applied to everyone.</p></li><li class="hsm-step"><span class="hsm-num" aria-hidden="true">05</span><span class="hsm-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.6"/></svg></span><span class="hsm-sn">STEP 05</span><h3>Shoot, review, improve</h3><p>Shoot, look, adjust, repeat. You leave knowing what you are getting.</p></li></ol>
+    <ol class="hsm-steps hsm-rv"><li class="hsm-step"><span class="hsm-num" aria-hidden="true">01</span><span class="hsm-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.6"/></svg></span><span class="hsm-sn">STEP 01</span><h3>Understanding Your Goals</h3><p>We'll start by understanding where your images will be used, what you want to communicate and the overall look you're after.</p></li><li class="hsm-step"><span class="hsm-num" aria-hidden="true">02</span><span class="hsm-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.1A8 8 0 1 1 20 12z"/></svg></span><span class="hsm-sn">STEP 02</span><h3>Getting Comfortable</h3><p>We'll take a little time to get to know you, explain how the session works and help you feel at ease before we start shooting.</p></li><li class="hsm-step"><span class="hsm-num" aria-hidden="true">03</span><span class="hsm-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l1.9 5.1 5.1 1.9-5.1 1.9L12 17.5l-1.9-5.1L5 10.5l5.1-1.9z"/><path d="M18.5 16l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg></span><span class="hsm-sn">STEP 03</span><h3>Finding Your Best Angles</h3><p>Your photographer will guide you through posture, positioning and expression, making small adjustments that make a noticeable difference.</p></li><li class="hsm-step"><span class="hsm-num" aria-hidden="true">04</span><span class="hsm-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c.8-3.9 3.8-6.3 7.5-6.3s6.7 2.4 7.5 6.3"/></svg></span><span class="hsm-sn">STEP 04</span><h3>Reviewing and Refining</h3><p>You'll have the opportunity to review your images during the session, see what's working and make adjustments as we go.</p></li><li class="hsm-step"><span class="hsm-num" aria-hidden="true">05</span><span class="hsm-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.6"/></svg></span><span class="hsm-sn">STEP 05</span><h3>Choosing Your Hero Shots</h3><p>Once we've captured the right images, we'll guide you through the selection process. Your chosen photographs are then professionally retouched and delivered ready to use.</p></li></ol>
 
   </div>
 </section>
@@ -2849,7 +2961,7 @@ html,body{margin:0;background:#091113}
         <div class="hsv-prog" aria-hidden="true"><span><b data-hsv-n>01</b> / 04</span><i><em></em></i><small>Scroll to compare</small></div>
         <p class="hsv-sel-note"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg><span>The AI and single-portrait ranges are the ones we publish in our <a href="https://heroshotphotography.com/ai-headshots-vs-professional-photography/">AI comparison article</a></span></p>
       </div>
-      <div class="hsv-stage"><div class="hsv-pan hs on" id="hsv-p-hs" role="tabpanel" aria-labelledby="hsv-t-hs"><div class="hsv-ph"><h3 class="hsv-pt"><strong>Hero Shot</strong></h3><span class="hsv-pill"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Our approach</span></div><dl class="hsv-grid"><div class="hsv-cell"><dt><b>01</b>Typical cost</dt><dd class="cost">$175 per person, then $75 each after ten (+ GST)</dd></div><div class="hsv-cell"><dt><b>02</b>It is genuinely you</dt><dd>A photograph taken on the day</dd></div><div class="hsv-cell"><dt><b>03</b>Consistent across a team</dt><dd>The same look for everyone, across photographers and cities, from your style guide</dd></div><div class="hsv-cell"><dt><b>04</b>Direction on the day</dt><dd>In every session, it is the whole method</dd></div><div class="hsv-cell"><dt><b>05</b>We come to your office</dt><dd>Yes, $295 covers the set-up</dd></div><div class="hsv-cell"><dt><b>06</b>If you are not happy</dt><dd>Reshoot or refund on Elite and Branding sessions</dd></div><div class="hsv-cell wide"><dt><b>07</b>Best suited to</dt><dd>Teams whose website, deck and bios all need to match</dd></div></dl></div><div class="hsv-pan" id="hsv-p-ai" role="tabpanel" aria-labelledby="hsv-t-ai"><div class="hsv-ph"><h3 class="hsv-pt">AI generator</h3><span class="hsv-pill">An alternative</span></div><dl class="hsv-grid"><div class="hsv-cell"><dt><b>01</b>Typical cost</dt><dd class="cost">$20–$60 per pack</dd></div><div class="hsv-cell"><dt><b>02</b>It is genuinely you</dt><dd>Generated from photos you upload</dd></div><div class="hsv-cell"><dt><b>03</b>Consistent across a team</dt><dd>Differs with every person and every upload</dd></div><div class="hsv-cell"><dt><b>04</b>Direction on the day</dt><dd>None</dd></div><div class="hsv-cell"><dt><b>05</b>We come to your office</dt><dd>Not applicable</dd></div><div class="hsv-cell"><dt><b>06</b>If you are not happy</dt><dd>Run the generator again</dd></div><div class="hsv-cell wide"><dt><b>07</b>Best suited to</dt><dd>A quick placeholder while you organise the real thing</dd></div></dl></div><div class="hsv-pan" id="hsv-p-walk" role="tabpanel" aria-labelledby="hsv-t-walk"><div class="hsv-ph"><h3 class="hsv-pt">Walk-in studio</h3><span class="hsv-pill">An alternative</span></div><dl class="hsv-grid"><div class="hsv-cell"><dt><b>01</b>Typical cost</dt><dd class="cost">$250–$500 per portrait</dd></div><div class="hsv-cell"><dt><b>02</b>It is genuinely you</dt><dd>A photograph taken on the day</dd></div><div class="hsv-cell"><dt><b>03</b>Consistent across a team</dt><dd>Depends who is on shift that day</dd></div><div class="hsv-cell"><dt><b>04</b>Direction on the day</dt><dd>Limited</dd></div><div class="hsv-cell"><dt><b>05</b>We come to your office</dt><dd>No</dd></div><div class="hsv-cell"><dt><b>06</b>If you are not happy</dt><dd>Studio policy applies</dd></div><div class="hsv-cell wide"><dt><b>07</b>Best suited to</dt><dd>One person who needs one portrait</dd></div></dl></div><div class="hsv-pan" id="hsv-p-free" role="tabpanel" aria-labelledby="hsv-t-free"><div class="hsv-ph"><h3 class="hsv-pt">Freelancer</h3><span class="hsv-pill">An alternative</span></div><dl class="hsv-grid"><div class="hsv-cell"><dt><b>01</b>Typical cost</dt><dd class="cost">Quoted per shoot</dd></div><div class="hsv-cell"><dt><b>02</b>It is genuinely you</dt><dd>A photograph taken on the day</dd></div><div class="hsv-cell"><dt><b>03</b>Consistent across a team</dt><dd>Depends how the bookings are spread</dd></div><div class="hsv-cell"><dt><b>04</b>Direction on the day</dt><dd>Depends on the photographer</dd></div><div class="hsv-cell"><dt><b>05</b>We come to your office</dt><dd>Usually yes</dd></div><div class="hsv-cell"><dt><b>06</b>If you are not happy</dt><dd>Agreed case by case</dd></div><div class="hsv-cell wide"><dt><b>07</b>Best suited to</dt><dd>A single shoot with a specific creative look</dd></div></dl></div></div>
+      <div class="hsv-stage"><div class="hsv-pan hs on" id="hsv-p-hs" role="tabpanel" aria-labelledby="hsv-t-hs"><div class="hsv-ph"><h3 class="hsv-pt"><strong>Hero Shot</strong></h3><span class="hsv-pill"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Our approach</span></div><dl class="hsv-grid"><div class="hsv-cell"><dt><b>01</b>Typical cost</dt><dd class="cost">$175 per person, then $75 each after ten (+ GST)</dd></div><div class="hsv-cell"><dt><b>02</b>It is genuinely you</dt><dd>A photograph taken on the day</dd></div><div class="hsv-cell"><dt><b>03</b>Consistent across a team</dt><dd>The same look for everyone, across photographers and cities, from your style guide</dd></div><div class="hsv-cell"><dt><b>04</b>Direction on the day</dt><dd>In every session, it is the whole method</dd></div><div class="hsv-cell"><dt><b>05</b>We come to your office</dt><dd>Yes, $295 covers the set-up</dd></div><div class="hsv-cell"><dt><b>06</b>If you are not happy</dt><dd>Complete Happiness Guarantee on Elite Plus and Branding sessions: a reshoot before delivery, subject to terms and conditions</dd></div><div class="hsv-cell wide"><dt><b>07</b>Best suited to</dt><dd>Teams whose website, deck and bios all need to match</dd></div></dl></div><div class="hsv-pan" id="hsv-p-ai" role="tabpanel" aria-labelledby="hsv-t-ai"><div class="hsv-ph"><h3 class="hsv-pt">AI generator</h3><span class="hsv-pill">An alternative</span></div><dl class="hsv-grid"><div class="hsv-cell"><dt><b>01</b>Typical cost</dt><dd class="cost">$20–$60 per pack</dd></div><div class="hsv-cell"><dt><b>02</b>It is genuinely you</dt><dd>Generated from photos you upload</dd></div><div class="hsv-cell"><dt><b>03</b>Consistent across a team</dt><dd>Differs with every person and every upload</dd></div><div class="hsv-cell"><dt><b>04</b>Direction on the day</dt><dd>None</dd></div><div class="hsv-cell"><dt><b>05</b>We come to your office</dt><dd>Not applicable</dd></div><div class="hsv-cell"><dt><b>06</b>If you are not happy</dt><dd>Run the generator again</dd></div><div class="hsv-cell wide"><dt><b>07</b>Best suited to</dt><dd>A quick placeholder while you organise the real thing</dd></div></dl></div><div class="hsv-pan" id="hsv-p-walk" role="tabpanel" aria-labelledby="hsv-t-walk"><div class="hsv-ph"><h3 class="hsv-pt">Walk-in studio</h3><span class="hsv-pill">An alternative</span></div><dl class="hsv-grid"><div class="hsv-cell"><dt><b>01</b>Typical cost</dt><dd class="cost">$250–$500 per portrait</dd></div><div class="hsv-cell"><dt><b>02</b>It is genuinely you</dt><dd>A photograph taken on the day</dd></div><div class="hsv-cell"><dt><b>03</b>Consistent across a team</dt><dd>Depends who is on shift that day</dd></div><div class="hsv-cell"><dt><b>04</b>Direction on the day</dt><dd>Limited</dd></div><div class="hsv-cell"><dt><b>05</b>We come to your office</dt><dd>No</dd></div><div class="hsv-cell"><dt><b>06</b>If you are not happy</dt><dd>Studio policy applies</dd></div><div class="hsv-cell wide"><dt><b>07</b>Best suited to</dt><dd>One person who needs one portrait</dd></div></dl></div><div class="hsv-pan" id="hsv-p-free" role="tabpanel" aria-labelledby="hsv-t-free"><div class="hsv-ph"><h3 class="hsv-pt">Freelancer</h3><span class="hsv-pill">An alternative</span></div><dl class="hsv-grid"><div class="hsv-cell"><dt><b>01</b>Typical cost</dt><dd class="cost">Quoted per shoot</dd></div><div class="hsv-cell"><dt><b>02</b>It is genuinely you</dt><dd>A photograph taken on the day</dd></div><div class="hsv-cell"><dt><b>03</b>Consistent across a team</dt><dd>Depends how the bookings are spread</dd></div><div class="hsv-cell"><dt><b>04</b>Direction on the day</dt><dd>Depends on the photographer</dd></div><div class="hsv-cell"><dt><b>05</b>We come to your office</dt><dd>Usually yes</dd></div><div class="hsv-cell"><dt><b>06</b>If you are not happy</dt><dd>Agreed case by case</dd></div><div class="hsv-cell wide"><dt><b>07</b>Best suited to</dt><dd>A single shoot with a specific creative look</dd></div></dl></div></div>
     </div>
     </div></div>
     <p class="hsv-foot-note"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg><span>The AI and single-portrait ranges are the ones we publish in our <a href="https://heroshotphotography.com/ai-headshots-vs-professional-photography/">AI comparison article</a></span></p>
@@ -2961,7 +3073,7 @@ html,body{margin:0;background:#091113}
   <div class="hsm2-bg" aria-hidden="true"></div>
   <div class="hsm2-in">
     <span class="hsm2-ghost" aria-hidden="true">11</span>
-    <p class="hsm2-ey hsm2-rv"><b>11</b> Who you will actually be working with</p>
+    <p class="hsm2-ey hsm2-rv"><b>11</b> Who you will be working with</p>
     <div class="hsm2-top">
       <div class="hsm2-port hsm2-rv">
         <figure class="hsm2-frame">
@@ -3125,7 +3237,7 @@ html,body{margin:0;background:#091113}
   </div>
   <div class="hsg-in">
     <div class="hsg-copy hsg-rv">
-      <p class="hsg-ey"><b>14</b> Headshots that give back</p>
+      <p class="hsg-ey"><b>13</b> Headshots that give back</p>
       <h2 class="hsg-h2" id="hsg-title">Your headshot <strong>does something else too</strong></h2>
       <p class="hsg-p">Your professional headshot can make a positive impact beyond your website or LinkedIn profile. For every corporate headshot or business portrait we create, a portion of our profits goes toward supporting environmental and social causes.</p>
       <p class="hsg-p">After your shoot you will receive a link to our <a href="https://heroshotphotography.com/charity/">charity page</a>, where you choose the cause that matters most to you.</p>
@@ -3157,21 +3269,33 @@ html,body{margin:0;background:#091113}
   <div class="hsf-bg" aria-hidden="true"></div>
   <div class="hsf-in">
     <div class="hsf-head hsf-rv">
-      <p class="hsf-ey"><b>15</b> Behind the scenes</p>
-      <h2 class="hsf-h2" id="hsf-title">See how a <strong>session feels</strong></h2>
-      <p class="hsf-lede">Two short films shot during real client sessions: the coaching, the set-up, and the moment people relax.</p>
+      <p class="hsf-ey"><b>14</b> Behind the scenes</p>
+      <h2 class="hsf-h2" id="hsf-title">See What It's Like to <strong>Work With Us</strong></h2>
+      <p class="hsf-lede">There's more to a great headshot than good lighting and a camera. Take a look behind the scenes and see how we guide our clients, build confidence and bring out their best.</p>
     </div>
-    <div class="hsf-films">
-      <a class="hsf-film hsf-rv" href="https://vimeo.com/267349537" data-vid="267349537" data-vlabel="Behind the scenes with Robin" aria-label="Play: Behind the scenes with Robin">
+    <div class="hsf-films hsf-4">
+      <a class="hsf-film hsf-rv" href="https://vimeo.com/267349537" data-vid="267349537" data-vlabel="Individual Headshot Session" aria-label="Play: Individual Headshot Session">
         <span class="hsf-scr"><img src="https://heroshotphotography.com/wp-content/uploads/2021/09/ROBIN-MOREGAS-SCEREENSHOT-VIDEO-1024x575.jpg" alt="Sam coaching a client during a studio session" loading="lazy" decoding="async">
-          <span class="hsf-pl" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l11-6.5a1 1 0 0 0 0-1.72l-11-6.5A1 1 0 0 0 8 5.5z"/></svg></span>
-          <span class="hsf-cap"><span><small>Film 01</small><b>Behind the scenes with Robin</b></span><span class="hsf-rec" aria-hidden="true">REC</span></span>
+          <span class="hsf-pl" aria-hidden="true"></span>
+          <span class="hsf-cap"><span><small>Film 01</small><b>Individual Headshot Session</b></span><span class="hsf-rec" aria-hidden="true">REC</span></span>
         </span>
       </a>
-      <a class="hsf-film hsf-rv" href="https://vimeo.com/267360069" data-vid="267360069" data-vlabel="Behind the scenes with Brendan" aria-label="Play: Behind the scenes with Brendan">
+      <a class="hsf-film hsf-rv" href="https://heroshotphotography.com/wp-content/uploads/2025/10/behind_the_scenes_with_microsoft-1080p.mp4" data-mp4="https://heroshotphotography.com/wp-content/uploads/2025/10/behind_the_scenes_with_microsoft-1080p.mp4" data-vlabel="Corporate Headshot Day" aria-label="Play: Corporate Headshot Day">
+        <span class="hsf-scr"><img src="https://heroshotphotography.com/wp-content/uploads/2021/09/Hero-Shot-cooler-tone-1D6A3520-Edit-1024x683.jpg" alt="Hero Shot photographing a corporate team on location" loading="lazy" decoding="async">
+          <span class="hsf-pl" aria-hidden="true"></span>
+          <span class="hsf-cap"><span><small>Film 02</small><b>Corporate Headshot Day</b></span><span class="hsf-rec" aria-hidden="true">REC</span></span>
+        </span>
+      </a>
+      <div class="hsf-film hsf-rv hsf-soon" role="group" aria-label="Workplace and Branding Shoot, video coming soon">
+        <span class="hsf-scr"><img src="https://heroshotphotography.com/wp-content/uploads/2022/08/Corporate-Photography-Boardroom-Fortius-768x512.jpg" alt="Workplace brand photography shoot in a boardroom" loading="lazy" decoding="async">
+          <span class="hsf-soon-tag">Coming soon</span>
+          <span class="hsf-cap"><span><small>Film 03</small><b>Workplace &amp; Branding Shoot</b></span></span>
+        </span>
+      </div>
+      <a class="hsf-film hsf-rv" href="https://vimeo.com/267360069" data-vid="267360069" data-vlabel="Behind the Scenes" aria-label="Play: Behind the Scenes">
         <span class="hsf-scr"><img src="https://heroshotphotography.com/wp-content/uploads/2021/09/BRENDAN-VIDEO-SLIDE-COVER-SAM-Screenshot-2021-09-30-at-21.53.24-scaled-e1633996168129-1024x576.jpg" alt="Sam Affridi photographing a client on a corporate shoot" loading="lazy" decoding="async">
-          <span class="hsf-pl" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l11-6.5a1 1 0 0 0 0-1.72l-11-6.5A1 1 0 0 0 8 5.5z"/></svg></span>
-          <span class="hsf-cap"><span><small>Film 02</small><b>Behind the scenes with Brendan</b></span><span class="hsf-rec" aria-hidden="true">REC</span></span>
+          <span class="hsf-pl" aria-hidden="true"></span>
+          <span class="hsf-cap"><span><small>Film 04</small><b>Behind the Scenes</b></span><span class="hsf-rec" aria-hidden="true">REC</span></span>
         </span>
       </a>
     </div>
@@ -3285,7 +3409,8 @@ html,body{margin:0;background:#091113}
   function close(){lb.classList.remove('on');setTimeout(function(){box.innerHTML=''},400);if(last)last.focus()}
   [].forEach.call(sec.querySelectorAll('.hsf-film'),function(a){a.addEventListener('click',function(e){
     if(e.metaKey||e.ctrlKey)return;e.preventDefault();last=a;
-    box.innerHTML='<iframe src="https://player.vimeo.com/video/'+a.getAttribute('data-vid')+'?autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="'+a.getAttribute('data-vlabel')+'"></iframe>';
+    var mp4=a.getAttribute('data-mp4');
+    box.innerHTML=mp4?'<video src="'+mp4+'" controls autoplay playsinline title="'+a.getAttribute('data-vlabel')+'"></video>':'<iframe src="https://player.vimeo.com/video/'+a.getAttribute('data-vid')+'?autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="'+a.getAttribute('data-vlabel')+'"></iframe>';
     lb.classList.add('on');lb.querySelector('.hsf-lb-x').focus()})});
   lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('hsf-lb-x'))close()});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('on'))close()});
@@ -3317,7 +3442,7 @@ html,body{margin:0;background:#091113}
   <div class="hsk-in">
     <div class="hsk-side hsk-rv">
       <span class="hsk-qm" aria-hidden="true">?</span>
-      <p class="hsk-ey"><b>16</b> Photography FAQs</p>
+      <p class="hsk-ey"><b>15</b> Photography FAQs</p>
       <h2 class="hsk-h2" id="hsk-title">Questions we <strong>get asked most</strong></h2>
       <div class="hsk-gd">
           <h3>Worth reading before you book</h3>
@@ -3340,15 +3465,11 @@ html,body{margin:0;background:#091113}
       </div>
       <div class="hsk-q hsk-rv">
         <button type="button" aria-expanded="false" aria-controls="hsk-a4" id="hsk-b4"><span class="hsk-n" aria-hidden="true">04</span><span class="hsk-t">Do you take a deposit, and what are the payment terms?</span><span class="hsk-pm" aria-hidden="true"></span></button>
-        <div class="hsk-a" id="hsk-a4" role="region" aria-labelledby="hsk-b4"><div><div><p>For company bookings we invoice, and we are happy to work with a purchase order and your standard terms. A deposit secures the date for larger rollouts; for a straightforward team day the invoice usually follows the shoot.</p><p>Individual sessions are paid at the time of booking by card.</p><p>Tell us in your enquiry if you need an ABN, a PO number or a supplier form completed and we will send everything with the quote.</p></div></div></div>
+        <div class="hsk-a" id="hsk-a4" role="region" aria-labelledby="hsk-b4"><div><div><p>For company shoots, our payment terms are a 50% deposit, with the remaining balance payable in full on the day of the shoot or before images are released.</p><p>Individual sessions are paid at the time of booking by card.</p><p>Tell us in your enquiry if you need an ABN, a PO number or a supplier form completed and we will send everything with the quote.</p></div></div></div>
       </div>
       <div class="hsk-q hsk-rv">
-        <button type="button" aria-expanded="false" aria-controls="hsk-a5" id="hsk-b5"><span class="hsk-n" aria-hidden="true">05</span><span class="hsk-t">How are the finished images delivered?</span><span class="hsk-pm" aria-hidden="true"></span></button>
-        <div class="hsk-a" id="hsk-a5" role="region" aria-labelledby="hsk-b5"><div><div><p>You get a private online gallery link. Everyone in the team picks their own selection from it, and the retouched files come back as high-resolution JPEGs plus a web-sized set that is already cropped for LinkedIn profile photos, staff directories and team pages.</p><p>The gallery stays live for twelve months. If you need the files again after that, email us and we will re-open it.</p></div></div></div>
-      </div>
-      <div class="hsk-q hsk-rv">
-        <button type="button" aria-expanded="false" aria-controls="hsk-a6" id="hsk-b6"><span class="hsk-n" aria-hidden="true">06</span><span class="hsk-t">Are you insured for work on our site?</span><span class="hsk-pm" aria-hidden="true"></span></button>
-        <div class="hsk-a" id="hsk-a6" role="region" aria-labelledby="hsk-b6"><div><div><p>Yes. We carry public liability insurance and can send the certificate of currency to your facilities or procurement team before the day. We are used to building inductions, sign-in procedures and loading dock bookings.</p><p>If your organisation has its own data handling requirements for staff images, tell us at quote stage and we will work to them.</p></div></div></div>
+        <button type="button" aria-expanded="false" aria-controls="hsk-a5" id="hsk-b5"><span class="hsk-n" aria-hidden="true">05</span><span class="hsk-t">Are you insured for work on our site?</span><span class="hsk-pm" aria-hidden="true"></span></button>
+        <div class="hsk-a" id="hsk-a5" role="region" aria-labelledby="hsk-b5"><div><div><p>Yes. We carry public liability insurance and can send the certificate of currency to your facilities or procurement team before the day. We are used to building inductions, sign-in procedures and loading dock bookings.</p><p>If your organisation has its own data handling requirements for staff images, tell us at quote stage and we will work to them.</p></div></div></div>
       </div>
     </div>
   </div>
@@ -3376,7 +3497,7 @@ html,body{margin:0;background:#091113}
   <div class="hsl-bg" aria-hidden="true"></div>
   <div class="hsl-in">
     <div class="hsl-head hsl-rv">
-      <div><p class="hsl-ey"><b>17</b> Office locations</p><h2 class="hsl-h2" id="hsl-title">Where to <strong>find us</strong></h2></div>
+      <div><p class="hsl-ey"><b>16</b> Office locations</p><h2 class="hsl-h2" id="hsl-title">Where to <strong>find us</strong></h2></div>
       <p class="hsl-lede">We work in Sydney, Melbourne, Brisbane and Perth, and travel Australia-wide with our full lighting setup. Here is exactly what is in each city.</p>
     </div>
     <div class="hsl-main">
@@ -3463,7 +3584,7 @@ html,body{margin:0;background:#091113}
   <div class="hsz-bg" aria-hidden="true"></div>
   <div class="hsz-in">
     <div class="hsz-rv">
-      <p class="hsz-ey"><b>18</b> Let’s talk</p>
+      <p class="hsz-ey"><b>17</b> Let’s talk</p>
       <h2 class="hsz-h2" id="hsz-title">Is your professional <strong>photography</strong> as impressive as <strong>you</strong>?</h2>
       <p class="hsz-lede">A strong brand starts with the best headshots, impactful brand photography and video that engages. Send us a message and we will come back to you.</p>
     </div>
@@ -3480,7 +3601,7 @@ html,body{margin:0;background:#091113}
             <p class="hsz-hrs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Monday to Friday, 9:00am – 6:00pm. Enquiries are usually answered within the hour.</span></p>
             <span class="hsz-lab">Where we work from</span>
             <div class="hsz-cities"><a class="hsz-city" href="https://heroshotphotography.com/photo-studio-sydney/"><b>Sydney</b><span>428A Parramatta Road, Petersham NSW 2049<small>Head office, main studio + on location</small></span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="hsz-city" href="https://heroshotphotography.com/corporate-headshots-melbourne/"><b>Melbourne</b><span>1028 Heidelberg Rd, Ivanhoe VIC 3079<small>Studio + on location</small></span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="hsz-city" href="https://heroshotphotography.com/corporate-headshots-brisbane/"><b>Brisbane</b><span>204 Alice St, Brisbane City QLD 4000<small>City office + on location (not a studio)</small></span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="hsz-city" href="#hs-locations"><b>Perth</b><span>10 to 14 Pier Street, Perth WA 6000<small>Studio + on location</small></span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
-            <ul class="hsz-ticks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>A senior photographer on every shoot</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Reshoot or refund on Elite and Branding sessions</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>We travel on-location Australia-wide</li></ul>
+            <ul class="hsz-ticks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>A senior photographer on every shoot</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Complete Happiness Guarantee on Elite Plus and Branding sessions</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>We travel on-location Australia-wide</li></ul>
             <p class="hsz-soc"><a href="https://www.instagram.com/hero_shot_photography/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/company/hero-shot-photography/" target="_blank" rel="noopener">LinkedIn</a><a href="https://uk.trustpilot.com/review/heroshotphotography.com" target="_blank" rel="noopener">Trustpilot</a></p>
           </div>
         </div>
@@ -3541,6 +3662,10 @@ html,body{margin:0;background:#091113}
               <fieldset class="hsfm-set">
                 <legend class="hsfm-lg"><span>04</span>The details</legend>
                 <div class="hsfm-f hsfm-ta"><textarea id="hsfm-msg" name="message" rows="4" placeholder=" " maxlength="1200"></textarea><label for="hsfm-msg">How can we help?</label><em class="hsfm-cnt" aria-hidden="true">0 / 1200</em></div>
+                <div class="hsfm-row">
+                  <div class="hsfm-f"><input id="hsfm-ppl" name="team_size" type="text" inputmode="numeric" placeholder=" "><label for="hsfm-ppl">Number of people (for a team)</label></div>
+                  <div class="hsfm-f"><input id="hsfm-bud" name="budget" type="text" placeholder=" "><label for="hsfm-bud">Indicative budget (optional)</label></div>
+                </div>
                 <div class="hsfm-f"><input id="hsfm-dt" name="date" type="text" placeholder=" "><label for="hsfm-dt">If you need a specific date, let us know</label></div>
               </fieldset>
 
@@ -3667,13 +3792,33 @@ html,body{margin:0;background:#091113}
 <!-- ============== 18 LET'S TALK (paste to here) ============== -->
 
 
+<script>
+(function(){var g=document.querySelector('[data-hsw-geo] img'),src=document.querySelector('.hsl-geo img');
+  if(!g)return;if(src&&src.getAttribute('src')){g.src=src.getAttribute('src');g.hidden=false}else{var w=document.querySelector('.hsw-where');if(w)w.classList.add('nomap')}})();
+</script>
+<script>
+/* calculator -> enquiry form hand-off */
+(function(){
+  var f=document.getElementById('hsfm');if(!f)return;
+  var msg=f.querySelector('#hsfm-msg'),ppl=f.querySelector('#hsfm-ppl'),bud=f.querySelector('#hsfm-bud'),cnt=f.querySelector('.hsfm-cnt');
+  function go(el){var q=document.getElementById('hs-quote');if(q)q.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(function(){try{el.focus({preventScroll:true})}catch(e){el.focus()}},650)}
+  function biz(){var r=f.querySelector('input[name="session"][value="Photography for a business"]');if(r&&!f.querySelector('input[name="session"]:checked')){r.checked=true;r.dispatchEvent(new Event('change',{bubbles:true}))}}
+  var est=document.getElementById('hs-estCta');
+  if(est)est.addEventListener('click',function(e){e.preventDefault();
+    var team=!document.getElementById('hs-paneTeam').hidden,k=document.getElementById('hs-pplRange');
+    if(team){biz();if(ppl&&!ppl.value&&k)ppl.value=(+k.value>=+k.max?k.max+'+':k.value)}
+    if(msg&&!msg.value&&window.HS_ESTIMATE){msg.value=window.HS_ESTIMATE+'\n';if(cnt)cnt.textContent=msg.value.length+' / 1200'}
+    go(msg||f)});
+  [].forEach.call(document.querySelectorAll('[data-hs-budget]'),function(a){a.addEventListener('click',function(e){e.preventDefault();go(bud||f)})});
+})();
+</script>
 <!-- ============== PREMIUM FOOTER (paste from here) ============== -->
 <footer class="hsft" aria-label="Site footer">
   <div class="hsft-in">
     <div class="hsft-top">
       <div class="hsft-brand">
         <a href="https://heroshotphotography.com/"><img src="https://heroshotphotography.com/wp-content/uploads/2025/10/hero-shot-logo-1200px-white.png" alt="Hero Shot Photography" loading="lazy" decoding="async"></a>
-        <p>Senior photographers in Sydney, Melbourne, Brisbane and Perth, and on location Australia-wide.</p>
+        <p>Highly experienced photographers across Sydney, Melbourne, Brisbane and Perth, with studio sessions and on location photography available Australia wide.</p>
         <p class="hsft-soc"><a href="https://www.facebook.com/heroshotsydney/" target="_blank" rel="noopener" aria-label="Follow on Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21z"/></svg></a><a href="https://www.instagram.com/hero_shot_photography/" target="_blank" rel="noopener" aria-label="Follow on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor"/></svg></a><a href="https://www.linkedin.com/company/hero-shot-photography/" target="_blank" rel="noopener" aria-label="Follow on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.9 8.8H3.6V20h3.3zM5.3 3.5a1.9 1.9 0 1 0 0 3.8 1.9 1.9 0 0 0 0-3.8zM20.4 13.6c0-3-1.6-4.9-4.2-4.9-1.5 0-2.4.8-2.8 1.5V8.8h-3.2V20h3.3v-5.6c0-1.5.3-2.9 2.1-2.9s1.8 1.7 1.8 3V20h3.3z"/></svg></a><a href="https://vimeo.com/user82785647" target="_blank" rel="noopener" aria-label="Follow on Vimeo"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 7.4c-.1 1.9-1.4 4.5-4 7.8-2.6 3.4-4.8 5.1-6.6 5.1-1.1 0-2.1-1-2.8-3.1L7 11.6c-.5-2-1.1-3.1-1.7-3.1-.1 0-.6.3-1.4.9L3 8.2l2.6-2.3c1.2-1 2-1.6 2.6-1.6 1.4-.1 2.3.8 2.6 2.9.4 2.2.6 3.6.7 4.1.4 1.8.8 2.7 1.3 2.7.4 0 .9-.6 1.6-1.7.7-1.1 1.1-2 1.2-2.6.1-1-.3-1.5-1.2-1.5-.4 0-.9.1-1.3.3.9-2.9 2.6-4.3 5.1-4.2 1.9 0 2.7 1.3 2.7 3.6z"/></svg></a></p>
       </div>
       <div class="hsft-col"><h3>Contact</h3><ul>
@@ -3685,9 +3830,8 @@ html,body{margin:0;background:#091113}
       </ul></div>
       <div class="hsft-col hsft-cities"><h3>Studios &amp; offices</h3><ul><li><a href="https://heroshotphotography.com/photo-studio-sydney/"><b>Sydney</b>428A Parramatta Road, Petersham NSW 2049</a></li><li><a href="https://heroshotphotography.com/corporate-headshots-melbourne/"><b>Melbourne</b>1028 Heidelberg Rd, Ivanhoe VIC 3079</a></li><li><a href="https://heroshotphotography.com/corporate-headshots-brisbane/"><b>Brisbane</b>204 Alice St, Brisbane City QLD 4000</a></li><li><a href="#hs-locations"><b>Perth</b>10 to 14 Pier Street, Perth WA 6000</a></li></ul></div>
     </div>
-    <div class="hsft-word" aria-hidden="true">Hero Shot</div>
     <div class="hsft-bot">
-      <span>Copyright {YEAR} &copy; Hero Shot Photography · <a href="https://heroshotphotography.com/privacy-policy/">Privacy Policy</a> · Website by <a href="http://thespotteddog.com.au/" target="_blank" rel="noopener">The Spotted Dog</a></span>
+      <span>Copyright {YEAR} &copy; Hero Shot Photography · <a href="https://heroshotphotography.com/privacy-policy/">Privacy Policy</a></span>
       <button class="hsft-up" type="button" aria-label="Back to top"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
       <span class="hsft-rc">This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</span>
     </div>
