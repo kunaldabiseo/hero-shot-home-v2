@@ -932,6 +932,25 @@ html,body{margin:0;background:#091113}
 .hsr .hsr-h2{margin-top:16px;font:300 clamp(32px,4.6vw,58px)/1.04 "Roboto Condensed",sans-serif;letter-spacing:-.008em;text-transform:uppercase;color:var(--text)}
 .hsr .hsr-h2 strong{font-weight:700}
 .hsr .hsr-lede+.hsr-lede{margin-top:8px}
+
+/* unified pricing info board */
+.hsr-board{position:relative;z-index:1;max-width:1180px;margin:clamp(26px,3vw,38px) auto 0;border-radius:22px;background:#fff;border:1px solid var(--line);box-shadow:0 30px 60px -44px rgba(11,20,22,.35);overflow:hidden;text-align:left}
+.hsr-b-row{display:grid}
+.hsr-b-two{grid-template-columns:1fr 1fr}
+.hsr-b-three{grid-template-columns:repeat(3,1fr);border:0;border-radius:0;margin:0;background:none;overflow:visible}
+.hsr-board .hsr-sp{border:0;border-radius:0;background:none;padding:24px 28px;box-shadow:none;transform:none}
+.hsr-board .hsr-sp+.hsr-sp{border-left:1px solid var(--line)}
+.hsr-board a.hsr-sp:hover{background:rgba(10,119,145,.035);transform:none;box-shadow:none}
+.hsr-board .hsr-sp-k,.hsr-board .hsr-tt-k{color:var(--teal)}
+.hsr-board .hsr-sp-t{color:rgba(31,46,51,.86)}
+.hsr .hsr-board .hsr-b-cap{margin:0;padding:10px 28px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#f7f5f1;font:700 10.5px/1.4 Montserrat,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:rgba(31,46,51,.6)}
+.hsr-board .hsr-tt{padding:22px 28px;background:none}
+.hsr-board .hsr-tt+.hsr-tt{border-left:1px solid var(--line)}
+.hsr-board .hsr-tt+.hsr-tt::before{display:none}
+.hsr-board .hsr-tt-big{color:#0b1416}.hsr-board .hsr-tt-big small{color:var(--teal)}
+.hsr .hsr-board .hsr-tt p{color:rgba(31,46,51,.84)}
+.hsr-board+.hsr-more{margin-top:22px}
+@media (max-width:767px){.hsr-b-two,.hsr-b-three{grid-template-columns:1fr}.hsr-board .hsr-sp,.hsr-board .hsr-tt{padding:18px}.hsr-board .hsr-sp+.hsr-sp,.hsr-board .hsr-tt+.hsr-tt{border-left:0;border-top:1px solid var(--line)}.hsr .hsr-board .hsr-b-cap{padding:9px 18px}}
 /* price list tucked behind a toggle (calculator already covers the numbers) */
 .hsr-more{position:relative;z-index:1;margin-top:clamp(22px,2.6vw,32px);text-align:center}
 .hsr-more-btn{display:inline-flex;align-items:center;gap:12px;min-height:50px;padding:0 10px 0 24px;border-radius:99px;border:1.5px solid var(--line);background:#fff;color:#0b1416;font:700 14.5px/1 Montserrat,sans-serif;cursor:pointer;transition:border-color .3s,box-shadow .3s}
@@ -3018,10 +3037,15 @@ window.HS_PRICING = window.HS_PRICING || {
       <p class="hsr-ey"><b>06</b> Published pricing</p>
       <h2 class="hsr-h2" id="hsr-title">Clear, <strong>Transparent Pricing</strong></h2>
       <p class="hsr-lede">We believe in being transparent about pricing, so you can understand your investment before getting in touch.</p>
-      <div class="hsr-split">
+    </div>
+
+    <div class="hsr-board hsr-rv">
+      <div class="hsr-b-row hsr-b-two">
         <a class="hsr-sp" href="#hs-estimator"><span class="hsr-sp-k">Fewer than 20 people</span><span class="hsr-sp-t">For teams of fewer than 20 people, our pricing calculator makes it easy to work out an estimate.</span><span class="hsr-sp-go">Use the calculator<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
-        <div class="hsr-sp hsr-sp-dk"><span class="hsr-sp-k">Larger teams</span><span class="hsr-sp-t">For larger teams, there are often ways we can improve efficiencies, streamline the schedule and make better use of your budget. We'll review your requirements and recommend the most cost effective approach.</span></div>
+        <div class="hsr-sp"><span class="hsr-sp-k">Larger teams</span><span class="hsr-sp-t">For larger teams, there are often ways we can improve efficiencies, streamline the schedule and make better use of your budget. We'll review your requirements and recommend the most cost effective approach.</span></div>
       </div>
+      <p class="hsr-b-cap">Turnaround</p>
+      <div class="hsr-b-row hsr-b-three" role="list" aria-label="Turnaround times"><div class="hsr-tt" role="listitem"><span class="hsr-tt-big">24<small>hrs</small></span><span class="hsr-tt-k">Proof gallery</span><p>Your proof gallery is normally ready within 24 hours of your shoot.</p></div><div class="hsr-tt" role="listitem"><span class="hsr-tt-big">3&ndash;7<small>days</small></span><span class="hsr-tt-k">Retouched images</span><p>Once you've made your selections, professionally retouched images are typically delivered within 3 to 7 days, depending on the project size.</p></div><div class="hsr-tt" role="listitem"><span class="hsr-tt-big">24<small>hrs</small></span><span class="hsr-tt-k">Need them sooner?</span><p>Express retouching within 24 hours is often available. Additional fees may apply.</p></div></div>
     </div>
 
     <div class="hsr-more">
@@ -3043,7 +3067,7 @@ window.HS_PRICING = window.HS_PRICING || {
       </div></div>
     </div>
 
-    <div class="hsr-turn hsr-rv" role="list" aria-label="Turnaround times"><div class="hsr-tt" role="listitem"><span class="hsr-tt-big">24<small>hrs</small></span><span class="hsr-tt-k">Proof gallery</span><p>Your proof gallery is normally ready within 24 hours of your shoot.</p></div><div class="hsr-tt" role="listitem"><span class="hsr-tt-big">3&ndash;7<small>days</small></span><span class="hsr-tt-k">Retouched images</span><p>Once you've made your selections, professionally retouched images are typically delivered within 3 to 7 days, depending on the project size.</p></div><div class="hsr-tt hsr-tt-x" role="listitem"><span class="hsr-tt-big">24<small>hrs</small></span><span class="hsr-tt-k">Need them sooner?</span><p>Express retouching within 24 hours is often available. Additional fees may apply.</p></div></div>
+    
 
     <div class="hsr-guar hsr-rv">
       <span class="hsr-seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 4.5 5.6v5.7c0 4.6 3.1 8.6 7.5 9.9 4.4-1.3 7.5-5.3 7.5-9.9V5.6z"/><path d="m8.7 12.1 2.3 2.3 4.4-4.7"/></svg></span>
