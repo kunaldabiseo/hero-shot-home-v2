@@ -2517,6 +2517,8 @@ a.hsr-sp:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
 /* tighter gap between Two Ways and Brand */
 html body #hs-paths{padding-bottom:clamp(28px,3vw,44px) !important}
 html body #hs-brand .hsb-ch:first-of-type{padding-top:clamp(36px,4vw,56px) !important}
+/* mobile: brand CTA buttons same width and centred */
+@media (max-width:767px){html body #hs-brand .hsb-cta{display:flex !important;flex-direction:column !important;align-items:stretch !important;gap:12px !important;width:100%;max-width:420px;margin-left:auto !important;margin-right:auto !important}html body #hs-brand .hsb-cta>a,html body #hs-brand .hsb-cta>button{width:100% !important;justify-content:center !important;text-align:center;margin:0 !important}}
 </style>
 </head>
 <body>
