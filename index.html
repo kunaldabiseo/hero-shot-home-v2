@@ -415,6 +415,43 @@ html,body{margin:0;background:#091113}
 .hsw-ben li b{display:block;margin-bottom:2px;font-weight:700;color:#0b1416}
 .hsw-ben li.hsw-loc{font-weight:600;color:#1f2e33}
 
+
+/* estimate popup */
+.hse-dlg{--teal:#0a7791;--teal-dk:#025263;--teal-lt:#8fd8ea;--line:rgba(31,46,51,.16);position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:20px;font-family:Montserrat,sans-serif}
+.hse-dlg[hidden]{display:none}
+.hse-bg{position:absolute;inset:0;background:rgba(4,12,16,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:hswfade .3s ease}
+.hse-box{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);width:min(940px,100%);max-height:calc(100vh - 40px);overflow:auto;border-radius:24px;background:#fff;box-shadow:0 40px 90px rgba(0,0,0,.5);animation:hswpop .38s cubic-bezier(.2,.8,.2,1)}
+.hse-x{position:absolute;top:14px;right:14px;z-index:2;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;border:1px solid rgba(11,20,22,.15);background:#fff;color:#0b1416;cursor:pointer}
+.hse-x svg{width:14px;height:14px}.hse-x:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.hse-sum{padding:clamp(24px,3vw,36px);background:radial-gradient(120% 90% at 20% 0%,#0e3a4e,#0a2532 60%,#081b24);color:#fff}
+.hse-k{font:700 11.5px/1.4 Montserrat,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-lt)}
+.hse-get .hse-k{color:var(--teal)}
+.hse-total{margin:8px 0 0;padding:0;font:700 clamp(40px,5vw,56px)/1 "Roboto Condensed",sans-serif;color:#fff}
+.hse-sub{margin-top:8px;font-size:14px;color:rgba(255,255,255,.75)}
+.hse-rows{margin-top:18px;padding-top:6px;border-top:1px solid rgba(255,255,255,.14)}
+.hse-rows .est-row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;font-size:13.5px;color:rgba(255,255,255,.85);border-bottom:1px dashed rgba(255,255,255,.12)}
+.hse-rows .est-row b{color:#fff;white-space:nowrap}.hse-rows a{color:var(--teal-lt)}
+.hse-inc{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;list-style:none;padding:0}
+.hse-inc li{position:relative;padding-left:20px;font-size:12.5px;line-height:1.45;color:rgba(255,255,255,.82)}
+.hse-inc li::before{content:"";position:absolute;left:0;top:4px;width:11px;height:6px;border-left:2px solid var(--teal-lt);border-bottom:2px solid var(--teal-lt);transform:rotate(-45deg)}
+.hse-note{margin-top:18px;font-size:12px;line-height:1.55;color:rgba(255,255,255,.6)}
+.hse-get{padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;justify-content:center}
+.hse-get h4{margin:8px 0 0;font:700 26px/1.1 "Roboto Condensed",sans-serif;text-transform:uppercase;color:#0b1416}
+.hse-lead{margin-top:8px;font-size:14px;line-height:1.6;color:rgba(31,46,51,.82)}
+.hse-form{margin-top:16px;display:grid;gap:12px}
+.hse-form label{display:grid;gap:5px;font:600 12px/1.3 Montserrat,sans-serif;color:#1f2e33}
+.hse-form input{height:46px;padding:0 14px;border-radius:12px;border:1.5px solid var(--line);font:500 15px Montserrat,sans-serif;color:#0b1416;background:#fff}
+.hse-form input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px rgba(10,119,145,.12)}
+.hse-form input[aria-invalid="true"]{border-color:#c0392b}
+.hse-err{font-size:12.5px;color:#c0392b}
+.hse-send{display:flex;align-items:center;justify-content:center;gap:10px;height:50px;border-radius:99px;border:0;background:var(--teal);color:#fff;font:700 15px Montserrat,sans-serif;cursor:pointer;transition:background .3s}
+.hse-send svg{width:15px;height:15px}.hse-send:hover{background:var(--teal-dk)}.hse-send:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.hse-demo{display:flex;align-items:center;gap:8px;font-size:11.5px;color:rgba(31,46,51,.65)}
+.hse-demo i{flex:none;width:7px;height:7px;border-radius:50%;background:#e8a33b}
+.hse-print{margin-top:14px;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:99px;border:1.5px solid var(--line);background:#fff;color:#0b1416;font:600 14px Montserrat,sans-serif;cursor:pointer}
+.hse-print svg{width:17px;height:17px}.hse-print:hover{border-color:var(--teal);color:var(--teal)}
+@media (max-width:767px){.hse-dlg{padding:10px;align-items:start}.hse-box{grid-template-columns:1fr;max-height:calc(100vh - 20px);border-radius:20px}.hse-inc{grid-template-columns:1fr}.hse-x{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff}}
+@media print{body.hse-printing>*:not(.hse-dlg){display:none !important}body.hse-printing .hse-dlg{position:static;display:block;padding:0}body.hse-printing .hse-bg,body.hse-printing .hse-get,body.hse-printing .hse-x{display:none !important}body.hse-printing .hse-box{display:block;box-shadow:none;max-height:none;overflow:visible;animation:none}body.hse-printing .hse-sum{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 /* where-we-work: slim strip + map popup */
 .hsw-wstrip{position:relative;z-index:1;margin-top:clamp(18px,2.2vw,28px);display:flex;align-items:center;gap:16px;padding:14px 16px 14px 18px;border-radius:18px;background:#fff;border:1px solid var(--line)}
 .hsw-ws-ic{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:rgba(10,119,145,.08);color:var(--teal)}
@@ -2755,7 +2792,7 @@ html,body{margin:0;background:#091113}
           <div class="est-row"><span>GST (10%)</span><b>$175</b></div>
           <div class="est-row"><span><b>Total incl GST</b></span><b>$1,925</b></div>
         </div>
-        <a class="hsc-cta" href="#hs-quote" id="hs-estCta" data-hsv24pop="1">Get your estimate <i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#hs-i-arw"/><path d="M3 8h10M9 4l4 4-4 4"/></svg></i></a>
+        <a class="hsc-cta" href="#hs-estdlg" id="hs-estCta" role="button" aria-haspopup="dialog" aria-controls="hs-estdlg">Get your estimate <i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#hs-i-arw"/><path d="M3 8h10M9 4l4 4-4 4"/></svg></i></a>
         <a class="hsc-alt" href="#hs-quote" data-hs-budget="1">Have a budget in mind? <b>Let's talk.</b></a>
         <p class="hsc-enote" id="hs-estNote">This is an estimate, not a confirmed quote. Company pricing excludes GST, which is shown separately.</p>
       </div>
@@ -3858,13 +3895,12 @@ window.HS_PRICING = window.HS_PRICING || {
   var msg=f.querySelector('#hsfm-msg'),ppl=f.querySelector('#hsfm-ppl'),bud=f.querySelector('#hsfm-bud'),cnt=f.querySelector('.hsfm-cnt');
   function go(el){var q=document.getElementById('hs-quote');if(q)q.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(function(){try{el.focus({preventScroll:true})}catch(e){el.focus()}},650)}
   function biz(){var r=f.querySelector('input[name="session"][value="Photography for a business"]');if(r&&!f.querySelector('input[name="session"]:checked')){r.checked=true;r.dispatchEvent(new Event('change',{bubbles:true}))}}
-  var est=document.getElementById('hs-estCta');
-  if(est)est.addEventListener('click',function(e){e.preventDefault();
+  /* 'Have a budget in mind?' -> enquiry form, carrying the estimate across, focus on budget */
+  [].forEach.call(document.querySelectorAll('[data-hs-budget]'),function(a){a.addEventListener('click',function(e){e.preventDefault();
     var team=!document.getElementById('hs-paneTeam').hidden,k=document.getElementById('hs-pplRange');
     if(team){biz();if(ppl&&!ppl.value&&k)ppl.value=(+k.value>=+k.max?k.max+'+':k.value)}
     if(msg&&!msg.value&&window.HS_ESTIMATE){msg.value=window.HS_ESTIMATE+'\n';if(cnt)cnt.textContent=msg.value.length+' / 1200'}
-    go(msg||f)});
-  [].forEach.call(document.querySelectorAll('[data-hs-budget]'),function(a){a.addEventListener('click',function(e){e.preventDefault();go(bud||f)})});
+    go(bud||f)})});
 })();
 </script>
 <script>
@@ -3891,6 +3927,72 @@ window.HS_PRICING = window.HS_PRICING || {
   [].forEach.call(d.querySelectorAll('[data-hsw-map-close]'),function(b){b.addEventListener('click',close)});
   document.addEventListener('keydown',function(e){if(d.hidden)return;if(e.key==='Escape')close();
     if(e.key==='Tab'){var f=[].slice.call(d.querySelectorAll('button,a[href]'));var a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
+})();
+</script>
+
+<!-- Estimate popup (Get your estimate) -->
+<div class="hse-dlg" id="hs-estdlg" role="dialog" aria-modal="true" aria-labelledby="hse-t" hidden>
+  <div class="hse-bg" data-hse-close></div>
+  <div class="hse-box">
+    <button type="button" class="hse-x" data-hse-close aria-label="Close estimate"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
+    <div class="hse-sum">
+      <p class="hse-k">Your Hero Shot estimate</p>
+      <h3 id="hse-t" class="hse-total">$0</h3>
+      <p class="hse-sub" data-hse-sub></p>
+      <div class="hse-rows" data-hse-rows></div>
+      <ul class="hse-inc">
+        <li>Planning and preparation</li><li>Lighting design and setup</li><li>Photography with personal coaching</li><li>Professional retouching</li>
+      </ul>
+      <p class="hse-note">This is an estimate based on our standard full service approach, not a confirmed quote.</p>
+    </div>
+    <div class="hse-get">
+      <div data-hse-step="form">
+        <p class="hse-k">Keep a copy</p>
+        <h4>Email me this estimate</h4>
+        <p class="hse-lead">We'll send the breakdown to your inbox so you can share it with your team. No obligation.</p>
+        <form class="hse-form" novalidate>
+          <label><span>Your name</span><input type="text" name="name" autocomplete="name" required></label>
+          <label><span>Work email</span><input type="email" name="email" autocomplete="email" required></label>
+          <p class="hse-err" data-hse-err hidden>Please add your name and a valid email.</p>
+          <button type="submit" class="hse-send">Email my estimate<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+          <p class="hse-demo"><i aria-hidden="true"></i>Demo form for visuals only. Nothing is sent.</p>
+        </form>
+        <button type="button" class="hse-print" data-hse-print><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4v-7h16v7h-2M7 14h10v7H7z"/></svg>Print or save as PDF</button>
+      </div>
+      <div data-hse-step="done" hidden>
+        <p class="hse-k">All set</p>
+        <h4>Your estimate is on its way</h4>
+        <p class="hse-lead">Check your inbox shortly. If you'd like to talk it through, we're happy to help.</p>
+        <button type="button" class="hse-print" data-hse-close>Back to the page</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+/* Get your estimate -> estimate popup (budget CTA still goes to the enquiry form) */
+(function(){
+  var d=document.getElementById('hs-estdlg'),cta=document.getElementById('hs-estCta');if(!d||!cta)return;
+  if(d.parentNode!==document.body)document.body.appendChild(d);
+  var last=null,form=d.querySelector('.hse-form'),err=d.querySelector('[data-hse-err]');
+  function step(s){[].forEach.call(d.querySelectorAll('[data-hse-step]'),function(x){x.hidden=x.getAttribute('data-hse-step')!==s})}
+  function fill(){
+    d.querySelector('.hse-total').textContent=(document.getElementById('hs-estTotal')||{}).textContent||'';
+    d.querySelector('[data-hse-sub]').textContent=(document.getElementById('hs-estSub')||{}).textContent||'';
+    d.querySelector('[data-hse-rows]').innerHTML=(document.getElementById('hs-estRows')||{}).innerHTML||'';
+  }
+  function open(e){e&&e.preventDefault();last=cta;fill();step('form');err.hidden=true;d.hidden=false;document.documentElement.style.overflow='hidden';
+    setTimeout(function(){var i=d.querySelector('.hse-form input');i&&i.focus()},60)}
+  function close(){if(d.hidden)return;d.hidden=true;document.documentElement.style.overflow='';last&&last.focus&&last.focus({preventScroll:true})}
+  cta.addEventListener('click',open);
+  [].forEach.call(d.querySelectorAll('[data-hse-close]'),function(b){b.addEventListener('click',close)});
+  d.querySelector('[data-hse-print]').addEventListener('click',function(){document.body.classList.add('hse-printing');window.print();setTimeout(function(){document.body.classList.remove('hse-printing')},300)});
+  form.addEventListener('submit',function(e){e.preventDefault();var n=form.elements.name,m=form.elements.email,ok=true;
+    [n,m].forEach(function(f){var good=f===m?/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.value.trim()):f.value.trim().length>1;f.setAttribute('aria-invalid',!good);if(!good)ok=false});
+    err.hidden=ok;if(!ok){(n.getAttribute('aria-invalid')==='true'?n:m).focus();return}
+    step('done');var b=d.querySelector('[data-hse-step="done"] button');b&&b.focus()});
+  document.addEventListener('keydown',function(e){if(d.hidden)return;if(e.key==='Escape')close();
+    if(e.key==='Tab'){var f=[].filter.call(d.querySelectorAll('button,input,a[href]'),function(x){return x.offsetParent!==null});var a=f[0],z=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
 })();
 </script>
 <!-- ============== PREMIUM FOOTER (paste from here) ============== -->
