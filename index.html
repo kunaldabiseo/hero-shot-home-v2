@@ -924,9 +924,18 @@ a.hsr-sp:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
 .hsr-sp-dk .hsr-sp-k{color:#8fd8ea}.hsr-sp-dk .hsr-sp-t{color:rgba(255,255,255,.84)}
 @media (max-width:767px){.hsr-split{grid-template-columns:1fr;gap:10px;margin-top:18px}.hsr-sp{padding:16px}.hsr-sp-t{font-size:13.5px}}
 
-.hsr-turn{position:relative;z-index:1;margin-top:18px;padding:16px 20px;border-left:3px solid var(--teal);border-radius:0 12px 12px 0;background:rgba(10,119,145,.06)}
-.hsr .hsr-turn p{font:400 14.5px/1.6 Montserrat,sans-serif;color:rgba(31,46,51,.9)}
-.hsr .hsr-turn p+p{margin-top:6px}
+.hsr-turn{position:relative;z-index:1;margin-top:20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-radius:20px;background:#fff;border:1px solid var(--line);overflow:hidden}
+.hsr-tt{position:relative;padding:22px 24px 22px}
+.hsr-tt+.hsr-tt{border-left:1px solid var(--line)}
+.hsr-tt+.hsr-tt::before{content:"";position:absolute;left:-9px;top:34px;width:16px;height:16px;border-radius:50%;background:#fff;border:1px solid var(--line);box-shadow:inset 0 0 0 4px #fff,inset 0 0 0 8px var(--teal)}
+.hsr-tt-big{display:flex;align-items:baseline;gap:6px;font:700 34px/1 "Roboto Condensed",sans-serif;color:#0b1416}
+.hsr-tt-big small{font:600 12px/1 Montserrat,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.hsr-tt-k{display:block;margin-top:10px;font:700 11.5px/1.3 Montserrat,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
+.hsr .hsr-tt p{margin-top:6px;font:400 14px/1.6 Montserrat,sans-serif;color:rgba(31,46,51,.84)}
+.hsr-tt-x{background:linear-gradient(160deg,#0d3443,#08202a)}
+.hsr-tt-x .hsr-tt-big{color:#fff}.hsr-tt-x .hsr-tt-big small,.hsr-tt-x .hsr-tt-k{color:#8fd8ea}.hsr .hsr-tt-x p{color:rgba(255,255,255,.82)}
+.hsr-tt-x::before{border-color:transparent !important}
+@media (max-width:767px){.hsr-turn{grid-template-columns:1fr}.hsr-tt{padding:18px}.hsr-tt+.hsr-tt{border-left:0;border-top:1px solid var(--line)}.hsr-tt+.hsr-tt::before{left:auto;right:18px;top:-9px}.hsr-tt-big{font-size:30px}}
 .hsr .hsr-lede{margin-top:16px;font:400 17.5px/1.65 Montserrat,sans-serif;color:rgba(31,46,51,.9)}
 .hsr-lede a{color:var(--teal-dk);text-decoration:underline;text-decoration-color:rgba(2,82,99,.35);text-underline-offset:3px}
 .hsr-lede a:hover{text-decoration-color:currentColor}
@@ -2999,7 +3008,7 @@ window.HS_PRICING = window.HS_PRICING || {
       </div></div>
     </div>
 
-    <div class="hsr-turn hsr-rv"><p>Your proof gallery is normally ready within 24 hours of your shoot. Once you've made your selections, professionally retouched images are typically delivered within 3 to 7 days, depending on the project size.</p><p>Need them sooner? Express retouching within 24 hours is often available. Additional fees may apply.</p></div>
+    <div class="hsr-turn hsr-rv" role="list" aria-label="Turnaround times"><div class="hsr-tt" role="listitem"><span class="hsr-tt-big">24<small>hrs</small></span><span class="hsr-tt-k">Proof gallery</span><p>Your proof gallery is normally ready within 24 hours of your shoot.</p></div><div class="hsr-tt" role="listitem"><span class="hsr-tt-big">3&ndash;7<small>days</small></span><span class="hsr-tt-k">Retouched images</span><p>Once you've made your selections, professionally retouched images are typically delivered within 3 to 7 days, depending on the project size.</p></div><div class="hsr-tt hsr-tt-x" role="listitem"><span class="hsr-tt-big">24<small>hrs</small></span><span class="hsr-tt-k">Need them sooner?</span><p>Express retouching within 24 hours is often available. Additional fees may apply.</p></div></div>
 
     <div class="hsr-guar hsr-rv">
       <span class="hsr-seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 4.5 5.6v5.7c0 4.6 3.1 8.6 7.5 9.9 4.4-1.3 7.5-5.3 7.5-9.9V5.6z"/><path d="m8.7 12.1 2.3 2.3 4.4-4.7"/></svg></span>
