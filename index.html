@@ -951,6 +951,18 @@ html,body{margin:0;background:#091113}
 .hsr .hsr-board .hsr-tt p{color:rgba(31,46,51,.84)}
 .hsr-board+.hsr-more{margin-top:22px}
 @media (max-width:767px){.hsr-b-two,.hsr-b-three{grid-template-columns:1fr}.hsr-board .hsr-sp,.hsr-board .hsr-tt{padding:18px}.hsr-board .hsr-sp+.hsr-sp,.hsr-board .hsr-tt+.hsr-tt{border-left:0;border-top:1px solid var(--line)}.hsr .hsr-board .hsr-b-cap{padding:9px 18px}}
+
+/* guarantee as the last row of the pricing board */
+.hsr-b-guar{grid-template-columns:auto 1fr auto;align-items:center;gap:22px;padding:24px 28px;background:linear-gradient(120deg,#0d3443,#08202a)}
+.hsr-board .hsr-b-seal{position:static;flex:none;width:56px;height:56px;margin:0}
+.hsr .hsr-board .hsr-b-gtx{padding:0 !important;margin:0;min-width:0}
+.hsr .hsr-board .hsr-b-gtx h3{margin:0;font-size:22px;color:#fff}
+.hsr .hsr-board .hsr-b-gtx p{margin-top:6px;font-size:14px;line-height:1.6;color:rgba(255,255,255,.82)}
+.hsr .hsr-board .hsr-b-gtx p b{color:#fff}
+.hsr-b-act{display:flex}
+.hsr-board .hsr-b-btn{white-space:nowrap}
+@media (max-width:900px){.hsr-b-guar{grid-template-columns:auto 1fr}.hsr-b-act{grid-column:1/-1}}
+@media (max-width:767px){.hsr-b-guar{grid-template-columns:1fr;padding:20px 18px;gap:12px}.hsr-board .hsr-b-seal{width:46px;height:46px}.hsr .hsr-board .hsr-b-gtx h3{font-size:19px}.hsr-board .hsr-b-btn{width:100%;justify-content:center}}
 /* price list tucked behind a toggle (calculator already covers the numbers) */
 .hsr-more{position:relative;z-index:1;margin-top:clamp(22px,2.6vw,32px);text-align:center}
 .hsr-more-btn{display:inline-flex;align-items:center;gap:12px;min-height:50px;padding:0 10px 0 24px;border-radius:99px;border:1.5px solid var(--line);background:#fff;color:#0b1416;font:700 14.5px/1 Montserrat,sans-serif;cursor:pointer;transition:border-color .3s,box-shadow .3s}
@@ -3049,6 +3061,12 @@ window.HS_PRICING = window.HS_PRICING || {
       </div>
       <p class="hsr-b-cap">Turnaround</p>
       <div class="hsr-b-row hsr-b-three" role="list" aria-label="Turnaround times"><div class="hsr-tt" role="listitem"><span class="hsr-tt-big">24<small>hrs</small></span><span class="hsr-tt-k">Proof gallery</span><p>Your proof gallery is normally ready within 24 hours of your shoot.</p></div><div class="hsr-tt" role="listitem"><span class="hsr-tt-big">3&ndash;7<small>days</small></span><span class="hsr-tt-k">Retouched images</span><p>Once you've made your selections, professionally retouched images are typically delivered within 3 to 7 days, depending on the project size.</p></div><div class="hsr-tt" role="listitem"><span class="hsr-tt-big">24<small>hrs</small></span><span class="hsr-tt-k">Need them sooner?</span><p>Express retouching within 24 hours is often available. Additional fees may apply.</p></div></div>
+      <p class="hsr-b-cap">Our promise</p>
+      <div class="hsr-b-row hsr-b-guar"><span class="hsr-seal hsr-b-seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 4.5 5.6v5.7c0 4.6 3.1 8.6 7.5 9.9 4.4-1.3 7.5-5.3 7.5-9.9V5.6z"/><path d="m8.7 12.1 2.3 2.3 4.4-4.7"/></svg></span><div class="hsr-gtx hsr-b-gtx">
+        <h3>Our Complete <strong>Happiness Guarantee</strong></h3>
+        <p>We do everything we can to make sure our clients have a great experience and love their photos. Judging by the feedback we receive, we're doing a pretty good job.</p>
+        <p>For our <b>Elite Plus and Branding sessions</b>, we back that commitment with our Complete Happiness Guarantee. If you're unhappy with your images before they've been delivered, we'll arrange a reshoot, subject to our terms and conditions<!-- link to the guarantee T&C page once Hero Shot supplies the URL -->.</p>
+      </div><div class="hsr-b-act"><a class="hsr-gbtn hsr-b-btn" href="#hs-quote" data-hsv24pop="1">Make an enquiry <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div></div>
     </div>
 
     <div class="hsr-more">
@@ -3072,20 +3090,6 @@ window.HS_PRICING = window.HS_PRICING || {
 
     
 
-    <div class="hsr-guar hsr-rv">
-      <span class="hsr-seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 4.5 5.6v5.7c0 4.6 3.1 8.6 7.5 9.9 4.4-1.3 7.5-5.3 7.5-9.9V5.6z"/><path d="m8.7 12.1 2.3 2.3 4.4-4.7"/></svg></span>
-      <div class="hsr-gtx">
-        <h3>Our Complete <strong>Happiness Guarantee</strong></h3>
-        <p>We do everything we can to make sure our clients have a great experience and love their photos. Judging by the feedback we receive, we're doing a pretty good job.</p>
-        <p>For our <b>Elite Plus and Branding sessions</b>, we back that commitment with our Complete Happiness Guarantee. If you're unhappy with your images before they've been delivered, we'll arrange a reshoot, subject to our terms and conditions<!-- link to the guarantee T&C page once Hero Shot supplies the URL -->.</p>
-      </div>
-      <div class="hsr-stub"><a class="hsr-gbtn" href="#hs-quote" data-hsv24pop="1">Make an enquiry <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
-    </div>
-
-    <div class="hsr-row hsr-rv">
-      <a class="hsr-btn" href="#hs-quote">Make an enquiry <i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></i></a>
-      <span class="hsr-note">We reply in business hours</span>
-    </div>
   </div>
 </section>
 <script>
