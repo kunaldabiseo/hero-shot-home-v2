@@ -416,6 +416,31 @@ html,body{margin:0;background:#091113}
 .hsw-ben li.hsw-loc{font-weight:600;color:#1f2e33}
 
 
+
+/* budget panel (opens inside the estimate card) */
+.hsc-bpanel{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;justify-content:center;padding:clamp(64px,6vw,78px) clamp(26px,3.2vw,46px) clamp(26px,3.2vw,46px);overflow:auto;
+  background:radial-gradient(120% 80% at 85% 0%,rgba(143,216,234,.16),transparent 55%),linear-gradient(160deg,#0d3443 0%,#08202a 55%,#061820 100%);
+  clip-path:circle(0 at var(--bx,85%) var(--by,80%));transition:clip-path .7s cubic-bezier(.7,0,.2,1)}
+.hsc-bpanel.on{clip-path:circle(150% at var(--bx,85%) var(--by,80%))}
+.hsc-bpanel>*{opacity:0;transform:translateY(10px);transition:opacity .45s,transform .45s}
+.hsc-bpanel.on>*{opacity:1;transform:none}
+.hsc-bpanel.on>*:nth-child(2){transition-delay:.25s}.hsc-bpanel.on>*:nth-child(3){transition-delay:.3s}.hsc-bpanel.on>*:nth-child(4){transition-delay:.36s}.hsc-bpanel.on>*:nth-child(5){transition-delay:.42s}.hsc-bpanel.on>*:nth-child(6){transition-delay:.48s}.hsc-bpanel.on>*:nth-child(7){transition-delay:.54s}
+.hsc-bp-back{position:absolute;top:clamp(18px,2.2vw,26px);left:clamp(22px,3vw,40px);display:inline-flex;align-items:center;gap:8px;padding:0;border:0;background:none;color:rgba(255,255,255,.7);font:600 12.5px/1 Montserrat,sans-serif;letter-spacing:.04em;cursor:pointer}
+.hsc-bp-back svg{width:14px;height:14px;transition:transform .3s}.hsc-bp-back:hover{color:#fff}.hsc-bp-back:hover svg{transform:translateX(-3px)}
+.hsc-bp-back:focus-visible{outline:2px solid var(--teal-lt);outline-offset:4px;border-radius:4px}
+.hsc-bp-k{font:700 11.5px/1.4 Montserrat,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--teal-lt)}
+.hsc-bpanel h4{margin:10px 0 0;font:300 clamp(28px,2.8vw,38px)/1.02 "Roboto Condensed",sans-serif;text-transform:uppercase;color:#fff}
+.hsc-bpanel h4 em{font-style:normal;font-weight:700;color:var(--teal-lt)}
+.hsc .hsc-bp-p{margin-top:12px;font:400 14px/1.65 Montserrat,sans-serif;color:rgba(255,255,255,.8)}
+.hsc-bp-ways{margin:16px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.hsc-bp-ways li{padding:7px 12px;border-radius:99px;border:1px solid rgba(143,216,234,.28);background:rgba(143,216,234,.06);font:600 12px/1 Montserrat,sans-serif;color:rgba(255,255,255,.88)}
+.hsc-bp-go{align-self:flex-start;margin-top:22px;display:inline-flex;align-items:center;gap:14px;min-height:54px;padding:0 8px 0 26px;border-radius:99px;background:#fff;color:#0b1416 !important;font:700 15.5px/1 Montserrat,sans-serif;box-shadow:0 18px 40px -18px rgba(143,216,234,.6);transition:transform .3s,box-shadow .3s}
+.hsc-bp-go i{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--teal);color:#fff}
+.hsc-bp-go svg{width:15px;height:15px;transition:transform .3s}
+.hsc-bp-go:hover{transform:translateY(-2px)}.hsc-bp-go:hover svg{transform:translateX(3px)}
+.hsc-bp-go:focus-visible{outline:2px solid var(--teal-lt);outline-offset:4px}
+@media (prefers-reduced-motion:reduce){.hsc-bpanel,.hsc-bpanel>*{transition:none}}
+@media (max-width:767px){.hsc-r.bp-open>*:not(.hsc-bpanel){display:none !important}.hsc-r.bp-open .hsc-bpanel{position:relative;inset:auto;clip-path:none;margin:-16px;min-height:100%}.hsc-bpanel{justify-content:flex-start;padding:56px 18px 22px}.hsc-bp-back{top:18px;left:18px}.hsc .hsc-bp-p{font-size:13.5px}.hsc-bp-go{align-self:stretch;justify-content:space-between}}
 /* estimate popup */
 .hse-dlg{--teal:#0a7791;--teal-dk:#025263;--teal-lt:#8fd8ea;--line:rgba(31,46,51,.16);position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:20px;font-family:Montserrat,sans-serif}
 .hse-dlg[hidden]{display:none}
@@ -818,6 +843,14 @@ html,body{margin:0;background:#091113}
 .hsc-alt[hidden]{display:none}
 .hsc-alt:hover{background:rgba(255,255,255,.08);border-color:var(--teal-lt)}
 .hsc-alt:focus-visible{outline:2px solid var(--teal-lt);outline-offset:3px}
+.hsc-box>.hsc-l{display:flex;flex-direction:column}
+.hsc-bud{margin-top:auto;padding-top:26px;display:flex;gap:14px;align-items:flex-start}
+.hsc-bud>div{padding:16px 18px;border-radius:16px;background:linear-gradient(180deg,rgba(10,119,145,.07),rgba(10,119,145,.03));border:1px solid rgba(10,119,145,.14)}
+.hsc-bud-ic{flex:none;display:grid;place-items:center;width:40px;height:40px;margin-top:2px;border-radius:12px;background:var(--teal);color:#fff}
+.hsc-bud-ic svg{width:20px;height:20px}
+.hsc-bud b{display:block;font:700 15px/1.35 Montserrat,sans-serif;color:var(--teal-dk)}
+.hsc .hsc-bud p{margin-top:6px;font:400 13.5px/1.6 Montserrat,sans-serif;color:rgba(31,46,51,.84)}
+@media (max-width:767px){.hsc-bud{padding-top:20px;gap:10px}.hsc-bud-ic{width:34px;height:34px}.hsc-bud>div{padding:14px}}
 .hsc-budget{position:relative;z-index:1;max-width:900px;margin:clamp(28px,3.4vw,44px) auto 0;padding:clamp(20px,2.4vw,28px) clamp(20px,2.8vw,36px);border-radius:20px;background:#fff;border:1px solid var(--line);text-align:center}
 .hsc-budget p{font:400 15px/1.65 Montserrat,sans-serif;color:rgba(31,46,51,.9)}
 .hsc-budget p+p{margin-top:10px}
@@ -2794,13 +2827,17 @@ html,body{margin:0;background:#091113}
           <div class="est-row"><span><b>Total incl GST</b></span><b>$1,925</b></div>
         </div>
         <a class="hsc-cta" href="#hs-estdlg" id="hs-estCta" role="button" aria-haspopup="dialog" aria-controls="hs-estdlg">Get your estimate <i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#hs-i-arw"/><path d="M3 8h10M9 4l4 4-4 4"/></svg></i></a>
-        <a class="hsc-alt" href="#hs-quote" data-hs-budget="1">Have a budget in mind? <b>Let's talk.</b></a>
+        <a class="hsc-alt" href="#hs-quote" data-hs-bopen aria-expanded="false" aria-controls="hsc-bpanel">Have a budget in mind? <b>Let's talk.</b></a>
         <p class="hsc-enote" id="hs-estNote">This is an estimate, not a confirmed quote. Company pricing excludes GST, which is shown separately.</p>
+        <div class="hsc-bpanel" id="hsc-bpanel" role="region" aria-labelledby="hsc-bp-t" hidden>
+          <button type="button" class="hsc-bp-back" data-hs-bclose><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4"/></svg>Back to estimate</button>
+          <p class="hsc-bp-k">Your budget</p>
+          <h4 id="hsc-bp-t">Working with a particular <em>budget?</em></h4>
+          <p class="hsc-bp-p">We're always happy to explore more streamlined approaches that reduce the time and resources involved. Our standard process is designed to get the best possible results, but we understand that not every project requires the same level of service. We'll help you understand where we can make savings and what that might mean for the final result.</p>
+          <p class="hsc-bp-p">We can usually tell you pretty quickly what's possible, and if we're not the right fit, we're happy to point you towards someone who might be.</p>
+          <a class="hsc-bp-go" href="#hs-quote" data-hs-budget="1">Share your budget<i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></i></a>
+        </div>
       </div>
-    </div>
-    <div class="hsc-budget hsc-rv">
-      <p><b>Working with a particular budget?</b> We're always happy to explore more streamlined approaches that reduce the time and resources involved. Our standard process is designed to get the best possible results, but we understand that not every project requires the same level of service. We'll help you understand where we can make savings and what that might mean for the final result.</p>
-      <p>We can usually tell you pretty quickly what's possible, and if we're not the right fit, we're happy to point you towards someone who might be.</p>
     </div>
   </div>
 </section>
@@ -2862,7 +2899,7 @@ window.HS_PRICING = window.HS_PRICING || {
   n("#hs-estMode button").forEach(function(e){e.addEventListener("click",function(){n("#hs-estMode button").forEach(function(e){e.classList.remove("on");e.setAttribute("aria-selected","false")});e.classList.add("on");e.setAttribute("aria-selected","true");d=e.dataset.mode;y.hidden="team"!==d;L.hidden="solo"!==d;A()})});
   n("#hs-pkg button").forEach(function(e){e.addEventListener("click",function(){n("#hs-pkg button").forEach(function(e){e.classList.remove("on")});e.classList.add("on");w=parseInt(e.dataset.p,10);x=e.dataset.n;A()})});
   u.addEventListener("input",A);h.addEventListener("change",A);t("#hs-hmu").addEventListener("change",A);t("#hs-extra").addEventListener("change",A);
-  var cta=t("#hs-estCta"),bud=t("[data-hs-budget]");
+  var cta=t("#hs-estCta"),bud=t("[data-hs-bopen]");
   function mode(big){if(!cta)return;cta.firstChild.nodeValue=big?"Get a recommendation ":"Get your estimate ";if(big){cta.setAttribute("data-big","1");cta.removeAttribute("aria-haspopup")}else{cta.removeAttribute("data-big");cta.setAttribute("aria-haspopup","dialog")}if(bud)bud.hidden=!!big}
   function A(){var e="",tm=P.team;mode("team"===d&&parseInt(u.value,10)>=tm.enquireFrom);
     if("team"===d){var k=parseInt(u.value,10);f.textContent=k>=tm.enquireFrom?tm.enquireFrom+"+":k;g.textContent="Your estimate";
@@ -3933,6 +3970,21 @@ window.HS_PRICING = window.HS_PRICING || {
 })();
 </script>
 
+<script>
+/* "Have a budget in mind?" opens the budget panel inside the estimate card */
+(function(){var pnl=document.getElementById('hsc-bpanel'),btn=document.querySelector('[data-hs-bopen]');if(!pnl||!btn)return;
+  var card=pnl.parentNode;
+  function open(e){e.preventDefault();var c=card.getBoundingClientRect(),b=btn.getBoundingClientRect();
+    pnl.style.setProperty('--bx',((b.left+b.width/2-c.left)/c.width*100)+'%');pnl.style.setProperty('--by',((b.top+b.height/2-c.top)/c.height*100)+'%');
+    pnl.hidden=false;if(matchMedia('(max-width:767px)').matches)card.classList.add('bp-open');btn.setAttribute('aria-expanded','true');requestAnimationFrame(function(){requestAnimationFrame(function(){pnl.classList.add('on')})});
+    setTimeout(function(){pnl.querySelector('.hsc-bp-back').focus({preventScroll:true})},120)}
+  function close(){if(pnl.hidden)return;pnl.classList.remove('on');btn.setAttribute('aria-expanded','false');
+    var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;var mob=card.classList.contains('bp-open');setTimeout(function(){pnl.hidden=true;card.classList.remove('bp-open');btn.focus({preventScroll:!mob});if(mob)card.scrollIntoView({block:'center'})},rm||mob?0:650)}
+  btn.addEventListener('click',open);pnl.querySelector('[data-hs-bclose]').addEventListener('click',close);
+  pnl.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+  pnl.querySelector('[data-hs-budget]').addEventListener('click',function(){setTimeout(close,700)});
+})();
+</script>
 <!-- Estimate popup (Get your estimate) -->
 <div class="hse-dlg" id="hs-estdlg" role="dialog" aria-modal="true" aria-labelledby="hse-t" hidden>
   <div class="hse-bg" data-hse-close></div>
