@@ -441,6 +441,41 @@ html,body{margin:0;background:#091113}
 .hsc-bp-go:focus-visible{outline:2px solid var(--teal-lt);outline-offset:4px}
 @media (prefers-reduced-motion:reduce){.hsc-bpanel,.hsc-bpanel>*{transition:none}}
 @media (max-width:767px){.hsc-r.bp-open>*:not(.hsc-bpanel){display:none !important}.hsc-r.bp-open .hsc-bpanel{position:relative;inset:auto;clip-path:none;margin:-16px;min-height:100%}.hsc-bpanel{justify-content:flex-start;padding:56px 18px 22px}.hsc-bp-back{top:18px;left:18px}.hsc .hsc-bp-p{font-size:13.5px}.hsc-bp-go{align-self:stretch;justify-content:space-between}}
+
+/* printable estimate document */
+#hse-doc{display:none}
+@media print{
+  @page{size:A4;margin:0}
+  body.hse-doc-print>*:not(#hse-doc){display:none !important}
+  body.hse-doc-print{background:#fff !important}
+  body.hse-doc-print #hse-doc{display:block !important}
+  #hse-doc,#hse-doc *{-webkit-print-color-adjust:exact;print-color-adjust:exact;box-sizing:border-box}
+  #hse-doc .pg{width:210mm;min-height:297mm;padding:18mm 18mm 16mm;font:400 10.5pt/1.55 Montserrat,Arial,sans-serif;color:#1f2e33;position:relative}
+  #hse-doc header{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:8mm;border-bottom:2px solid #0a7791}
+  #hse-doc .br img{height:16mm;width:auto;filter:brightness(0)}
+  #hse-doc .mt{text-align:right}
+  #hse-doc h1{margin:0;font:700 26pt/1 "Roboto Condensed",Arial,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#0b1416}
+  #hse-doc dl{margin:4mm 0 0;display:grid;grid-template-columns:auto auto;gap:1mm 5mm;justify-content:end;font-size:9pt}
+  #hse-doc dt{color:#6b7a7f;text-align:right}#hse-doc dd{margin:0;font-weight:600;color:#0b1416}
+  #hse-doc h4{margin:0 0 1.5mm;font:700 7.5pt/1.3 Montserrat,Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#0a7791}
+  #hse-doc .pt{display:grid;grid-template-columns:1fr 1fr;gap:10mm;margin-top:8mm}
+  #hse-doc .pt p{margin:0;font-size:10pt}
+  #hse-doc .sm{margin-top:8mm}#hse-doc .sm p{margin:0;font-size:10pt}
+  #hse-doc table{width:100%;margin-top:6mm;border-collapse:collapse}
+  #hse-doc th{padding:3mm 4mm;background:#0b1416;color:#fff;font:700 8pt/1 Montserrat,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;text-align:left}
+  #hse-doc td{padding:3.4mm 4mm;border-bottom:1px solid #dfe5e7;font-size:10pt}
+  #hse-doc .r{text-align:right;white-space:nowrap}
+  #hse-doc tfoot td{border-bottom:0;padding-top:2.4mm;padding-bottom:2.4mm}
+  #hse-doc tfoot .st td{color:#4b5a5f}
+  #hse-doc tfoot .tt td{padding:4mm;background:#eef6f8;font-weight:700;font-size:12pt;color:#0b1416;border-top:2px solid #0a7791}
+  #hse-doc .cl{display:grid;grid-template-columns:1fr 1.4fr;gap:10mm;margin-top:10mm}
+  #hse-doc .cl p{margin:0 0 5mm;font-size:9.5pt}
+  #hse-doc ul{margin:0;padding:0;list-style:none}
+  #hse-doc li{position:relative;padding-left:5mm;margin-bottom:1.6mm;font-size:9.5pt}
+  #hse-doc li::before{content:"";position:absolute;left:0;top:1.6mm;width:2.2mm;height:1.2mm;border-left:1.5px solid #0a7791;border-bottom:1.5px solid #0a7791;transform:rotate(-45deg)}
+  #hse-doc footer{position:absolute;left:18mm;right:18mm;bottom:14mm;padding-top:4mm;border-top:1px solid #dfe5e7;display:flex;justify-content:space-between;gap:10mm;font-size:8.5pt;color:#6b7a7f}
+  #hse-doc footer p{margin:0}#hse-doc footer .w{font-weight:700;color:#0a7791;white-space:nowrap}
+}
 /* estimate popup */
 .hse-dlg{--teal:#0a7791;--teal-dk:#025263;--teal-lt:#8fd8ea;--line:rgba(31,46,51,.16);position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:20px;font-family:Montserrat,sans-serif}
 .hse-dlg[hidden]{display:none}
@@ -4118,7 +4153,33 @@ window.HS_PRICING = window.HS_PRICING || {
   function close(){if(d.hidden)return;d.hidden=true;document.documentElement.style.overflow='';last&&last.focus&&last.focus({preventScroll:true})}
   cta.addEventListener('click',open);
   [].forEach.call(d.querySelectorAll('[data-hse-close]'),function(b){b.addEventListener('click',close)});
-  d.querySelector('[data-hse-print]').addEventListener('click',function(){document.body.classList.add('hse-printing');window.print();setTimeout(function(){document.body.classList.remove('hse-printing')},300)});
+  d.querySelector('[data-hse-print]').addEventListener('click',function(){
+    var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+    var rows=[].map.call(document.querySelectorAll('#hs-estRows .est-row'),function(r){return{l:r.children[0].textContent.trim(),v:r.children[1].textContent.trim()}});
+    var team=!document.getElementById('hs-paneTeam').hidden,items=[],gst=null,total=null;
+    rows.forEach(function(r){if(/^GST/i.test(r.l))gst=r;else if(/^Total/i.test(r.l))total=r;else items.push(r)});
+    var sub=(document.getElementById('hs-estSub')||{}).textContent||'',amt=(document.getElementById('hs-estTotal')||{}).textContent||'';
+    var now=new Date(),date=now.toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'}),ref='HS-'+now.getFullYear().toString().slice(2)+('0'+(now.getMonth()+1)).slice(-2)+('0'+now.getDate()).slice(-2)+'-'+('0'+now.getHours()).slice(-2)+('0'+now.getMinutes()).slice(-2);
+    var nm=(form.elements.name.value||'').trim(),em=(form.elements.email.value||'').trim();
+    var logo=(document.querySelector('img[src*="hero-shot-logo"]')||{}).src||'';
+    var lines=items.map(function(r){return '<tr><td>'+esc(r.l)+'</td><td class="r">'+esc(r.v)+'</td></tr>'}).join('');
+    var totals=team?('<tr class="st"><td>Subtotal (excl. GST)</td><td class="r">'+esc(amt)+'</td></tr>'+(gst?'<tr class="st"><td>'+esc(gst.l)+'</td><td class="r">'+esc(gst.v)+'</td></tr>':'')+(total?'<tr class="tt"><td>Total (incl. GST)</td><td class="r">'+esc(total.v)+'</td></tr>':''))
+                    :(total?'<tr class="tt"><td>Total (incl. GST)</td><td class="r">'+esc(total.v)+'</td></tr>':'');
+    var doc=document.getElementById('hse-doc');if(doc)doc.remove();doc=document.createElement('div');doc.id='hse-doc';
+    doc.innerHTML='<div class="pg">'
+     +'<header><div class="br">'+(logo?'<img src="'+logo+'" alt="Hero Shot Photography">':'<b>Hero Shot Photography</b>')+'</div><div class="mt"><h1>Estimate</h1><dl><dt>Reference</dt><dd>'+ref+'</dd><dt>Date</dt><dd>'+esc(date)+'</dd></dl></div></header>'
+     +'<section class="pt"><div><h4>Prepared for</h4><p>'+(nm?esc(nm):'&nbsp;')+(em?'<br>'+esc(em):'')+'</p></div><div><h4>From</h4><p>Hero Shot Photography<br>admin@heroshotphotography.com<br>0421 048 722</p></div></section>'
+     +'<section class="sm"><h4>'+(team?'Team headshots':'Individual session')+'</h4><p>'+esc(sub)+'</p></section>'
+     +'<table><thead><tr><th>Description</th><th class="r">Amount</th></tr></thead><tbody>'+lines+'</tbody><tfoot>'+totals+'</tfoot></table>'
+     +'<section class="cl"><div><h4>Included</h4><ul><li>Planning and preparation</li><li>Lighting design and setup</li><li>Photography with personal coaching</li><li>Professional retouching</li></ul></div>'
+     +'<div><h4>Turnaround</h4><p>Your proof gallery is normally ready within 24 hours of your shoot. Once you\u2019ve made your selections, professionally retouched images are typically delivered within 3 to 7 days, depending on the project size.</p>'
+     +(team?'<h4>Payment terms</h4><p>For company shoots, our payment terms are a 50% deposit, with the remaining balance payable in full on the day of the shoot or before images are released.</p>':'')+'</div></section>'
+     +'<footer><p>This is an estimate based on our standard full service approach, not a confirmed quote. We will confirm the final figure when we reply to your enquiry.</p><p class="w">heroshotphotography.com</p></footer>'
+     +'</div>';
+    document.body.appendChild(doc);document.body.classList.add('hse-doc-print');
+    var done=function(){document.body.classList.remove('hse-doc-print');window.removeEventListener('afterprint',done)};window.addEventListener('afterprint',done);
+    var im=doc.querySelector('img');if(im&&!im.complete){im.onload=im.onerror=function(){window.print()}}else window.print();
+  });
   form.addEventListener('submit',function(e){e.preventDefault();var n=form.elements.name,m=form.elements.email,ok=true;
     [n,m].forEach(function(f){var good=f===m?/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.value.trim()):f.value.trim().length>1;f.setAttribute('aria-invalid',!good);if(!good)ok=false});
     err.hidden=ok;if(!ok){(n.getAttribute('aria-invalid')==='true'?n:m).focus();return}
