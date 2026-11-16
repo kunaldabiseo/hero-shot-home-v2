@@ -963,6 +963,15 @@ html,body{margin:0;background:#091113}
 .hsr-board .hsr-b-btn{white-space:nowrap}
 @media (max-width:900px){.hsr-b-guar{grid-template-columns:auto 1fr}.hsr-b-act{grid-column:1/-1}}
 @media (max-width:767px){.hsr-b-guar{grid-template-columns:1fr;padding:20px 18px;gap:12px}.hsr-board .hsr-b-seal{width:46px;height:46px}.hsr .hsr-board .hsr-b-gtx h3{font-size:19px}.hsr-board .hsr-b-btn{width:100%;justify-content:center}}
+
+/* pricing content merged into the calculator section */
+.hsr.hsr-merged{padding:clamp(30px,3.4vw,46px) 0 0;background:none;overflow:visible}
+.hsr.hsr-merged::before{display:none}
+.hsr-merged .hsr-board{margin-top:0}
+.hsr-b-intro{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;padding:20px 28px;border-bottom:1px solid var(--line)}
+.hsr .hsr-b-k{font:700 12px/1.4 Montserrat,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#0b1416}
+.hsr .hsr-b-l{font:400 14.5px/1.6 Montserrat,sans-serif;color:rgba(31,46,51,.8)}
+@media (max-width:767px){.hsr-b-intro{padding:16px 18px}}
 /* price list tucked behind a toggle (calculator already covers the numbers) */
 .hsr-more{position:relative;z-index:1;margin-top:clamp(22px,2.6vw,32px);text-align:center}
 .hsr-more-btn{display:inline-flex;align-items:center;gap:12px;min-height:50px;padding:0 10px 0 24px;border-radius:99px;border:1.5px solid var(--line);background:#fff;color:#0b1416;font:700 14.5px/1 Montserrat,sans-serif;cursor:pointer;transition:border-color .3s,box-shadow .3s}
@@ -2964,6 +2973,46 @@ html body #hs-brand .hsb-ch:first-of-type{padding-top:clamp(36px,4vw,56px) !impo
         </div>
       </div>
     </div>
+    <div class="hsr hsr-merged" id="hs-pricing" aria-label="Clear, transparent pricing">
+    <div class="hsr-board hsr-rv">
+      <div class="hsr-b-intro"><p class="hsr-b-k">Clear, transparent pricing</p><p class="hsr-b-l">We believe in being transparent about pricing, so you can understand your investment before getting in touch.</p></div>
+      <div class="hsr-b-row hsr-b-two">
+        <a class="hsr-sp" href="#hs-estimator"><span class="hsr-sp-k">Fewer than 20 people</span><span class="hsr-sp-t">For teams of fewer than 20 people, our pricing calculator makes it easy to work out an estimate.</span><span class="hsr-sp-go">Use the calculator<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+        <div class="hsr-sp"><span class="hsr-sp-k">Larger teams</span><span class="hsr-sp-t">For larger teams, there are often ways we can improve efficiencies, streamline the schedule and make better use of your budget. We'll review your requirements and recommend the most cost effective approach.</span></div>
+      </div>
+      <p class="hsr-b-cap">Turnaround</p>
+      <div class="hsr-b-row hsr-b-three" role="list" aria-label="Turnaround times"><div class="hsr-tt" role="listitem"><span class="hsr-tt-big">24<small>hrs</small></span><span class="hsr-tt-k">Proof gallery</span><p>Your proof gallery is normally ready within 24 hours of your shoot.</p></div><div class="hsr-tt" role="listitem"><span class="hsr-tt-big">3&ndash;7<small>days</small></span><span class="hsr-tt-k">Retouched images</span><p>Once you've made your selections, professionally retouched images are typically delivered within 3 to 7 days, depending on the project size.</p></div><div class="hsr-tt" role="listitem"><span class="hsr-tt-big">24<small>hrs</small></span><span class="hsr-tt-k">Need them sooner?</span><p>Express retouching within 24 hours is often available. Additional fees may apply.</p></div></div>
+      <p class="hsr-b-cap">Our promise</p>
+      <div class="hsr-b-row hsr-b-guar"><span class="hsr-seal hsr-b-seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 4.5 5.6v5.7c0 4.6 3.1 8.6 7.5 9.9 4.4-1.3 7.5-5.3 7.5-9.9V5.6z"/><path d="m8.7 12.1 2.3 2.3 4.4-4.7"/></svg></span><div class="hsr-gtx hsr-b-gtx">
+        <h3>Our Complete <strong>Happiness Guarantee</strong></h3>
+        <p>We do everything we can to make sure our clients have a great experience and love their photos. Judging by the feedback we receive, we're doing a pretty good job.</p>
+        <p>For our <b>Elite Plus and Branding sessions</b>, we back that commitment with our Complete Happiness Guarantee. If you're unhappy with your images before they've been delivered, we'll arrange a reshoot, subject to our terms and conditions<!-- link to the guarantee T&C page once Hero Shot supplies the URL -->.</p>
+      </div><div class="hsr-b-act"><a class="hsr-gbtn hsr-b-btn" href="#hs-quote" data-hsv24pop="1">Make an enquiry <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div></div>
+    </div>
+
+    <div class="hsr-more">
+      <button type="button" class="hsr-more-btn hsr-rv" aria-expanded="false" aria-controls="hsr-list"><span data-l>View full price list</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg></i></button>
+      <div class="hsr-list" id="hsr-list"><div class="hsr-list-in">
+    <div class="hsr-tabs hsr-rv" role="tablist" aria-label="Price lists">
+      <span class="hsr-pill" aria-hidden="true"></span>
+      <button class="hsr-tab" role="tab" type="button" id="hsr-t1" aria-controls="hs-p1" aria-selected="true">Company headshots</button>
+      <button class="hsr-tab" role="tab" type="button" id="hsr-t3" aria-controls="hs-p3" aria-selected="false" tabindex="-1">Individual sessions</button>
+      <button class="hsr-tab" role="tab" type="button" id="hsr-t4" aria-controls="hs-p4" aria-selected="false" tabindex="-1">Everything else</button>
+    </div>
+
+    <div class="hsr-card hsr-rv">
+      <div class="hsr-panel" id="hs-p1" role="tabpanel" aria-labelledby="hsr-t1"><table class="hsr-table"><thead><tr><th scope="col" style="width:30%">Team size</th><th scope="col" style="width:20%">Rate per person</th><th scope="col">What is included</th></tr></thead><tbody><tr><td class="hsr-name" data-n="01">1 to 10 people</td><td class="hsr-price"><span>$175</span></td><td class="hsr-meta">Per person, plus GST. One look each, coached session, retouched final image. For example, 10 people is $1,750.</td></tr><tr><td class="hsr-name" data-n="02">Each person after 10</td><td class="hsr-price"><span>$75</span></td><td class="hsr-meta">Per additional person, plus GST. For example, 11 people is $1,825.</td></tr><tr><td class="hsr-name" data-n="03">20 or more people</td><td class="hsr-price"><span>Let’s talk</span></td><td class="hsr-meta">We plan larger team days around your headcount, locations and schedule, across several days where needed.</td></tr><tr><td class="hsr-name" data-n="04">On location setup</td><td class="hsr-price"><span>+$295</span></td><td class="hsr-meta">Lighting and backdrop setup when we come to you. Not charged for studio sessions.</td></tr></tbody></table><div class="hsr-foot"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Prices exclude GST</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>One look per person</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Company pricing only. Individual sessions are priced separately</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Minimum 4 people on location</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Proof gallery within 24 hours</span></div></div>
+      <div class="hsr-panel" id="hs-p3" role="tabpanel" aria-labelledby="hsr-t3" hidden><table class="hsr-table"><thead><tr><th scope="col" style="width:30%">Session</th><th scope="col" style="width:20%">Price</th><th scope="col">What you get</th></tr></thead><tbody><tr><td class="hsr-name" data-n="01">Express Hero</td><td class="hsr-price"><span>$325</span></td><td class="hsr-meta">Including GST. 20 minutes, one look, one retouched hero image.</td></tr><tr><td class="hsr-name" data-n="02">Elite Hero</td><td class="hsr-price"><span>$550</span></td><td class="hsr-meta">Including GST. 45 minutes, up to three looks, three retouched images.</td></tr><tr><td class="hsr-name" data-n="03">Elite Plus</td><td class="hsr-price"><span>$825</span></td><td class="hsr-meta">Including GST. 75 minutes, studio and outdoor, media release included.</td></tr><tr><td class="hsr-name" data-n="04">Extra hero shot</td><td class="hsr-price"><span>$150</span></td><td class="hsr-meta">Per additional retouched image. $250 on Elite Plus.</td></tr></tbody></table><div class="hsr-foot"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Prices include GST</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Coaching included in every session</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Retouched 3–7 days after selection</span></div></div>
+      <div class="hsr-panel" id="hs-p4" role="tabpanel" aria-labelledby="hsr-t4" hidden><table class="hsr-table"><thead><tr><th scope="col" style="width:30%">Service</th><th scope="col" style="width:20%">From</th><th scope="col">Notes</th></tr></thead><tbody><tr><td class="hsr-name" data-n="01"><a href="https://heroshotphotography.com/personal-brand-packages/">Personal branding</a></td><td class="hsr-price"><span>$1,250</span></td><td class="hsr-meta">Including GST. Editorial-quality sessions for founders, consultants and public-facing professionals.</td></tr><tr><td class="hsr-name" data-n="02"><a href="https://heroshotphotography.com/corporate-events/">Events</a> &amp; <a href="https://heroshotphotography.com/video/">video</a></td><td class="hsr-price"><span>$650</span></td><td class="hsr-meta">Plus GST. Event coverage, brand video, explainers, highlight reels and testimonials.</td></tr><tr><td class="hsr-name" data-n="03"><a href="https://heroshotphotography.com/studio-hire/">Studio hire (Sydney)</a></td><td class="hsr-price"><span>from $90/hr</span></td><td class="hsr-meta">Six hire zones at our Petersham studio. The photo studio zone itself starts at $160/hr on weekdays.</td></tr><tr><td class="hsr-name" data-n="04"><a href="https://heroshotphotography.com/gift-card/">Gift cards</a></td><td class="hsr-price"><span>Online</span></td><td class="hsr-meta">Buy a gift card towards any session. Amounts and delivery are handled on the gift card page.</td></tr></tbody></table></div>
+    </div>
+
+      </div></div>
+    </div>
+
+    
+
+    </div>
+
   </div>
 </section>
 <script>
@@ -3045,53 +3094,7 @@ window.HS_PRICING = window.HS_PRICING || {
 
 
 <!-- ============== 06 PUBLISHED PRICING (paste from here) ============== -->
-<section class="hsr" id="hs-pricing" aria-labelledby="hsr-title">
-  <div class="hsr-in">
-    <span class="hsr-ghost" aria-hidden="true">06</span>
-    <div class="hsr-head hsr-rv">
-      <p class="hsr-ey"><b>06</b> Published pricing</p>
-      <h2 class="hsr-h2" id="hsr-title">Clear, <strong>Transparent Pricing</strong></h2>
-      <p class="hsr-lede">We believe in being transparent about pricing, so you can understand your investment before getting in touch.</p>
-    </div>
-
-    <div class="hsr-board hsr-rv">
-      <div class="hsr-b-row hsr-b-two">
-        <a class="hsr-sp" href="#hs-estimator"><span class="hsr-sp-k">Fewer than 20 people</span><span class="hsr-sp-t">For teams of fewer than 20 people, our pricing calculator makes it easy to work out an estimate.</span><span class="hsr-sp-go">Use the calculator<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
-        <div class="hsr-sp"><span class="hsr-sp-k">Larger teams</span><span class="hsr-sp-t">For larger teams, there are often ways we can improve efficiencies, streamline the schedule and make better use of your budget. We'll review your requirements and recommend the most cost effective approach.</span></div>
-      </div>
-      <p class="hsr-b-cap">Turnaround</p>
-      <div class="hsr-b-row hsr-b-three" role="list" aria-label="Turnaround times"><div class="hsr-tt" role="listitem"><span class="hsr-tt-big">24<small>hrs</small></span><span class="hsr-tt-k">Proof gallery</span><p>Your proof gallery is normally ready within 24 hours of your shoot.</p></div><div class="hsr-tt" role="listitem"><span class="hsr-tt-big">3&ndash;7<small>days</small></span><span class="hsr-tt-k">Retouched images</span><p>Once you've made your selections, professionally retouched images are typically delivered within 3 to 7 days, depending on the project size.</p></div><div class="hsr-tt" role="listitem"><span class="hsr-tt-big">24<small>hrs</small></span><span class="hsr-tt-k">Need them sooner?</span><p>Express retouching within 24 hours is often available. Additional fees may apply.</p></div></div>
-      <p class="hsr-b-cap">Our promise</p>
-      <div class="hsr-b-row hsr-b-guar"><span class="hsr-seal hsr-b-seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 4.5 5.6v5.7c0 4.6 3.1 8.6 7.5 9.9 4.4-1.3 7.5-5.3 7.5-9.9V5.6z"/><path d="m8.7 12.1 2.3 2.3 4.4-4.7"/></svg></span><div class="hsr-gtx hsr-b-gtx">
-        <h3>Our Complete <strong>Happiness Guarantee</strong></h3>
-        <p>We do everything we can to make sure our clients have a great experience and love their photos. Judging by the feedback we receive, we're doing a pretty good job.</p>
-        <p>For our <b>Elite Plus and Branding sessions</b>, we back that commitment with our Complete Happiness Guarantee. If you're unhappy with your images before they've been delivered, we'll arrange a reshoot, subject to our terms and conditions<!-- link to the guarantee T&C page once Hero Shot supplies the URL -->.</p>
-      </div><div class="hsr-b-act"><a class="hsr-gbtn hsr-b-btn" href="#hs-quote" data-hsv24pop="1">Make an enquiry <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div></div>
-    </div>
-
-    <div class="hsr-more">
-      <button type="button" class="hsr-more-btn hsr-rv" aria-expanded="false" aria-controls="hsr-list"><span data-l>View full price list</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg></i></button>
-      <div class="hsr-list" id="hsr-list"><div class="hsr-list-in">
-    <div class="hsr-tabs hsr-rv" role="tablist" aria-label="Price lists">
-      <span class="hsr-pill" aria-hidden="true"></span>
-      <button class="hsr-tab" role="tab" type="button" id="hsr-t1" aria-controls="hs-p1" aria-selected="true">Company headshots</button>
-      <button class="hsr-tab" role="tab" type="button" id="hsr-t3" aria-controls="hs-p3" aria-selected="false" tabindex="-1">Individual sessions</button>
-      <button class="hsr-tab" role="tab" type="button" id="hsr-t4" aria-controls="hs-p4" aria-selected="false" tabindex="-1">Everything else</button>
-    </div>
-
-    <div class="hsr-card hsr-rv">
-      <div class="hsr-panel" id="hs-p1" role="tabpanel" aria-labelledby="hsr-t1"><table class="hsr-table"><thead><tr><th scope="col" style="width:30%">Team size</th><th scope="col" style="width:20%">Rate per person</th><th scope="col">What is included</th></tr></thead><tbody><tr><td class="hsr-name" data-n="01">1 to 10 people</td><td class="hsr-price"><span>$175</span></td><td class="hsr-meta">Per person, plus GST. One look each, coached session, retouched final image. For example, 10 people is $1,750.</td></tr><tr><td class="hsr-name" data-n="02">Each person after 10</td><td class="hsr-price"><span>$75</span></td><td class="hsr-meta">Per additional person, plus GST. For example, 11 people is $1,825.</td></tr><tr><td class="hsr-name" data-n="03">20 or more people</td><td class="hsr-price"><span>Let’s talk</span></td><td class="hsr-meta">We plan larger team days around your headcount, locations and schedule, across several days where needed.</td></tr><tr><td class="hsr-name" data-n="04">On location setup</td><td class="hsr-price"><span>+$295</span></td><td class="hsr-meta">Lighting and backdrop setup when we come to you. Not charged for studio sessions.</td></tr></tbody></table><div class="hsr-foot"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Prices exclude GST</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>One look per person</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Company pricing only. Individual sessions are priced separately</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Minimum 4 people on location</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Proof gallery within 24 hours</span></div></div>
-      <div class="hsr-panel" id="hs-p3" role="tabpanel" aria-labelledby="hsr-t3" hidden><table class="hsr-table"><thead><tr><th scope="col" style="width:30%">Session</th><th scope="col" style="width:20%">Price</th><th scope="col">What you get</th></tr></thead><tbody><tr><td class="hsr-name" data-n="01">Express Hero</td><td class="hsr-price"><span>$325</span></td><td class="hsr-meta">Including GST. 20 minutes, one look, one retouched hero image.</td></tr><tr><td class="hsr-name" data-n="02">Elite Hero</td><td class="hsr-price"><span>$550</span></td><td class="hsr-meta">Including GST. 45 minutes, up to three looks, three retouched images.</td></tr><tr><td class="hsr-name" data-n="03">Elite Plus</td><td class="hsr-price"><span>$825</span></td><td class="hsr-meta">Including GST. 75 minutes, studio and outdoor, media release included.</td></tr><tr><td class="hsr-name" data-n="04">Extra hero shot</td><td class="hsr-price"><span>$150</span></td><td class="hsr-meta">Per additional retouched image. $250 on Elite Plus.</td></tr></tbody></table><div class="hsr-foot"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Prices include GST</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Coaching included in every session</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Retouched 3–7 days after selection</span></div></div>
-      <div class="hsr-panel" id="hs-p4" role="tabpanel" aria-labelledby="hsr-t4" hidden><table class="hsr-table"><thead><tr><th scope="col" style="width:30%">Service</th><th scope="col" style="width:20%">From</th><th scope="col">Notes</th></tr></thead><tbody><tr><td class="hsr-name" data-n="01"><a href="https://heroshotphotography.com/personal-brand-packages/">Personal branding</a></td><td class="hsr-price"><span>$1,250</span></td><td class="hsr-meta">Including GST. Editorial-quality sessions for founders, consultants and public-facing professionals.</td></tr><tr><td class="hsr-name" data-n="02"><a href="https://heroshotphotography.com/corporate-events/">Events</a> &amp; <a href="https://heroshotphotography.com/video/">video</a></td><td class="hsr-price"><span>$650</span></td><td class="hsr-meta">Plus GST. Event coverage, brand video, explainers, highlight reels and testimonials.</td></tr><tr><td class="hsr-name" data-n="03"><a href="https://heroshotphotography.com/studio-hire/">Studio hire (Sydney)</a></td><td class="hsr-price"><span>from $90/hr</span></td><td class="hsr-meta">Six hire zones at our Petersham studio. The photo studio zone itself starts at $160/hr on weekdays.</td></tr><tr><td class="hsr-name" data-n="04"><a href="https://heroshotphotography.com/gift-card/">Gift cards</a></td><td class="hsr-price"><span>Online</span></td><td class="hsr-meta">Buy a gift card towards any session. Amounts and delivery are handled on the gift card page.</td></tr></tbody></table></div>
-    </div>
-
-      </div></div>
-    </div>
-
-    
-
-  </div>
-</section>
+<!-- 06 Published pricing merged into the calculator section -->
 <script>
 (function(){
   var sec=document.querySelector('.hsr');if(!sec)return;
@@ -3124,7 +3127,7 @@ window.HS_PRICING = window.HS_PRICING || {
   <div class="hsq-bg" aria-hidden="true"></div>
   <div class="hsq-in">
     <div class="hsq-left hsq-rv">
-      <p class="hsq-ey"><b>07</b> What clients say</p>
+      <p class="hsq-ey"><b>06</b> What clients say</p>
       <h2 class="hsq-h2" id="hsq-title"><strong>1,000+</strong> five-star Google reviews</h2>
       <p class="hsq-lede">What matters more than the number is what people write, and the pattern is consistent: they name the photographer who looked after them.</p>
 
@@ -3180,9 +3183,9 @@ window.HS_PRICING = window.HS_PRICING || {
 <!-- ============== 08 THE ZERO TO HERO METHOD (paste from here) ============== -->
 <section class="hsm" id="hs-process" aria-labelledby="hsm-title">
   <div class="hsm-in">
-    <span class="hsm-ghost" aria-hidden="true">08</span>
+    <span class="hsm-ghost" aria-hidden="true">07</span>
     <div class="hsm-head hsm-rv">
-      <p class="hsm-ey"><b>08</b> The Zero to Hero Method</p>
+      <p class="hsm-ey"><b>07</b> The Zero to Hero Method</p>
       <h2 class="hsm-h2" id="hsm-title">How Does <strong>My Shoot Run?</strong></h2>
       <p class="hsm-lede">Whether you're coming into our studio or we're photographing your entire team, our process is designed to make things easy, comfortable and enjoyable.</p>
       <p class="hsm-lede">We'll guide you through each stage, from understanding what you need to reviewing your images and making sure we've captured the right result.</p>
@@ -3209,9 +3212,9 @@ window.HS_PRICING = window.HS_PRICING || {
 <!-- ============== 09 WEIGHING UP THE OPTIONS (paste from here) ============== -->
 <section class="hsv" id="hs-compare" aria-labelledby="hsv-title">
   <div class="hsv-in">
-    <span class="hsv-ghost" aria-hidden="true">09</span>
+    <span class="hsv-ghost" aria-hidden="true">08</span>
     <div class="hsv-head hsv-rv">
-      <p class="hsv-ey"><b>09</b> Weighing up the options</p>
+      <p class="hsv-ey"><b>08</b> Weighing up the options</p>
       <h2 class="hsv-h2" id="hsv-title">What else you could <strong>do instead</strong></h2>
       <p class="hsv-lede">Most people comparing us are also weighing up an AI generator, a walk-in studio or a freelance photographer. Each of them has its place. Here is how they compare on the things that usually decide it.</p>
     </div>
@@ -3290,9 +3293,9 @@ window.HS_PRICING = window.HS_PRICING || {
 <!-- ============== 10 OUR STUDIOS (paste from here) ============== -->
 <section class="hst" id="hs-studio" aria-labelledby="hst-title">
   <div class="hst-in">
-    <span class="hst-ghost" aria-hidden="true">10</span>
+    <span class="hst-ghost" aria-hidden="true">09</span>
     <div class="hst-rv">
-      <p class="hst-ey"><b>10</b> Where we shoot</p>
+      <p class="hst-ey"><b>09</b> Where we shoot</p>
       <h2 class="hst-h2" id="hst-title">Headshot photography, <strong>built for comfort</strong></h2>
       <p class="hst-p">We host <a href="https://heroshotphotography.com/headshots-for-individuals/">professional headshots</a>, <a href="https://heroshotphotography.com/personal-branding/">personal branding shoots</a> and <a href="https://heroshotphotography.com/team-portraits/">team photography</a> at our <a href="https://heroshotphotography.com/photo-studio-sydney/">Sydney</a> and Melbourne studios, and at a professional studio in Perth. In Brisbane, we bring the full studio setup to your location. They are designed for comfort with no distractions and predictable outcomes.</p>
       <p class="hst-p">With a curated range of backdrops, from clean whites to bold colours, we can create the right look to match your style and goals.</p>
@@ -3334,8 +3337,8 @@ window.HS_PRICING = window.HS_PRICING || {
 <section class="hsm2" id="hs-team" aria-labelledby="hsm2-title">
   <div class="hsm2-bg" aria-hidden="true"></div>
   <div class="hsm2-in">
-    <span class="hsm2-ghost" aria-hidden="true">11</span>
-    <p class="hsm2-ey hsm2-rv"><b>11</b> Who you will be working with</p>
+    <span class="hsm2-ghost" aria-hidden="true">10</span>
+    <p class="hsm2-ey hsm2-rv"><b>10</b> Who you will be working with</p>
     <div class="hsm2-top">
       <div class="hsm2-port hsm2-rv">
         <figure class="hsm2-frame">
@@ -3389,7 +3392,7 @@ window.HS_PRICING = window.HS_PRICING || {
   <div class="hsy-in">
     <div class="hsy-head hsy-rv">
       <div>
-        <p class="hsy-ey"><b>12</b> Proof, with numbers</p>
+        <p class="hsy-ey"><b>11</b> Proof, with numbers</p>
         <h2 class="hsy-h2" id="hsy-title">Recent <strong>client work</strong></h2>
       </div>
       <p class="hsy-lede">Every one of these is a real booking with a real scope. If your job looks like one of them, the quote will look like theirs too. <a href="https://heroshotphotography.com/case-study/">Browse every case study</a>.</p>
@@ -3499,7 +3502,7 @@ window.HS_PRICING = window.HS_PRICING || {
   </div>
   <div class="hsg-in">
     <div class="hsg-copy hsg-rv">
-      <p class="hsg-ey"><b>13</b> Headshots that give back</p>
+      <p class="hsg-ey"><b>12</b> Headshots that give back</p>
       <h2 class="hsg-h2" id="hsg-title">Your headshot <strong>does something else too</strong></h2>
       <p class="hsg-p">Your professional headshot can make a positive impact beyond your website or LinkedIn profile. For every corporate headshot or business portrait we create, a portion of our profits goes toward supporting environmental and social causes.</p>
       <p class="hsg-p">After your shoot you will receive a link to our <a href="https://heroshotphotography.com/charity/">charity page</a>, where you choose the cause that matters most to you.</p>
@@ -3531,7 +3534,7 @@ window.HS_PRICING = window.HS_PRICING || {
   <div class="hsf-bg" aria-hidden="true"></div>
   <div class="hsf-in">
     <div class="hsf-head hsf-rv">
-      <p class="hsf-ey"><b>14</b> Behind the scenes</p>
+      <p class="hsf-ey"><b>13</b> Behind the scenes</p>
       <h2 class="hsf-h2" id="hsf-title">See What It's Like to <strong>Work With Us</strong></h2>
       <p class="hsf-lede">There's more to a great headshot than good lighting and a camera. Take a look behind the scenes and see how we guide our clients, build confidence and bring out their best.</p>
     </div>
@@ -3705,7 +3708,7 @@ window.HS_PRICING = window.HS_PRICING || {
   <div class="hsk-in">
     <div class="hsk-side hsk-rv">
       <span class="hsk-qm" aria-hidden="true">?</span>
-      <p class="hsk-ey"><b>15</b> Photography FAQs</p>
+      <p class="hsk-ey"><b>14</b> Photography FAQs</p>
       <h2 class="hsk-h2" id="hsk-title">Questions we <strong>get asked most</strong></h2>
       <div class="hsk-gd">
           <h3>Worth reading before you book</h3>
@@ -3760,7 +3763,7 @@ window.HS_PRICING = window.HS_PRICING || {
   <div class="hsl-bg" aria-hidden="true"></div>
   <div class="hsl-in">
     <div class="hsl-head hsl-rv">
-      <div><p class="hsl-ey"><b>16</b> Office locations</p><h2 class="hsl-h2" id="hsl-title">Where to <strong>find us</strong></h2></div>
+      <div><p class="hsl-ey"><b>15</b> Office locations</p><h2 class="hsl-h2" id="hsl-title">Where to <strong>find us</strong></h2></div>
       <p class="hsl-lede">We work in Sydney, Melbourne, Brisbane and Perth, and travel Australia-wide with our full lighting setup. Here is exactly what is in each city.</p>
     </div>
     <div class="hsl-main">
@@ -3847,7 +3850,7 @@ window.HS_PRICING = window.HS_PRICING || {
   <div class="hsz-bg" aria-hidden="true"></div>
   <div class="hsz-in">
     <div class="hsz-rv">
-      <p class="hsz-ey"><b>17</b> Let’s talk</p>
+      <p class="hsz-ey"><b>16</b> Let’s talk</p>
       <h2 class="hsz-h2" id="hsz-title">Is your professional <strong>photography</strong> as impressive as <strong>you</strong>?</h2>
       <p class="hsz-lede">A strong brand starts with the best headshots, impactful brand photography and video that engages. Send us a message and we will come back to you.</p>
     </div>
