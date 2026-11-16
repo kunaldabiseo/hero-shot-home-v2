@@ -897,6 +897,21 @@ html,body{margin:0;background:#091113}
 .hsr .hsr-h2{margin-top:16px;font:300 clamp(32px,4.6vw,58px)/1.04 "Roboto Condensed",sans-serif;letter-spacing:-.008em;text-transform:uppercase;color:var(--text)}
 .hsr .hsr-h2 strong{font-weight:700}
 .hsr .hsr-lede+.hsr-lede{margin-top:8px}
+/* price list tucked behind a toggle (calculator already covers the numbers) */
+.hsr-more{position:relative;z-index:1;margin-top:clamp(22px,2.6vw,32px);text-align:center}
+.hsr-more-btn{display:inline-flex;align-items:center;gap:12px;min-height:50px;padding:0 10px 0 24px;border-radius:99px;border:1.5px solid var(--line);background:#fff;color:#0b1416;font:700 14.5px/1 Montserrat,sans-serif;cursor:pointer;transition:border-color .3s,box-shadow .3s}
+.hsr-more-btn i{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:rgba(10,119,145,.1);color:var(--teal);transition:transform .45s cubic-bezier(.2,.8,.2,1),background .3s}
+.hsr-more-btn i svg{width:15px;height:15px}
+.hsr-more-btn:hover{border-color:var(--teal);box-shadow:0 14px 30px -20px rgba(10,119,145,.6)}
+.hsr-more-btn[aria-expanded="true"] i{transform:rotate(180deg);background:var(--teal);color:#fff}
+.hsr-more-btn:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.hsr-list{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s cubic-bezier(.2,.8,.2,1);text-align:left}
+.hsr-list.on{grid-template-rows:1fr}
+.hsr-list-in{min-height:0;overflow:hidden}
+.hsr-list.on .hsr-list-in{overflow:visible}
+.hsr-list-in>.hsr-tabs{margin-top:22px}
+@media (prefers-reduced-motion:reduce){.hsr-list{transition:none}}
+
 .hsr-split{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:12px;max-width:900px;margin:22px auto 0;text-align:left}
 .hsr-sp{display:flex;flex-direction:column;gap:8px;padding:18px 20px;border-radius:18px;background:#fff;border:1px solid var(--line);color:inherit;text-decoration:none;transition:border-color .3s,transform .3s,box-shadow .3s}
 a.hsr-sp:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:0 18px 36px -24px rgba(10,119,145,.5)}
@@ -2945,6 +2960,9 @@ window.HS_PRICING = window.HS_PRICING || {
       </div>
     </div>
 
+    <div class="hsr-more">
+      <button type="button" class="hsr-more-btn hsr-rv" aria-expanded="false" aria-controls="hsr-list"><span data-l>View full price list</span><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg></i></button>
+      <div class="hsr-list" id="hsr-list"><div class="hsr-list-in">
     <div class="hsr-tabs hsr-rv" role="tablist" aria-label="Price lists">
       <span class="hsr-pill" aria-hidden="true"></span>
       <button class="hsr-tab" role="tab" type="button" id="hsr-t1" aria-controls="hs-p1" aria-selected="true">Company headshots</button>
@@ -2956,6 +2974,9 @@ window.HS_PRICING = window.HS_PRICING || {
       <div class="hsr-panel" id="hs-p1" role="tabpanel" aria-labelledby="hsr-t1"><table class="hsr-table"><thead><tr><th scope="col" style="width:30%">Team size</th><th scope="col" style="width:20%">Rate per person</th><th scope="col">What is included</th></tr></thead><tbody><tr><td class="hsr-name" data-n="01">1 to 10 people</td><td class="hsr-price"><span>$175</span></td><td class="hsr-meta">Per person, plus GST. One look each, coached session, retouched final image. For example, 10 people is $1,750.</td></tr><tr><td class="hsr-name" data-n="02">Each person after 10</td><td class="hsr-price"><span>$75</span></td><td class="hsr-meta">Per additional person, plus GST. For example, 11 people is $1,825.</td></tr><tr><td class="hsr-name" data-n="03">20 or more people</td><td class="hsr-price"><span>Let’s talk</span></td><td class="hsr-meta">We plan larger team days around your headcount, locations and schedule, across several days where needed.</td></tr><tr><td class="hsr-name" data-n="04">On location setup</td><td class="hsr-price"><span>+$295</span></td><td class="hsr-meta">Lighting and backdrop setup when we come to you. Not charged for studio sessions.</td></tr></tbody></table><div class="hsr-foot"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Prices exclude GST</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>One look per person</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Company pricing only. Individual sessions are priced separately</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Minimum 4 people on location</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Proof gallery within 24 hours</span></div></div>
       <div class="hsr-panel" id="hs-p3" role="tabpanel" aria-labelledby="hsr-t3" hidden><table class="hsr-table"><thead><tr><th scope="col" style="width:30%">Session</th><th scope="col" style="width:20%">Price</th><th scope="col">What you get</th></tr></thead><tbody><tr><td class="hsr-name" data-n="01">Express Hero</td><td class="hsr-price"><span>$325</span></td><td class="hsr-meta">Including GST. 20 minutes, one look, one retouched hero image.</td></tr><tr><td class="hsr-name" data-n="02">Elite Hero</td><td class="hsr-price"><span>$550</span></td><td class="hsr-meta">Including GST. 45 minutes, up to three looks, three retouched images.</td></tr><tr><td class="hsr-name" data-n="03">Elite Plus</td><td class="hsr-price"><span>$825</span></td><td class="hsr-meta">Including GST. 75 minutes, studio and outdoor, media release included.</td></tr><tr><td class="hsr-name" data-n="04">Extra hero shot</td><td class="hsr-price"><span>$150</span></td><td class="hsr-meta">Per additional retouched image. $250 on Elite Plus.</td></tr></tbody></table><div class="hsr-foot"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Prices include GST</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Coaching included in every session</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6-6.4"/></svg>Retouched 3–7 days after selection</span></div></div>
       <div class="hsr-panel" id="hs-p4" role="tabpanel" aria-labelledby="hsr-t4" hidden><table class="hsr-table"><thead><tr><th scope="col" style="width:30%">Service</th><th scope="col" style="width:20%">From</th><th scope="col">Notes</th></tr></thead><tbody><tr><td class="hsr-name" data-n="01"><a href="https://heroshotphotography.com/personal-brand-packages/">Personal branding</a></td><td class="hsr-price"><span>$1,250</span></td><td class="hsr-meta">Including GST. Editorial-quality sessions for founders, consultants and public-facing professionals.</td></tr><tr><td class="hsr-name" data-n="02"><a href="https://heroshotphotography.com/corporate-events/">Events</a> &amp; <a href="https://heroshotphotography.com/video/">video</a></td><td class="hsr-price"><span>$650</span></td><td class="hsr-meta">Plus GST. Event coverage, brand video, explainers, highlight reels and testimonials.</td></tr><tr><td class="hsr-name" data-n="03"><a href="https://heroshotphotography.com/studio-hire/">Studio hire (Sydney)</a></td><td class="hsr-price"><span>from $90/hr</span></td><td class="hsr-meta">Six hire zones at our Petersham studio. The photo studio zone itself starts at $160/hr on weekdays.</td></tr><tr><td class="hsr-name" data-n="04"><a href="https://heroshotphotography.com/gift-card/">Gift cards</a></td><td class="hsr-price"><span>Online</span></td><td class="hsr-meta">Buy a gift card towards any session. Amounts and delivery are handled on the gift card page.</td></tr></tbody></table></div>
+    </div>
+
+      </div></div>
     </div>
 
     <div class="hsr-turn hsr-rv"><p>Your proof gallery is normally ready within 24 hours of your shoot. Once you've made your selections, professionally retouched images are typically delivered within 3 to 7 days, depending on the project size.</p><p>Need them sooner? Express retouching within 24 hours is often available. Additional fees may apply.</p></div>
@@ -3997,6 +4018,16 @@ window.HS_PRICING = window.HS_PRICING || {
   btn.addEventListener('click',open);pnl.querySelector('[data-hs-bclose]').addEventListener('click',close);
   pnl.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
   pnl.querySelector('[data-hs-budget]').addEventListener('click',function(){setTimeout(close,700)});
+})();
+</script>
+<script>
+/* price list toggle */
+(function(){var b=document.querySelector('.hsr-more-btn'),l=document.getElementById('hsr-list');if(!b||!l)return;
+  l.setAttribute('inert','');l.querySelector('.hsr-list-in').setAttribute('aria-hidden','true');
+  b.addEventListener('click',function(){var on=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',on);l.classList.toggle('on',on);
+    if(on){l.removeAttribute('inert');l.querySelector('.hsr-list-in').removeAttribute('aria-hidden')}else{l.setAttribute('inert','');l.querySelector('.hsr-list-in').setAttribute('aria-hidden','true')}
+    b.querySelector('[data-l]').textContent=on?'Hide price list':'View full price list';
+    if(on)l.querySelectorAll('.hsr-rv').forEach(function(x){x.classList.add('in')})});
 })();
 </script>
 <!-- Estimate popup (Get your estimate) -->
