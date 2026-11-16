@@ -3542,22 +3542,22 @@ window.HS_PRICING = window.HS_PRICING || {
           <span class="hsf-cap"><span><small>Film 01</small><b>Individual Headshot Session</b></span><span class="hsf-rec" aria-hidden="true">REC</span></span>
         </span>
       </a>
-      <a class="hsf-film hsf-rv" href="https://heroshotphotography.com/wp-content/uploads/2025/10/behind_the_scenes_with_microsoft-1080p.mp4" data-mp4="https://heroshotphotography.com/wp-content/uploads/2025/10/behind_the_scenes_with_microsoft-1080p.mp4" data-vlabel="Corporate Headshot Day" aria-label="Play: Corporate Headshot Day">
-        <span class="hsf-scr"><img src="https://heroshotphotography.com/wp-content/uploads/2021/09/Hero-Shot-cooler-tone-1D6A3520-Edit-1024x683.jpg" alt="Hero Shot photographing a corporate team on location" loading="lazy" decoding="async">
+      <a class="hsf-film hsf-rv" href="https://vimeo.com/1160469181" data-vid="1160469181" data-vlabel="Corporate Headshot Day" aria-label="Play: Corporate Headshot Day">
+        <span class="hsf-scr"><img src="media/film-02.webp" alt="Hero Shot team arriving on location for a corporate headshot day" loading="lazy" decoding="async">
           <span class="hsf-pl" aria-hidden="true"></span>
           <span class="hsf-cap"><span><small>Film 02</small><b>Corporate Headshot Day</b></span><span class="hsf-rec" aria-hidden="true">REC</span></span>
         </span>
       </a>
-      <div class="hsf-film hsf-rv hsf-soon" role="group" aria-label="Workplace and Branding Shoot, video coming soon">
-        <span class="hsf-scr"><img src="https://heroshotphotography.com/wp-content/uploads/2022/08/Corporate-Photography-Boardroom-Fortius-768x512.jpg" alt="Workplace brand photography shoot in a boardroom" loading="lazy" decoding="async">
-          <span class="hsf-soon-tag">Coming soon</span>
-          <span class="hsf-cap"><span><small>Film 03</small><b>Workplace &amp; Branding Shoot</b></span></span>
-        </span>
-      </div>
-      <a class="hsf-film hsf-rv" href="https://vimeo.com/267360069" data-vid="267360069" data-vlabel="Behind the Scenes" aria-label="Play: Behind the Scenes">
-        <span class="hsf-scr"><img src="https://heroshotphotography.com/wp-content/uploads/2021/09/BRENDAN-VIDEO-SLIDE-COVER-SAM-Screenshot-2021-09-30-at-21.53.24-scaled-e1633996168129-1024x576.jpg" alt="Sam Affridi photographing a client on a corporate shoot" loading="lazy" decoding="async">
+      <a class="hsf-film hsf-rv" href="https://www.youtube.com/watch?v=ddZNPOOTkEM" data-yt="ddZNPOOTkEM" data-vlabel="Workplace and Branding Shoot" aria-label="Play: Workplace &amp; Branding Shoot">
+        <span class="hsf-scr"><img src="media/film-03.webp" alt="Location lighting set-up for headshots and group portraits at Dewcape" loading="lazy" decoding="async">
           <span class="hsf-pl" aria-hidden="true"></span>
-          <span class="hsf-cap"><span><small>Film 04</small><b>Behind the Scenes</b></span><span class="hsf-rec" aria-hidden="true">REC</span></span>
+          <span class="hsf-cap"><span><small>Film 03</small><b>Workplace &amp; Branding Shoot</b></span><span class="hsf-rec" aria-hidden="true">REC</span></span>
+        </span>
+      </a>
+      <a class="hsf-film hsf-rv" href="https://vimeo.com/1223977439" data-vid="1223977439" data-vlabel="Client Testimonial" aria-label="Play: Client Testimonial">
+        <span class="hsf-scr"><img src="media/film-04.webp" alt="Serendis client testimonial" loading="lazy" decoding="async">
+          <span class="hsf-pl" aria-hidden="true"></span>
+          <span class="hsf-cap"><span><small>Film 04</small><b>Client Testimonial</b></span><span class="hsf-rec" aria-hidden="true">REC</span></span>
         </span>
       </a>
     </div>
@@ -3671,7 +3671,8 @@ window.HS_PRICING = window.HS_PRICING || {
   function close(){lb.classList.remove('on');setTimeout(function(){box.innerHTML=''},400);if(last)last.focus()}
   [].forEach.call(sec.querySelectorAll('.hsf-film'),function(a){a.addEventListener('click',function(e){
     if(e.metaKey||e.ctrlKey)return;e.preventDefault();last=a;
-    var mp4=a.getAttribute('data-mp4');
+    var mp4=a.getAttribute('data-mp4'),yt=a.getAttribute('data-yt');
+    if(yt){box.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+yt+'?autoplay=1&rel=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="'+a.getAttribute('data-vlabel')+'"></iframe>'}else
     box.innerHTML=mp4?'<video src="'+mp4+'" controls autoplay playsinline title="'+a.getAttribute('data-vlabel')+'"></video>':'<iframe src="https://player.vimeo.com/video/'+a.getAttribute('data-vid')+'?autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="'+a.getAttribute('data-vlabel')+'"></iframe>';
     lb.classList.add('on');lb.querySelector('.hsf-lb-x').focus()})});
   lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('hsf-lb-x'))close()});
