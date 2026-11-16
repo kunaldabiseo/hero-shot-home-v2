@@ -414,6 +414,27 @@ html,body{margin:0;background:#091113}
 .hsw-where .hsw-link{margin-top:20px;color:var(--teal-lt) !important}
 .hsw-ben li b{display:block;margin-bottom:2px;font-weight:700;color:#0b1416}
 .hsw-ben li.hsw-loc{font-weight:600;color:#1f2e33}
+
+/* where-we-work: slim strip + map popup */
+.hsw-wstrip{position:relative;z-index:1;margin-top:clamp(18px,2.2vw,28px);display:flex;align-items:center;gap:16px;padding:14px 16px 14px 18px;border-radius:18px;background:#fff;border:1px solid var(--line)}
+.hsw-ws-ic{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:rgba(10,119,145,.08);color:var(--teal)}
+.hsw-ws-ic svg{width:21px;height:21px}
+.hsw-wstrip p{flex:1;min-width:0;font:400 14.5px/1.55 Montserrat,sans-serif;color:rgba(31,46,51,.86)}
+.hsw-wstrip p b{font-weight:700;color:#0b1416}
+.hsw-ws-btn{flex:none;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:99px;border:0;background:#0b1416;color:#fff;font:700 14px/1 Montserrat,sans-serif;cursor:pointer;transition:background .3s,transform .3s}
+.hsw-ws-btn svg{width:15px;height:15px;transition:transform .3s}
+.hsw-ws-btn:hover{background:var(--teal)}.hsw-ws-btn:hover svg{transform:translateX(3px)}
+.hsw-ws-btn:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.hsw-mapdlg{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:20px}
+.hsw-mapdlg[hidden]{display:none}
+.hsw-mapdlg-bg{position:absolute;inset:0;background:rgba(4,12,16,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:hswfade .3s ease}
+.hsw-mapdlg .hsw-where{margin:0;width:min(1060px,100%);max-height:calc(100vh - 40px);overflow:auto;box-shadow:0 40px 90px rgba(0,0,0,.55);animation:hswpop .38s cubic-bezier(.2,.8,.2,1)}
+.hsw-mapdlg-x{position:absolute;top:14px;right:14px;z-index:3;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;cursor:pointer}
+.hsw-mapdlg-x svg{width:15px;height:15px}.hsw-mapdlg-x:hover{background:rgba(255,255,255,.18)}
+.hsw-mapdlg-x:focus-visible{outline:2px solid var(--teal-lt);outline-offset:2px}
+@keyframes hswfade{from{opacity:0}}@keyframes hswpop{from{opacity:0;transform:translateY(14px) scale(.98)}}
+@media (prefers-reduced-motion:reduce){.hsw-mapdlg-bg,.hsw-mapdlg .hsw-where{animation:none}}
+@media (max-width:767px){.hsw-wstrip{flex-wrap:wrap;gap:12px;padding:14px}.hsw-ws-ic{width:36px;height:36px}.hsw-wstrip p{flex-basis:calc(100% - 50px);font-size:13.5px}.hsw-ws-btn{width:100%;justify-content:center}.hsw-mapdlg{padding:12px}.hsw-mapdlg .hsw-where{max-height:calc(100vh - 24px);padding-top:56px}}
 /* compact benefits switcher (companies card) */
 .hsw-loc2{display:flex;gap:10px;align-items:flex-start;font:500 14px/1.55 Montserrat,sans-serif;color:#1f2e33}
 .hsw-loc2 svg{flex:none;width:18px;height:18px;margin-top:2px;color:var(--teal)}
@@ -2527,14 +2548,23 @@ html,body{margin:0;background:#091113}
         </div>
       </article>
     </div>
-    <div class="hsw-where hsw-rv">
+    <div class="hsw-wstrip hsw-rv">
+      <span class="hsw-ws-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+      <p><b>Studios in Sydney, Melbourne and Perth.</b> On-site across Greater Sydney, Melbourne, Brisbane, Canberra, Perth and Adelaide.</p>
+      <button type="button" class="hsw-ws-btn" data-hsw-map-open aria-haspopup="dialog" aria-controls="hsw-mapdlg">View map<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+    </div>
+    <div class="hsw-mapdlg" id="hsw-mapdlg" role="dialog" aria-modal="true" aria-labelledby="hsw-mapdlg-t" hidden>
+      <div class="hsw-mapdlg-bg" data-hsw-map-close></div>
+      <div class="hsw-where">
+        <button type="button" class="hsw-mapdlg-x" data-hsw-map-close aria-label="Close map"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
       <div class="hsw-mapbox"><div class="hsw-geo" data-hsw-geo role="img" aria-label="Map of Australia showing Hero Shot studios in Sydney, Melbourne and Perth, and on-site photography in Greater Sydney, Melbourne, Brisbane, Canberra, Perth and Adelaide"><img alt="" decoding="async" hidden><span class="hsw-pin s r" style="left:83.72%;top:64.15%" data-c="sydney"><i></i><em>Sydney</em></span><span class="hsw-pin s l" style="left:72.15%;top:74.2%" data-c="melbourne"><i></i><em>Melbourne</em></span><span class="hsw-pin s r" style="left:18.26%;top:59.42%" data-c="perth"><i></i><em>Perth</em></span><span class="hsw-pin o l" style="left:87.09%;top:48.75%" data-c="brisbane"><i></i><em>Brisbane</em></span><span class="hsw-pin o l" style="left:79.87%;top:67.69%" data-c="canberra"><i></i><em>Canberra</em></span><span class="hsw-pin o l" style="left:60.37%;top:66.8%" data-c="adelaide"><i></i><em>Adelaide</em></span></div></div>
       <div class="hsw-wtx">
         <p class="hsw-wk">Where we work</p>
-        <h3>Studios in three cities, <strong>on-site Australia wide</strong></h3>
+        <h3 id="hsw-mapdlg-t">Studios in three cities, <strong>on&#8209;site Australia wide</strong></h3>
         <div class="hsw-key"><span class="hsw-kh"><i class="s"></i>Our studios</span><p>Sydney, Melbourne and Perth</p></div>
         <div class="hsw-key"><span class="hsw-kh"><i class="o"></i>We come to you</span><p>Greater Sydney, Melbourne, Brisbane, Canberra, Perth and Adelaide</p></div>
-        <a class="hsw-link" href="#hs-locations">Studio addresses<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a class="hsw-link" href="#hs-locations" data-hsw-map-close>Studio addresses<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
       </div>
     </div>
   </div>
@@ -3851,6 +3881,17 @@ window.HS_PRICING = window.HS_PRICING || {
   bx.addEventListener('mouseenter',stop);bx.addEventListener('mouseleave',start);bx.addEventListener('focusin',stop);
   if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?start():stop()})},{threshold:.4}).observe(bx)}else start();
 })})();
+</script>
+<script>
+/* where-we-work map popup */
+(function(){var d=document.getElementById('hsw-mapdlg'),last=null;if(!d)return;
+  function open(e){last=e&&e.currentTarget;d.hidden=false;document.documentElement.style.overflow='hidden';var x=d.querySelector('.hsw-mapdlg-x');x&&x.focus()}
+  function close(){if(d.hidden)return;d.hidden=true;document.documentElement.style.overflow='';last&&last.focus&&last.focus({preventScroll:true})}
+  [].forEach.call(document.querySelectorAll('[data-hsw-map-open]'),function(b){b.addEventListener('click',open)});
+  [].forEach.call(d.querySelectorAll('[data-hsw-map-close]'),function(b){b.addEventListener('click',close)});
+  document.addEventListener('keydown',function(e){if(d.hidden)return;if(e.key==='Escape')close();
+    if(e.key==='Tab'){var f=[].slice.call(d.querySelectorAll('button,a[href]'));var a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
+})();
 </script>
 <!-- ============== PREMIUM FOOTER (paste from here) ============== -->
 <footer class="hsft" aria-label="Site footer">
