@@ -2506,6 +2506,7 @@ a.hsr-sp:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
 #hs-cases.cur-down .hsy-cur{background:#fff;color:var(--teal,#0a7791)}
 @media (hover:hover) and (pointer:fine) and (min-width:961px){
  #hs-cases .hsy-vp,#hs-cases .hsy-vp *{cursor:none}
+ html body #hs-cases .hsy-vp{scroll-snap-type:none}
  #hs-cases .hsy-vp.dragging{scroll-behavior:auto;user-select:none}
  #hs-cases .hsy-vp.dragging a{pointer-events:none}
 }
@@ -4780,7 +4781,7 @@ window.HS_PRICING = window.HS_PRICING || {
   var vp=sec.querySelector('.hsy-vp');if(!vp)return;
   if(!(window.matchMedia&&matchMedia('(hover:hover) and (pointer:fine) and (min-width:961px)').matches))return;
   var cur=document.createElement('div');cur.className='hsy-cur';cur.setAttribute('aria-hidden','true');
-  cur.innerHTML='<b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3 5 8l5 5"/></svg>Drag<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3 5 5-5 5"/></svg></b>';
+  cur.innerHTML='<b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3 5 8l5 5"/></svg>Scroll<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3 5 5-5 5"/></svg></b>';
   sec.appendChild(cur);
   var x=0,y=0,raf=0;function paint(){raf=0;cur.style.transform='translate3d('+x+'px,'+y+'px,0)'}
   vp.addEventListener('mousemove',function(e){x=e.clientX;y=e.clientY;if(!raf)raf=requestAnimationFrame(paint)});
@@ -4793,6 +4794,20 @@ window.HS_PRICING = window.HS_PRICING || {
   window.addEventListener('mouseup',end);
   vp.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=false}},true);
   vp.addEventListener('dragstart',function(e){e.preventDefault()});
+  /* mouse wheel over the cards moves them sideways; at either end the page scrolls on as normal */
+  var tgt=null,anim=0;
+  function step(){var d=tgt-vp.scrollLeft;if(Math.abs(d)<1){vp.scrollLeft=tgt;tgt=null;anim=0;vp.style.scrollBehavior='';return}vp.scrollLeft+=d*.18;anim=requestAnimationFrame(step)}
+  vp.addEventListener('wheel',function(e){
+    if(e.ctrlKey)return;
+    var dy=Math.abs(e.deltaY)>Math.abs(e.deltaX)?e.deltaY:0;if(!dy)return;
+    if(e.deltaMode===1)dy*=40;else if(e.deltaMode===2)dy*=vp.clientWidth;
+    var max=vp.scrollWidth-vp.clientWidth,base=tgt==null?vp.scrollLeft:tgt;
+    if((dy<0&&base<=1)||(dy>0&&base>=max-1))return;
+    e.preventDefault();
+    tgt=Math.max(0,Math.min(max,base+dy*1.2));
+    vp.style.scrollBehavior='auto';
+    if(!anim)anim=requestAnimationFrame(step);
+  },{passive:false});
 })();
 </script>
 </body>
