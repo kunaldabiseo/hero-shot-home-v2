@@ -2497,20 +2497,20 @@ a.hsr-sp:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
 </style>
 <style id="hs-type-tune">
 /* 11 case rail: drag cursor hint (desktop mouse only) */
-#hs-cases .hsy-cur{position:fixed;left:0;top:0;z-index:60;width:92px;height:92px;margin:-46px 0 0 -46px;border-radius:50%;display:grid;place-items:center;
+body>.hsy-cur{position:fixed;left:0;top:0;z-index:60;width:92px;height:92px;margin:-46px 0 0 -46px;border-radius:50%;display:grid;place-items:center;
  background:var(--teal,#0a7791);color:#fff;font:700 11px/1.2 Montserrat,sans-serif;letter-spacing:.14em;text-transform:uppercase;text-align:center;
  pointer-events:none;opacity:0;transform:translate3d(-200px,-200px,0) scale(.4);transition:opacity .25s,scale .25s;box-shadow:0 18px 40px -14px rgba(0,0,0,.7)}
-#hs-cases .hsy-cur b{display:flex;align-items:center;gap:6px;font-weight:700}
-#hs-cases .hsy-cur svg{width:12px;height:12px}
-#hs-cases.cur-on .hsy-cur{opacity:1}
-#hs-cases.cur-down .hsy-cur{background:#fff;color:var(--teal,#0a7791)}
+body>.hsy-cur b{display:flex;align-items:center;gap:6px;font-weight:700}
+body>.hsy-cur svg{width:12px;height:12px}
+body.hsy-cur-on>.hsy-cur{opacity:1}
+body.hsy-cur-down>.hsy-cur{background:#fff;color:var(--teal,#0a7791)}
 @media (hover:hover) and (pointer:fine) and (min-width:961px){
  #hs-cases .hsy-vp,#hs-cases .hsy-vp *{cursor:none}
  html body #hs-cases .hsy-vp{scroll-snap-type:none}
  #hs-cases .hsy-vp.dragging{scroll-behavior:auto;user-select:none}
  #hs-cases .hsy-vp.dragging a{pointer-events:none}
 }
-@media not all and (hover:hover) and (pointer:fine){#hs-cases .hsy-cur{display:none}}
+@media not all and (hover:hover) and (pointer:fine){body>.hsy-cur{display:none}}
 
 /* 06 reviews: Google-style cards, no film-strip edges */
 #hs-reviews .hsq-strip{background:none;box-shadow:none;padding:0;border-radius:0}
@@ -4781,33 +4781,19 @@ window.HS_PRICING = window.HS_PRICING || {
   var vp=sec.querySelector('.hsy-vp');if(!vp)return;
   if(!(window.matchMedia&&matchMedia('(hover:hover) and (pointer:fine) and (min-width:961px)').matches))return;
   var cur=document.createElement('div');cur.className='hsy-cur';cur.setAttribute('aria-hidden','true');
-  cur.innerHTML='<b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3 5 8l5 5"/></svg>Scroll<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3 5 5-5 5"/></svg></b>';
-  sec.appendChild(cur);
+  cur.innerHTML='<b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3 5 8l5 5"/></svg>Drag<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3 5 5-5 5"/></svg></b>';
+  document.body.appendChild(cur);
   var x=0,y=0,raf=0;function paint(){raf=0;cur.style.transform='translate3d('+x+'px,'+y+'px,0)'}
   vp.addEventListener('mousemove',function(e){x=e.clientX;y=e.clientY;if(!raf)raf=requestAnimationFrame(paint)});
-  vp.addEventListener('mouseenter',function(e){x=e.clientX;y=e.clientY;paint();sec.classList.add('cur-on')});
-  vp.addEventListener('mouseleave',function(){sec.classList.remove('cur-on');end()});
+  vp.addEventListener('mouseenter',function(e){x=e.clientX;y=e.clientY;paint();document.body.classList.add('hsy-cur-on')});
+  vp.addEventListener('mouseleave',function(){document.body.classList.remove('hsy-cur-on');end()});
   var down=false,sx=0,sl=0,moved=false;
-  vp.addEventListener('mousedown',function(e){if(e.button!==0)return;down=true;moved=false;sx=e.clientX;sl=vp.scrollLeft;sec.classList.add('cur-down');e.preventDefault()});
-  window.addEventListener('mousemove',function(e){if(!down)return;var dx=e.clientX-sx;if(Math.abs(dx)>5){moved=true;vp.classList.add('dragging')}if(moved)vp.scrollLeft=sl-dx});
-  function end(){if(!down)return;down=false;sec.classList.remove('cur-down');setTimeout(function(){vp.classList.remove('dragging')},0)}
+  vp.addEventListener('mousedown',function(e){if(e.button!==0)return;down=true;moved=false;sx=lx=e.clientX;lt=performance.now();vel=0;if(mom){cancelAnimationFrame(mom);mom=0}sl=vp.scrollLeft;document.body.classList.add('hsy-cur-down');e.preventDefault()});
+  var vel=0,lx=0,lt=0,mom=0;window.addEventListener('mousemove',function(e){if(!down)return;var dx=e.clientX-sx;if(Math.abs(dx)>5){moved=true;vp.classList.add('dragging')}if(moved){vp.scrollLeft=sl-dx;var t=performance.now(),dt=Math.max(1,t-lt);vel=0.8*((lx-e.clientX)/dt)+0.2*vel;lx=e.clientX;lt=t}});function glide(){vel*=0.94;if(Math.abs(vel)<0.02){mom=0;vp.classList.remove('dragging');return}vp.scrollLeft+=vel*16;mom=requestAnimationFrame(glide)}
+  function end(){if(!down)return;down=false;document.body.classList.remove('hsy-cur-down');if(moved&&performance.now()-lt<80&&Math.abs(vel)>0.05){mom=requestAnimationFrame(glide)}else{setTimeout(function(){vp.classList.remove('dragging')},0)}}
   window.addEventListener('mouseup',end);
   vp.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=false}},true);
   vp.addEventListener('dragstart',function(e){e.preventDefault()});
-  /* mouse wheel over the cards moves them sideways; at either end the page scrolls on as normal */
-  var tgt=null,anim=0;
-  function step(){var d=tgt-vp.scrollLeft;if(Math.abs(d)<1){vp.scrollLeft=tgt;tgt=null;anim=0;vp.style.scrollBehavior='';return}vp.scrollLeft+=d*.18;anim=requestAnimationFrame(step)}
-  vp.addEventListener('wheel',function(e){
-    if(e.ctrlKey)return;
-    var dy=Math.abs(e.deltaY)>Math.abs(e.deltaX)?e.deltaY:0;if(!dy)return;
-    if(e.deltaMode===1)dy*=40;else if(e.deltaMode===2)dy*=vp.clientWidth;
-    var max=vp.scrollWidth-vp.clientWidth,base=tgt==null?vp.scrollLeft:tgt;
-    if((dy<0&&base<=1)||(dy>0&&base>=max-1))return;
-    e.preventDefault();
-    tgt=Math.max(0,Math.min(max,base+dy*1.2));
-    vp.style.scrollBehavior='auto';
-    if(!anim)anim=requestAnimationFrame(step);
-  },{passive:false});
 })();
 </script>
 </body>
