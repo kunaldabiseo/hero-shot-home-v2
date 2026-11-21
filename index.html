@@ -2496,6 +2496,21 @@ a.hsr-sp:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
 @media (max-width:560px){.hsft-top{grid-template-columns:minmax(0,1fr)}}
 </style>
 <style id="hs-type-tune">
+/* 11 case rail: drag cursor hint (desktop mouse only) */
+#hs-cases .hsy-cur{position:fixed;left:0;top:0;z-index:60;width:92px;height:92px;margin:-46px 0 0 -46px;border-radius:50%;display:grid;place-items:center;
+ background:var(--teal,#0a7791);color:#fff;font:700 11px/1.2 Montserrat,sans-serif;letter-spacing:.14em;text-transform:uppercase;text-align:center;
+ pointer-events:none;opacity:0;transform:translate3d(-200px,-200px,0) scale(.4);transition:opacity .25s,scale .25s;box-shadow:0 18px 40px -14px rgba(0,0,0,.7)}
+#hs-cases .hsy-cur b{display:flex;align-items:center;gap:6px;font-weight:700}
+#hs-cases .hsy-cur svg{width:12px;height:12px}
+#hs-cases.cur-on .hsy-cur{opacity:1}
+#hs-cases.cur-down .hsy-cur{background:#fff;color:var(--teal,#0a7791)}
+@media (hover:hover) and (pointer:fine) and (min-width:961px){
+ #hs-cases .hsy-vp,#hs-cases .hsy-vp *{cursor:none}
+ #hs-cases .hsy-vp.dragging{scroll-behavior:auto;user-select:none}
+ #hs-cases .hsy-vp.dragging a{pointer-events:none}
+}
+@media not all and (hover:hover) and (pointer:fine){#hs-cases .hsy-cur{display:none}}
+
 /* 06 reviews: Google-style cards, no film-strip edges */
 #hs-reviews .hsq-strip{background:none;box-shadow:none;padding:0;border-radius:0}
 #hs-reviews .hsq-strip::before,#hs-reviews .hsq-strip::after{display:none}
@@ -4756,6 +4771,28 @@ window.HS_PRICING = window.HS_PRICING || {
   function start(){if(!t)t=setInterval(go,5000)}function stop(){clearInterval(t);t=null}
   var a=it[0].closest('.hsrv');a.addEventListener('mouseenter',stop);a.addEventListener('mouseleave',start);a.addEventListener('focusin',stop);a.addEventListener('focusout',start);
   document.addEventListener('visibilitychange',function(){document.hidden?stop():start()});start();
+})();
+</script>
+<script>
+/* 11 case rail: custom "Drag" cursor + mouse drag to move the cards (desktop only) */
+(function(){
+  var sec=document.getElementById('hs-cases');if(!sec)return;
+  var vp=sec.querySelector('.hsy-vp');if(!vp)return;
+  if(!(window.matchMedia&&matchMedia('(hover:hover) and (pointer:fine) and (min-width:961px)').matches))return;
+  var cur=document.createElement('div');cur.className='hsy-cur';cur.setAttribute('aria-hidden','true');
+  cur.innerHTML='<b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3 5 8l5 5"/></svg>Drag<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3 5 5-5 5"/></svg></b>';
+  sec.appendChild(cur);
+  var x=0,y=0,raf=0;function paint(){raf=0;cur.style.transform='translate3d('+x+'px,'+y+'px,0)'}
+  vp.addEventListener('mousemove',function(e){x=e.clientX;y=e.clientY;if(!raf)raf=requestAnimationFrame(paint)});
+  vp.addEventListener('mouseenter',function(e){x=e.clientX;y=e.clientY;paint();sec.classList.add('cur-on')});
+  vp.addEventListener('mouseleave',function(){sec.classList.remove('cur-on');end()});
+  var down=false,sx=0,sl=0,moved=false;
+  vp.addEventListener('mousedown',function(e){if(e.button!==0)return;down=true;moved=false;sx=e.clientX;sl=vp.scrollLeft;sec.classList.add('cur-down');e.preventDefault()});
+  window.addEventListener('mousemove',function(e){if(!down)return;var dx=e.clientX-sx;if(Math.abs(dx)>5){moved=true;vp.classList.add('dragging')}if(moved)vp.scrollLeft=sl-dx});
+  function end(){if(!down)return;down=false;sec.classList.remove('cur-down');setTimeout(function(){vp.classList.remove('dragging')},0)}
+  window.addEventListener('mouseup',end);
+  vp.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=false}},true);
+  vp.addEventListener('dragstart',function(e){e.preventDefault()});
 })();
 </script>
 </body>
