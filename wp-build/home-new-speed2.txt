@@ -1,0 +1,27 @@
+
+// Page 46735: Font Awesome is not used here; the review badge styles load without holding up the first paint
+add_filter( 'style_loader_tag', function ( $tag, $handle ) {
+	if ( ! hs_home_new_speed_on() ) {
+		return $tag;
+	}
+	if ( 0 === strpos( $handle, 'font-awesome' ) ) {
+		return '';
+	}
+	if ( 'brb-public-main-css' === $handle ) {
+		return str_replace( array( "media='all'", 'media="all"' ), "media='print' data-hsn-async='1'", $tag );
+	}
+	return $tag;
+}, 20, 2 );
+// Page 46735: connect to the font server early and fetch the main font first
+add_filter( 'wp_resource_hints', function ( $urls, $type ) {
+	if ( 'preconnect' === $type && is_page( 46735 ) ) {
+		$urls[] = array( 'href' => 'https://fonts.gstatic.com', 'crossorigin' );
+	}
+	return $urls;
+}, 10, 2 );
+add_filter( 'wp_preload_resources', function ( $res ) {
+	if ( is_page( 46735 ) ) {
+		$res[] = array( 'href' => 'https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2', 'as' => 'font', 'type' => 'font/woff2', 'crossorigin' => 'anonymous' );
+	}
+	return $res;
+} );
