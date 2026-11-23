@@ -12,7 +12,7 @@ add_filter( 'style_loader_tag', function ( $tag, $handle ) {
 	}
 	return $tag;
 }, 20, 2 );
-// Page 46735: connect to the font server early and fetch the main font first
+// Page 46735: connect to the font server early, fetch the main font and the first hero photos first
 add_filter( 'wp_resource_hints', function ( $urls, $type ) {
 	if ( 'preconnect' === $type && is_page( 46735 ) ) {
 		$urls[] = array( 'href' => 'https://fonts.gstatic.com', 'crossorigin' );
@@ -22,6 +22,16 @@ add_filter( 'wp_resource_hints', function ( $urls, $type ) {
 add_filter( 'wp_preload_resources', function ( $res ) {
 	if ( is_page( 46735 ) ) {
 		$res[] = array( 'href' => 'https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2', 'as' => 'font', 'type' => 'font/woff2', 'crossorigin' => 'anonymous' );
+		// desktop: first photos of the hero wall
+		$res[] = array( 'href' => 'https://heroshotphotography.com/wp-content/uploads/2022/09/female-white-suit-business-portrait-HERO6463-copy-682x1024.jpg', 'as' => 'image', 'media' => '(min-width: 961px)', 'fetchpriority' => 'auto' );
+		$res[] = array( 'href' => 'https://heroshotphotography.com/wp-content/uploads/2023/02/Corporate-event-photography-sydney-HERO2486-1024x682.jpg', 'as' => 'image', 'media' => '(min-width: 961px)', 'fetchpriority' => 'auto' );
+		$res[] = array( 'href' => 'https://heroshotphotography.com/wp-content/uploads/2021/10/Hero-Shot-Photography-Hero-Shot-Photography-HERO6285-682x1024.jpg', 'as' => 'image', 'media' => '(min-width: 961px)', 'fetchpriority' => 'high' );
+		$res[] = array( 'href' => 'https://heroshotphotography.com/wp-content/uploads/2023/01/Relaxed-Team-Portrait-Rumble-Melbourne.jpg', 'as' => 'image', 'media' => '(min-width: 961px)', 'fetchpriority' => 'auto' );
+		$res[] = array( 'href' => 'https://heroshotphotography.com/wp-content/uploads/2021/09/Hero-Shot-Photography-0G9A2720-3-683x1024.jpg', 'as' => 'image', 'media' => '(min-width: 961px)', 'fetchpriority' => 'auto' );
+		$res[] = array( 'href' => 'https://heroshotphotography.com/wp-content/uploads/2021/09/Prefessional-Stock-Photograpy-Hero-Shot-20-768x512.jpg', 'as' => 'image', 'media' => '(min-width: 961px)', 'fetchpriority' => 'auto' );
+		$res[] = array( 'href' => 'https://heroshotphotography.com/wp-content/uploads/2021/09/Alexis-Wolfe-seated-headshot-bangle-682x1024.jpg', 'as' => 'image', 'media' => '(min-width: 961px)', 'fetchpriority' => 'auto' );
+		$res[] = array( 'href' => 'https://heroshotphotography.com/wp-content/uploads/2023/01/Hero-Shot-Photography-8335-588-1024x683.jpeg', 'as' => 'image', 'media' => '(min-width: 961px)', 'fetchpriority' => 'auto' );
+		$res[] = array( 'href' => 'https://heroshotphotography.com/wp-content/uploads/2021/09/0G9A6338-Edit-683x1024.jpg', 'as' => 'image', 'media' => '(min-width: 961px)', 'fetchpriority' => 'auto' );
 	}
 	return $res;
 } );
