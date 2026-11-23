@@ -15,6 +15,11 @@ add_filter( 'style_loader_tag', function ( $tag, $handle ) {
 // Page 46735: connect to the font server early, fetch the main font and the first hero photos first
 add_filter( 'wp_resource_hints', function ( $urls, $type ) {
 	if ( 'preconnect' === $type && is_page( 46735 ) ) {
+		foreach ( $urls as $i => $u ) {
+			if ( false !== strpos( is_array( $u ) ? (string) ( $u['href'] ?? '' ) : (string) $u, 'fontawesome' ) ) {
+				unset( $urls[ $i ] );
+			}
+		}
 		$urls[] = array( 'href' => 'https://fonts.gstatic.com', 'crossorigin' );
 	}
 	return $urls;
@@ -22,6 +27,8 @@ add_filter( 'wp_resource_hints', function ( $urls, $type ) {
 add_filter( 'wp_preload_resources', function ( $res ) {
 	if ( is_page( 46735 ) ) {
 		$res[] = array( 'href' => 'https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2', 'as' => 'font', 'type' => 'font/woff2', 'crossorigin' => 'anonymous' );
+		$res[] = array( 'href' => 'https://heroshotphotography.com/wp-content/fonts/roboto-condensed/ieVl2ZhZI2eCN5jzbjEETS9weq8-19K7DQ.woff2', 'as' => 'font', 'type' => 'font/woff2', 'crossorigin' => 'anonymous' );
+		$res[] = array( 'href' => 'https://heroshotphotography.com/wp-content/fonts/montserrat/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCs16Hw5aXo.woff2', 'as' => 'font', 'type' => 'font/woff2', 'crossorigin' => 'anonymous' );
 		// desktop: first photos of the hero wall
 		$res[] = array( 'href' => 'https://heroshotphotography.com/wp-content/uploads/2022/09/female-white-suit-business-portrait-HERO6463-copy-682x1024.jpg', 'as' => 'image', 'media' => '(min-width: 961px)', 'fetchpriority' => 'auto' );
 		$res[] = array( 'href' => 'https://heroshotphotography.com/wp-content/uploads/2023/02/Corporate-event-photography-sydney-HERO2486-1024x682.jpg', 'as' => 'image', 'media' => '(min-width: 961px)', 'fetchpriority' => 'auto' );
