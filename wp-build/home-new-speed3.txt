@@ -1,0 +1,34 @@
+
+// Page 46735: the theme's own header and footer are hidden on this page, so they are left out of the HTML
+add_action( 'template_redirect', function () {
+	if ( hs_home_new_speed_on() ) {
+		ob_start( 'hs_home_new_trim_html' );
+	}
+}, 2 );
+function hs_home_new_trim_html( $html ) {
+	if ( strlen( $html ) < 2000 || false === stripos( $html, '</html>' ) ) {
+		return $html;
+	}
+	$p = strpos( $html, '<' . 'header id="header"' );
+	if ( false !== $p ) {
+		$d = 0;
+		$q = $p;
+		while ( preg_match( '#<(/?)header\b#i', $html, $mm, PREG_OFFSET_CAPTURE, $q ) ) {
+			$d += ( '/' === $mm[1][0] ) ? -1 : 1;
+			$q  = $mm[0][1] + 7;
+			if ( 0 === $d ) {
+				$end  = strpos( $html, '>', $mm[0][1] );
+				$html = substr( $html, 0, $p ) . substr( $html, $end + 1 );
+				break;
+			}
+		}
+	}
+	$p = strpos( $html, '<' . 'footer id="footer"' );
+	if ( false !== $p ) {
+		$end = strpos( $html, '</' . 'footer>', $p );
+		if ( false !== $end ) {
+			$html = substr( $html, 0, $p ) . substr( $html, $end + 9 );
+		}
+	}
+	return $html;
+}
