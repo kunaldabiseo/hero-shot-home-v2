@@ -1,0 +1,74 @@
+
+// Part 4: live Google reviews for the review cards on page 46735, read from the Business Reviews Bundle widget 35655 (the one on /customer-reviews/). Cached 6 hours. If the plugin gives fewer than 3 reviews, the written-in cards stay as they are.
+function hs_home_new_reviews() {
+	$cached = get_transient( 'hs_hn_reviews_v1' );
+	if ( is_array( $cached ) ) {
+		return $cached;
+	}
+	$data = array( 'time' => time(), 'items' => array() );
+	if ( shortcode_exists( 'brb_collection' ) && class_exists( 'DOMDocument' ) ) {
+		$html = do_shortcode( '[brb_collection id=35655]' );
+		if ( $html ) {
+			$doc = new DOMDocument();
+			libxml_use_internal_errors( true );
+			$doc->loadHTML( '<' . '?xml encoding="utf-8"?' . '>' . $html );
+			libxml_clear_errors();
+			$xp = new DOMXPath( $doc );
+			$cards = $xp->query( "//*[contains(concat(' ', normalize-space(@class), ' '), ' rpi-card ')]" );
+			foreach ( $cards as $card ) {
+				if ( (int) $card->getAttribute( 'data-rat' ) < 5 ) {
+					continue;
+				}
+				$n = $xp->query( ".//*[contains(concat(' ', normalize-space(@class), ' '), ' rpi-name ')]", $card )->item( 0 );
+				$t = $xp->query( ".//*[contains(concat(' ', normalize-space(@class), ' '), ' rpi-text ')]", $card )->item( 0 );
+				$d = $xp->query( ".//*[contains(concat(' ', normalize-space(@class), ' '), ' rpi-time ')]", $card )->item( 0 );
+				$name = $n ? trim( preg_replace( '/\s+/u', ' ', $n->textContent ) ) : '';
+				$text = $t ? trim( preg_replace( '/\s+/u', ' ', $t->textContent ) ) : '';
+				$ms   = $d ? (int) $d->getAttribute( 'data-time' ) : 0;
+				if ( '' === $name || mb_strlen( $text ) < 20 ) {
+					continue;
+				}
+				$data['items'][] = array( 'name' => $name, 'text' => $text, 'time' => (int) floor( $ms / 1000 ) );
+				if ( count( $data['items'] ) >= 6 ) {
+					break;
+				}
+			}
+		}
+	}
+	set_transient( 'hs_hn_reviews_v1', $data, count( $data['items'] ) >= 3 ? 6 * HOUR_IN_SECONDS : 30 * MINUTE_IN_SECONDS );
+	return $data;
+}
+
+add_filter( 'the_content', function ( $content ) {
+	if ( ! is_page( 46735 ) || false === strpos( $content, 'class="hsq-strip"' ) ) {
+		return $content;
+	}
+	$data = hs_home_new_reviews();
+	if ( count( $data['items'] ) < 3 ) {
+		return $content;
+	}
+	$lt     = '<';
+	$colors = array( '#7b1fa2', '#689f38', '#5d4037', '#00796b', '#c2185b', '#1976d2', '#e64a19', '#455a64' );
+	$g      = '';
+	if ( preg_match( '#' . $lt . 'i class="hsg-gb">.*?' . $lt . '/i>#s', $content, $gm ) ) {
+		$g = $gm[0];
+	}
+	$cards = '';
+	foreach ( $data['items'] as $it ) {
+		$name    = ucwords( $it['name'] );
+		$initial = mb_strtoupper( mb_substr( $name, 0, 1 ) );
+		$color   = $colors[ abs( crc32( $name ) ) % count( $colors ) ];
+		$date    = $it['time'] ? wp_date( 'j M Y', $it['time'] ) : '';
+		$iso     = $it['time'] ? wp_date( 'Y-m-d', $it['time'] ) : '';
+		$cards  .= $lt . 'article class="hsq-frame hsg" data-name="">'
+			. $lt . 'div class="hsg-top">' . $lt . 'span aria-label="5 out of 5 stars" class="hsg-st">★★★★★' . $lt . '/span>'
+			. $lt . 'time datetime="' . esc_attr( $iso ) . '">' . esc_html( $date ) . $lt . '/time>' . $lt . '/div>'
+			. $lt . 'p>“' . esc_html( $it['text'] ) . '”' . $lt . '/p>'
+			. $lt . 'div class="hsq-who">' . $lt . 'span aria-hidden="true" class="hsq-av" style="background:' . $color . '">' . esc_html( $initial ) . $g . $lt . '/span>'
+			. $lt . 'span>' . $lt . 'b>' . esc_html( $name ) . $lt . '/b>' . $lt . 'small>Google review' . $lt . '/small>' . $lt . '/span>' . $lt . '/div>'
+			. $lt . '/article>';
+	}
+	$content = preg_replace( '#(class="hsq-strip" role="region">)\s*(?:' . $lt . 'article\b.*?' . $lt . '/article>\s*)+#s', '$1' . str_replace( array( '\\', '$' ), array( '\\\\', '\$' ), $cards ), $content, 1 );
+	$content = preg_replace( '#Checked \d{1,2} [A-Z][a-z]+ \d{4}#', 'Checked ' . wp_date( 'j F Y', $data['time'] ), $content, 1 );
+	return $content;
+}, 99 );
