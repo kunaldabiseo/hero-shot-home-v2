@@ -1,0 +1,88 @@
+
+// Part 5: B1G1 impact numbers for the "give back" section on page 46735, read from B1G1's public widget feed (the same data their iframe widget shows). Cached 12 hours; the last good result is kept, so if B1G1 is down the page shows the last figures, and if there are none yet the written-in figures stay.
+function hs_home_new_b1g1() {
+	$cached = get_transient( 'hs_hn_b1g1_v1' );
+	if ( is_array( $cached ) ) {
+		return $cached;
+	}
+	$last = get_option( 'hs_hn_b1g1_last' );
+	$last = is_array( $last ) ? $last : array();
+	$res  = wp_remote_get( 'https://api.b1g1.com/widget/giving?key=f3c5001ce379c2d76c661f07acb3b1b0', array( 'timeout' => 8 ) );
+	if ( is_wp_error( $res ) || 200 !== (int) wp_remote_retrieve_response_code( $res ) ) {
+		set_transient( 'hs_hn_b1g1_v1', $last, HOUR_IN_SECONDS );
+		return $last;
+	}
+	$j     = json_decode( wp_remote_retrieve_body( $res ), true );
+	$total = isset( $j['impacts'] ) ? (int) $j['impacts'] : 0;
+	$items = array();
+	$projects = isset( $j['company']['company']['supported_projects'] ) && is_array( $j['company']['company']['supported_projects'] ) ? $j['company']['company']['supported_projects'] : array();
+	foreach ( $projects as $p ) {
+		$n = 0;
+		if ( ! empty( $p['contributions'] ) && is_array( $p['contributions'] ) ) {
+			foreach ( $p['contributions'] as $c ) {
+				$n += isset( $c['beneficiaries'] ) ? (int) $c['beneficiaries'] : 0;
+			}
+		}
+		if ( $n < 1 || empty( $p['phrase_active_plural'] ) ) {
+			continue;
+		}
+		$items[] = array(
+			'n'     => $n,
+			'verb'  => isset( $p['verb_past'] ) ? (string) $p['verb_past'] : 'provided',
+			'label' => 1 === $n && ! empty( $p['phrase_active_singular'] ) ? (string) $p['phrase_active_singular'] : (string) $p['phrase_active_plural'],
+			'title' => isset( $p['project_title'] ) ? (string) $p['project_title'] : '',
+		);
+	}
+	usort( $items, function ( $a, $b ) {
+		return $b['n'] - $a['n'];
+	} );
+	$items = array_slice( $items, 0, 4 );
+	if ( $total < 1 || count( $items ) < 1 ) {
+		set_transient( 'hs_hn_b1g1_v1', $last, HOUR_IN_SECONDS );
+		return $last;
+	}
+	$data = array( 'time' => time(), 'total' => $total, 'items' => $items );
+	update_option( 'hs_hn_b1g1_last', $data, false );
+	set_transient( 'hs_hn_b1g1_v1', $data, 12 * HOUR_IN_SECONDS );
+	return $data;
+}
+add_filter( 'the_content', function ( $content ) {
+	if ( ! is_page( 46735 ) || false === strpos( $content, 'class="hsg-imp"' ) ) {
+		return $content;
+	}
+	$data = hs_home_new_b1g1();
+	if ( empty( $data['items'] ) ) {
+		return $content;
+	}
+	$lt    = '<';
+	$icons = array(
+		'water' => '' . $lt . 'svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24">' . $lt . 'path d="M12 3.2s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z">' . $lt . '/path>' . $lt . 'path d="M9.2 14.6a2.9 2.9 0 0 0 2.8 2.8">' . $lt . '/path>' . $lt . '/svg>',
+		'meal' => '' . $lt . 'svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24">' . $lt . 'path d="M3.5 12.5h17a8.5 8.5 0 0 1-17 0z">' . $lt . '/path>' . $lt . 'path d="M9 4.5c-.8 1 .8 2-.1 3.2M12.5 3.8c-.8 1 .8 2-.1 3.2M16 4.5c-.8 1 .8 2-.1 3.2">' . $lt . '/path>' . $lt . '/svg>',
+		'tree' => '' . $lt . 'svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24">' . $lt . 'path d="M12 21v-5">' . $lt . '/path>' . $lt . 'path d="M12 3 6.5 10.2h3L6 14.8h12l-3.5-4.6h3z">' . $lt . '/path>' . $lt . '/svg>',
+		'health' => '' . $lt . 'svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24">' . $lt . 'path d="M12 20.3s-7.8-4.6-7.8-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.8 2.5c0 5.6-7.8 10.2-7.8 10.2z">' . $lt . '/path>' . $lt . 'path d="M12 10.6v4.6M9.7 12.9h4.6">' . $lt . '/path>' . $lt . '/svg>',
+		'learn' => '' . $lt . 'svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24">' . $lt . 'path d="M2.8 9.3 12 5l9.2 4.3L12 13.6z">' . $lt . '/path>' . $lt . 'path d="M6.6 11.2v4.3c1.4 1.3 3.3 2 5.4 2s4-.7 5.4-2v-4.3M21.2 9.3v5">' . $lt . '/path>' . $lt . '/svg>',
+		'heart' => '' . $lt . 'svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24">' . $lt . 'path d="M12 20.3s-7.8-4.6-7.8-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.8 2.5c0 5.6-7.8 10.2-7.8 10.2z">' . $lt . '/path>' . $lt . '/svg>',
+	);
+	$list = '';
+	foreach ( $data['items'] as $it ) {
+		$t = strtolower( $it['title'] . ' ' . $it['label'] );
+		$k = 'heart';
+		foreach ( array( 'water' => 'water', 'meal' => 'meal', 'food' => 'meal', 'tree' => 'tree', 'health' => 'health', 'medical' => 'health', 'training' => 'learn', 'educat' => 'learn', 'school' => 'learn' ) as $w => $ic ) {
+			if ( false !== strpos( $t, $w ) ) {
+				$k = $ic;
+				break;
+			}
+		}
+		$list .= $lt . 'li>' . $lt . 'i class="hsg-imp-ic">' . $icons[ $k ] . $lt . '/i>'
+			. $lt . 'small>We’ve ' . esc_html( $it['verb'] ) . $lt . '/small>'
+			. $lt . 'b data-n="' . (int) $it['n'] . '">' . esc_html( number_format( $it['n'] ) ) . $lt . '/b>'
+			. $lt . 'span>' . esc_html( $it['label'] ) . $lt . '/span>' . $lt . '/li>';
+	}
+	$html = $lt . 'div class="hsg-imp">'
+		. $lt . 'div class="hsg-imp-top">' . $lt . 'b class="hsg-imp-n" data-n="' . (int) $data['total'] . '">' . esc_html( number_format( $data['total'] ) ) . $lt . '/b>'
+		. $lt . 'span>impacts made so far through ' . $lt . 'em>B1G1 Business for Good' . $lt . '/em>' . $lt . '/span>' . $lt . '/div>'
+		. $lt . 'ul class="hsg-imp-list">' . $list . $lt . '/ul>'
+		. $lt . 'p class="hsg-imp-src">Figures from our B1G1 giving record, updated daily' . $lt . '/p>'
+		. $lt . '/div>';
+	return preg_replace( '#' . $lt . 'div class="hsg-imp">.*?' . $lt . '!--/hsg-imp-->#s', str_replace( array( '\\', '$' ), array( '\\\\', '\$' ), $html ) . $lt . '!--/hsg-imp-->', $content, 1 );
+}, 99 );
